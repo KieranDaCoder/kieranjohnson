@@ -13,7 +13,7 @@
 /* "inline" makes Tailwind substitute the var() reference where it's used,
    so the next/font variables (set on <body>) resolve correctly. */
 @theme inline {
-  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-display: var(--font-playfair), Georgia, serif;
   --font-body: var(--font-hanken), system-ui, sans-serif;
 }
 
@@ -36,7 +36,7 @@ body {
 
 /* Display type: warm editorial serif */
 .display {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-playfair), Georgia, serif;
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 0.98;
@@ -44,7 +44,7 @@ body {
 
 /* Serif italic — reserved for single accent words */
 .serif-accent {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-playfair), Georgia, serif;
   font-style: italic;
   font-weight: 500;
   letter-spacing: -0.01em;

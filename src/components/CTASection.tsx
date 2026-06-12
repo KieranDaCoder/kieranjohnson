@@ -29,18 +29,8 @@ export function CTASection() {
         <RevealText as="span" delay={0.15} text="great, together." className="block" />
       </h2>
 
-      <motion.p
-        className="mx-auto mt-8 max-w-md text-lg text-charcoal/60"
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.3 }}
-      >
-        Open to internships, freelance briefs and good conversations about campaigns.
-      </motion.p>
-
       <motion.div
-        className="mt-12 flex flex-wrap items-center justify-center gap-5"
+        className="mt-14 flex flex-wrap items-center justify-center gap-5"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

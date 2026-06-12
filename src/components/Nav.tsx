@@ -83,9 +83,33 @@ export function Nav() {
           onClick={() => setOpen(false)}
           className="shadow-widget flex h-13 w-13 items-center justify-center rounded-2xl bg-white p-3.5 transition-transform duration-300 hover:scale-105"
         >
-          <span className="display text-xl text-charcoal">
-            KJ<span className="text-accent">.</span>
-          </span>
+          {/* K drops in from the top, J rises from the bottom, meeting on hover */}
+          <motion.span
+            className="display flex items-center text-xl leading-none text-charcoal"
+            initial="rest"
+            animate="rest"
+            whileHover="hover"
+          >
+            <span className="inline-flex overflow-hidden leading-none">
+              <motion.span
+                className="inline-block"
+                variants={{ rest: { y: "0%" }, hover: { y: ["-130%", "0%"] } }}
+                transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+              >
+                K
+              </motion.span>
+            </span>
+            <span className="inline-flex overflow-hidden leading-none">
+              <motion.span
+                className="inline-block"
+                variants={{ rest: { y: "0%" }, hover: { y: ["130%", "0%"] } }}
+                transition={{ duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+              >
+                J
+              </motion.span>
+            </span>
+            <span className="text-accent">.</span>
+          </motion.span>
         </Link>
 
         {/* Centre widgets */}
