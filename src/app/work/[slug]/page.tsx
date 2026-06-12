@@ -24,7 +24,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
     <article className="px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
       <RevealText
         text={project.title}
-        className="display text-5xl text-navy md:text-8xl"
+        className="display text-5xl text-charcoal md:text-8xl"
       />
       <Reveal delay={0.25}>
         <p className="serif-accent mt-5 text-2xl text-charcoal/60 md:text-3xl">
@@ -44,16 +44,16 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
       <div className="mt-20 grid gap-12 md:grid-cols-3">
         <Reveal className="md:col-span-2">
-          <h2 className="display text-3xl text-navy">Overview</h2>
+          <h2 className="display text-3xl text-charcoal">Overview</h2>
           <p className="mt-4 text-lg leading-relaxed text-charcoal/80">{project.overview}</p>
         </Reveal>
         <div className="space-y-10">
           <Reveal delay={0.1}>
-            <h3 className="text-xs uppercase tracking-[0.25em] text-sky">My role</h3>
+            <h3 className="text-xs uppercase tracking-[0.25em] text-accent">My role</h3>
             <p className="mt-3 leading-relaxed text-charcoal/80">{project.role}</p>
           </Reveal>
           <Reveal delay={0.2}>
-            <h3 className="text-xs uppercase tracking-[0.25em] text-sky">Outcome</h3>
+            <h3 className="text-xs uppercase tracking-[0.25em] text-accent">Outcome</h3>
             <p className="mt-3 leading-relaxed text-charcoal/80">{project.outcome}</p>
           </Reveal>
         </div>
@@ -64,7 +64,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         <p className="text-xs uppercase tracking-[0.25em] text-charcoal/50">Next project</p>
         <Link
           href={`/work/${next.slug}`}
-          className="display mt-3 inline-block text-4xl text-navy transition-colors hover:text-sky md:text-6xl"
+          className="display mt-3 inline-block text-4xl text-charcoal transition-colors hover:text-accent md:text-6xl"
         >
           {next.title} →
         </Link>

@@ -47,7 +47,7 @@ function CopyEmail() {
   return (
     <button
       onClick={copy}
-      className="shadow-widget hidden items-center gap-3 rounded-full bg-white px-5 py-3 text-sm text-charcoal transition-colors hover:text-sky lg:flex"
+      className="shadow-widget hidden items-center gap-3 rounded-full bg-white px-5 py-3 text-sm text-charcoal transition-colors hover:text-accent lg:flex"
     >
       <span>{copied ? "Copied!" : EMAIL}</span>
       <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -83,8 +83,8 @@ export function Nav() {
           onClick={() => setOpen(false)}
           className="shadow-widget flex h-13 w-13 items-center justify-center rounded-2xl bg-white p-3.5 transition-transform duration-300 hover:scale-105"
         >
-          <span className="display text-xl text-navy">
-            KJ<span className="text-sky">.</span>
+          <span className="display text-xl text-charcoal">
+            KJ<span className="text-accent">.</span>
           </span>
         </Link>
 
@@ -102,8 +102,8 @@ export function Nav() {
               href={link.href}
               className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
                 pathname.startsWith(link.href)
-                  ? "bg-navy/8 text-navy"
-                  : "text-charcoal/70 hover:bg-navy/5 hover:text-navy"
+                  ? "bg-charcoal/8 text-charcoal"
+                  : "text-charcoal/70 hover:bg-charcoal/5 hover:text-charcoal"
               }`}
             >
               {link.label}
@@ -111,7 +111,7 @@ export function Nav() {
           ))}
           <Link
             href="/contact"
-            className="rounded-full bg-navy px-5 py-2.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-sky"
+            className="rounded-full bg-charcoal px-5 py-2.5 text-sm font-medium text-cream transition-colors duration-300 hover:bg-accent"
           >
             Hi!
           </Link>
@@ -156,7 +156,7 @@ export function Nav() {
                     href={link.href}
                     onClick={() => setOpen(false)}
                     className={`display text-5xl ${
-                      pathname === link.href ? "text-navy" : "text-charcoal"
+                      pathname === link.href ? "text-charcoal" : "text-charcoal"
                     }`}
                   >
                     {link.label}

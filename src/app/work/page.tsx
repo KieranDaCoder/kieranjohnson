@@ -13,7 +13,7 @@ export default function WorkPage() {
   return (
     <>
       <div className="px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
-      <RevealText text="Work" className="display text-7xl text-navy md:text-9xl" />
+      <RevealText text="Work" className="display text-7xl text-charcoal md:text-9xl" />
       <Reveal delay={0.3}>
         <p className="mt-6 max-w-xl text-lg text-charcoal/70">
           Campaigns, strategies and analyses — a selection of projects from my studies and

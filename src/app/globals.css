@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #185fa5;
-  --color-sky: #378add;
-  --color-cream: #fafaf9;
-  --color-charcoal: #2c2c2a;
+  /* Palette — warm ivory, charcoal, vivid orange + supporting warm tones */
+  --color-cream: #fdfff7;
+  --color-charcoal: #2c2c2c;
+  --color-accent: #ff6102;
+  --color-peach: #fee2b3;
+  --color-sand: #e3d9c9;
+  --color-amber: #f2b05f;
 }
 
 /* "inline" makes Tailwind substitute the var() reference where it's used,
    so the next/font variables (set on <body>) resolve correctly. */
 @theme inline {
-  --font-display: var(--font-cormorant), Georgia, serif;
-  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-hanken), system-ui, sans-serif;
 }
-
-/* The font variables live on <body> (set by next/font), so plain CSS rules
-   must reference them directly rather than via the :root theme tokens. */
 
 html {
   scroll-behavior: smooth;
@@ -24,27 +24,27 @@ html {
 body {
   background: var(--color-cream);
   color: var(--color-charcoal);
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-family: var(--font-hanken), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--color-navy);
+  background: var(--color-accent);
   color: var(--color-cream);
 }
 
-/* Display type: sleek bold grotesk, tight tracking */
+/* Display type: warm editorial serif */
 .display {
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 0.95;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 0.98;
 }
 
-/* Serif italic — reserved for single accent words and client names */
+/* Serif italic — reserved for single accent words */
 .serif-accent {
-  font-family: var(--font-cormorant), Georgia, serif;
+  font-family: var(--font-fraunces), Georgia, serif;
   font-style: italic;
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -53,8 +53,8 @@ body {
 /* Soft elevation for floating header widgets */
 .shadow-widget {
   box-shadow:
-    0 1px 2px rgba(44, 44, 42, 0.05),
-    0 8px 24px rgba(44, 44, 42, 0.09);
+    0 1px 2px rgba(44, 44, 44, 0.05),
+    0 8px 24px rgba(44, 44, 44, 0.09);
 }
 
 /* Subtle animated film-grain overlay */
@@ -118,14 +118,36 @@ body {
   100% { opacity: 1; transform: translateX(300%); }
 }
 
-/* Outlined display text */
-.text-outline {
-  -webkit-text-stroke: 1px var(--color-navy);
-  color: transparent;
+/* Sunrise glow behind the CTA — soft pulsing warmth */
+.sunrise {
+  background: radial-gradient(ellipse at 50% 100%, rgba(242, 176, 95, 0.45) 0%, rgba(254, 226, 179, 0.25) 45%, transparent 75%);
+  filter: blur(60px);
+  animation: sunrise-pulse 5s ease-in-out infinite;
+}
+.sunrays {
+  background: repeating-conic-gradient(
+    from 0deg at 50% 100%,
+    rgba(255, 97, 2, 0.06) 0deg,
+    rgba(255, 97, 2, 0.06) 2deg,
+    transparent 2deg,
+    transparent 7deg
+  );
+  filter: blur(30px);
+  animation: ray-drift 12s ease-in-out infinite alternate;
+}
+@keyframes sunrise-pulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+@keyframes ray-drift {
+  from { transform: rotate(-4deg); }
+  to { transform: rotate(4deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .grain::after {
+  .grain::after,
+  .sunrise,
+  .sunrays {
     animation: none;
   }
   html {

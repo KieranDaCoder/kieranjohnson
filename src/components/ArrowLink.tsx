@@ -15,15 +15,15 @@ export function ArrowLink({
 }) {
   const pill =
     variant === "solid"
-      ? "bg-navy text-cream hover:bg-sky"
+      ? "bg-charcoal text-cream hover:bg-accent"
       : variant === "light"
-        ? "bg-cream text-navy hover:bg-sky hover:text-cream"
-        : "border border-navy/25 text-navy hover:border-sky hover:bg-sky hover:text-cream";
+        ? "bg-cream text-charcoal hover:bg-accent hover:text-cream"
+        : "border border-charcoal/25 text-charcoal hover:border-accent hover:bg-accent hover:text-cream";
 
   const circle =
     variant === "solid" || variant === "light"
       ? "bg-cream/20"
-      : "bg-navy/10 group-hover/arrow:bg-cream/20";
+      : "bg-charcoal/10 group-hover/arrow:bg-cream/20";
 
   return (
     <Link

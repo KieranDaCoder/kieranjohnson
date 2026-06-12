@@ -11,7 +11,7 @@ export default function ContactPage() {
     <div className="flex min-h-screen flex-col justify-center px-6 py-36 md:px-12">
       <RevealText
         text="Let's talk."
-        className="display text-7xl text-navy md:text-9xl"
+        className="display text-7xl text-charcoal md:text-9xl"
       />
       <Reveal delay={0.3}>
         <p className="mt-8 max-w-xl text-lg leading-relaxed text-charcoal/70">
@@ -22,21 +22,21 @@ export default function ContactPage() {
 
       <div className="mt-16 space-y-8">
         <Reveal delay={0.4}>
-          <p className="text-xs uppercase tracking-[0.25em] text-sky">Email</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-accent">Email</p>
           <a
             href="mailto:hello@example.com"
-            className="display mt-2 inline-block text-3xl text-charcoal transition-colors hover:text-sky md:text-5xl"
+            className="display mt-2 inline-block text-3xl text-charcoal transition-colors hover:text-accent md:text-5xl"
           >
             hello@example.com
           </a>
         </Reveal>
         <Reveal delay={0.5}>
-          <p className="text-xs uppercase tracking-[0.25em] text-sky">LinkedIn</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-accent">LinkedIn</p>
           <a
             href="https://linkedin.com/in/your-handle"
             target="_blank"
             rel="noopener noreferrer"
-            className="display mt-2 inline-block text-3xl text-charcoal transition-colors hover:text-sky md:text-5xl"
+            className="display mt-2 inline-block text-3xl text-charcoal transition-colors hover:text-accent md:text-5xl"
           >
             linkedin.com/in/your-handle
           </a>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Reveal, RevealText } from "@/components/Reveal";
-import { Marquee } from "@/components/Marquee";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ArrowLink } from "@/components/ArrowLink";
 import { CTASection } from "@/components/CTASection";
@@ -12,7 +11,7 @@ import { projects } from "@/lib/projects";
 
 // Serif-italic accent word inside a sans sentence — the typographic signature.
 function Em({ children }: { children: React.ReactNode }) {
-  return <em className="serif-accent text-sky">{children}</em>;
+  return <em className="serif-accent text-accent">{children}</em>;
 }
 
 export default function Home() {
@@ -36,12 +35,12 @@ export default function Home() {
         {/* Slow-breathing background orbs */}
         <motion.div style={{ y: orbY }} className="absolute inset-0 -z-10">
           <motion.div
-            className="absolute -top-32 right-[-10%] h-[34rem] w-[34rem] rounded-full bg-sky/15 blur-3xl"
+            className="absolute -top-32 right-[-10%] h-[34rem] w-[34rem] rounded-full bg-peach/70 blur-3xl"
             animate={{ scale: [1, 1.15, 1] }}
             transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute bottom-[-20%] left-[-10%] h-[28rem] w-[28rem] rounded-full bg-navy/10 blur-3xl"
+            className="absolute bottom-[-20%] left-[-10%] h-[28rem] w-[28rem] rounded-full bg-amber/30 blur-3xl"
             animate={{ scale: [1.1, 1, 1.1] }}
             transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -49,7 +48,7 @@ export default function Home() {
 
         <motion.div style={{ y: textY, opacity: fade }}>
           <motion.p
-            className="mb-6 text-sm uppercase tracking-[0.3em] text-sky"
+            className="mb-6 text-sm uppercase tracking-[0.3em] text-accent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -58,7 +57,7 @@ export default function Home() {
           </motion.p>
 
           {/* Staggered headline lines — second line steps in for separation */}
-          <h1 className="display text-[17vw] leading-[0.92] text-navy md:text-[11vw]">
+          <h1 className="display text-[17vw] leading-[0.92] text-charcoal md:text-[11vw]">
             <RevealText as="span" text="Kieran" className="block" />
             <RevealText as="span" text="Johnson" delay={0.12} className="block md:pl-[12vw]" />
           </h1>
@@ -97,9 +96,6 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ---------- Ticker ---------- */}
-      <Marquee items={["Public Relations", "Advertising", "Brand Strategy", "Campaign Analysis"]} />
-
       {/* ---------- Intro statement ---------- */}
       <section className="px-6 py-28 md:px-12 md:py-40">
         <Reveal>
@@ -115,10 +111,10 @@ export default function Home() {
       {/* ---------- Featured work: asymmetric collage ---------- */}
       <section className="px-6 pb-28 md:px-12 md:pb-40">
         <Reveal className="mb-16 flex items-end justify-between">
-          <h2 className="display text-5xl text-navy md:text-7xl">Selected Work</h2>
+          <h2 className="display text-5xl text-charcoal md:text-7xl">Selected Work</h2>
           <Link
             href="/work"
-            className="link-sweep hidden text-sm uppercase tracking-wide text-charcoal/70 hover:text-sky md:block"
+            className="link-sweep hidden text-sm uppercase tracking-wide text-charcoal/70 hover:text-accent md:block"
           >
             All projects →
           </Link>
