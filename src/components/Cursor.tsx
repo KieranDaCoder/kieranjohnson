@@ -5,16 +5,17 @@ import { useEffect, useState } from "react";
 
 type Variant = "default" | "link" | "view";
 
-// Custom cursor: a navy dot that grows over links and becomes a
-// "View" badge over project cards (elements with data-cursor="view").
+// Custom cursor: a white dot in difference blend mode, so it inverts
+// whatever sits beneath it. Barely grows on links; becomes a labelled
+// window over project cards (data-cursor="view").
 export function Cursor() {
   const [variant, setVariant] = useState<Variant>("default");
   const [enabled, setEnabled] = useState(false);
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
-  const sx = useSpring(x, { stiffness: 400, damping: 35, mass: 0.6 });
-  const sy = useSpring(y, { stiffness: 400, damping: 35, mass: 0.6 });
+  const sx = useSpring(x, { stiffness: 500, damping: 38, mass: 0.5 });
+  const sy = useSpring(y, { stiffness: 500, damping: 38, mass: 0.5 });
 
   useEffect(() => {
     // Only on devices with a real pointer — never on touch screens.
@@ -50,22 +51,24 @@ export function Cursor() {
 
   if (!enabled) return null;
 
-  const size = variant === "view" ? 84 : variant === "link" ? 48 : 14;
+  // Subtle: 14px at rest, 22px on links. Only the card "view" state is big.
+  const size = variant === "view" ? 72 : variant === "link" ? 22 : 14;
 
   return (
     <motion.div
-      className="pointer-events-none fixed left-0 top-0 z-[100] flex items-center justify-center rounded-full"
-      style={{ x: sx, y: sy, translateX: "-50%", translateY: "-50%" }}
-      animate={{
-        width: size,
-        height: size,
-        backgroundColor:
-          variant === "view" ? "rgba(24, 95, 165, 1)" : variant === "link" ? "rgba(55, 138, 221, 0.25)" : "rgba(24, 95, 165, 1)",
+      className="pointer-events-none fixed left-0 top-0 z-[100] flex items-center justify-center rounded-full bg-white"
+      style={{
+        x: sx,
+        y: sy,
+        translateX: "-50%",
+        translateY: "-50%",
+        mixBlendMode: "difference",
       }}
-      transition={{ type: "spring", stiffness: 350, damping: 28 }}
+      animate={{ width: size, height: size }}
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
     >
       <motion.span
-        className="text-xs font-medium uppercase tracking-widest text-cream"
+        className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-black"
         animate={{ opacity: variant === "view" ? 1 : 0, scale: variant === "view" ? 1 : 0.5 }}
         transition={{ duration: 0.2 }}
       >

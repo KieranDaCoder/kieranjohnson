@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Reveal, RevealText } from "@/components/Reveal";
+import { CTASection } from "@/components/CTASection";
 
 export const metadata: Metadata = {
   title: "About — Kieran Johnson",
@@ -27,7 +28,8 @@ const certifications = [
 
 export default function AboutPage() {
   return (
-    <div className="px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
+    <>
+      <div className="px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
       <RevealText text="About" className="display text-7xl text-navy md:text-9xl" />
 
       {/* Bio */}
@@ -108,6 +110,8 @@ export default function AboutPage() {
           ))}
         </ul>
       </section>
-    </div>
+      </div>
+      <CTASection />
+    </>
   );
 }

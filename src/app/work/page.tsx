@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Reveal, RevealText } from "@/components/Reveal";
 import { ProjectCard } from "@/components/ProjectCard";
+import { CTASection } from "@/components/CTASection";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
+    <>
+      <div className="px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
       <RevealText text="Work" className="display text-7xl text-navy md:text-9xl" />
       <Reveal delay={0.3}>
         <p className="mt-6 max-w-xl text-lg text-charcoal/70">
@@ -34,7 +36,9 @@ export default function WorkPage() {
             </div>
           );
         })}
+        </div>
       </div>
-    </div>
+      <CTASection />
+    </>
   );
 }

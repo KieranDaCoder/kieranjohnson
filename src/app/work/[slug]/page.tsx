@@ -22,16 +22,15 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
   return (
     <article className="px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
-      <Reveal>
-        <p className="text-xs uppercase tracking-[0.25em] text-sky">
-          {project.category} · {project.year}
-        </p>
-      </Reveal>
       <RevealText
         text={project.title}
-        delay={0.15}
-        className="display mt-4 text-6xl text-navy md:text-8xl"
+        className="display text-5xl text-navy md:text-8xl"
       />
+      <Reveal delay={0.25}>
+        <p className="serif-accent mt-5 text-2xl text-charcoal/60 md:text-3xl">
+          {project.category} — {project.year}
+        </p>
+      </Reveal>
 
       {/* Hero artwork — swap the placeholder in projects.ts for a real campaign visual */}
       <Reveal delay={0.3} className="mt-16">

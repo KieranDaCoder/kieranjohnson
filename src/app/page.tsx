@@ -7,11 +7,12 @@ import { Reveal, RevealText } from "@/components/Reveal";
 import { Marquee } from "@/components/Marquee";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ArrowLink } from "@/components/ArrowLink";
+import { CTASection } from "@/components/CTASection";
 import { projects } from "@/lib/projects";
 
 // Serif-italic accent word inside a sans sentence — the typographic signature.
 function Em({ children }: { children: React.ReactNode }) {
-  return <em className="display italic font-medium text-sky">{children}</em>;
+  return <em className="serif-accent text-sky">{children}</em>;
 }
 
 export default function Home() {
@@ -56,10 +57,11 @@ export default function Home() {
             PR · Advertising · Melbourne
           </motion.p>
 
-          <RevealText
-            text="Kieran Johnson"
-            className="display text-[16vw] leading-[0.9] text-navy md:text-[11vw]"
-          />
+          {/* Staggered headline lines — second line steps in for separation */}
+          <h1 className="display text-[17vw] leading-[0.92] text-navy md:text-[11vw]">
+            <RevealText as="span" text="Kieran" className="block" />
+            <RevealText as="span" text="Johnson" delay={0.12} className="block md:pl-[12vw]" />
+          </h1>
 
           <motion.h2
             className="mt-8 max-w-3xl text-2xl font-semibold leading-snug text-charcoal md:text-4xl"
@@ -143,20 +145,7 @@ export default function Home() {
       </section>
 
       {/* ---------- CTA ---------- */}
-      <section className="bg-navy px-6 py-28 text-cream md:px-12 md:py-40">
-        <RevealText
-          as="h2"
-          text="Let's make something people talk about."
-          className="display max-w-4xl text-5xl md:text-7xl"
-        />
-        <Reveal delay={0.4}>
-          <div className="mt-12">
-            <ArrowLink href="/contact" variant="light">
-              Get in touch
-            </ArrowLink>
-          </div>
-        </Reveal>
-      </section>
+      <CTASection />
     </>
   );
 }
