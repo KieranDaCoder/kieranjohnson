@@ -6,7 +6,13 @@ import { useRef } from "react";
 import { Reveal, RevealText } from "@/components/Reveal";
 import { Marquee } from "@/components/Marquee";
 import { ProjectCard } from "@/components/ProjectCard";
+import { ArrowLink } from "@/components/ArrowLink";
 import { projects } from "@/lib/projects";
+
+// Serif-italic accent word inside a sans sentence — the typographic signature.
+function Em({ children }: { children: React.ReactNode }) {
+  return <em className="display italic font-medium text-sky">{children}</em>;
+}
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -55,28 +61,26 @@ export default function Home() {
             className="display text-[16vw] leading-[0.9] text-navy md:text-[11vw]"
           />
 
-          <RevealText
-            as="h2"
-            text="Stories that move people. Campaigns that move markets."
-            delay={0.5}
-            className="display mt-8 max-w-3xl text-3xl italic text-charcoal/80 md:text-5xl"
-          />
+          <motion.h2
+            className="mt-8 max-w-3xl text-2xl font-semibold leading-snug text-charcoal md:text-4xl"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+          >
+            A communications student crafting campaigns with just a touch of{" "}
+            <Em>persuasion</Em>.
+          </motion.h2>
 
           <motion.div
-            className="mt-12 flex flex-wrap items-center gap-6"
+            className="mt-12 flex flex-wrap items-center gap-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
           >
-            <Link
-              href="/work"
-              className="group relative overflow-hidden rounded-full bg-navy px-8 py-4 text-sm uppercase tracking-wide text-cream transition-colors duration-300 hover:bg-sky"
-            >
-              <span className="relative z-10">View the work</span>
-            </Link>
-            <Link href="/about" className="link-sweep text-sm uppercase tracking-wide text-charcoal/70 hover:text-sky">
+            <ArrowLink href="/work">Explore the work</ArrowLink>
+            <ArrowLink href="/about" variant="outline">
               About me
-            </Link>
+            </ArrowLink>
           </motion.div>
         </motion.div>
 
@@ -97,36 +101,44 @@ export default function Home() {
       {/* ---------- Intro statement ---------- */}
       <section className="px-6 py-28 md:px-12 md:py-40">
         <Reveal>
-          <p className="max-w-4xl text-2xl leading-snug text-charcoal/80 md:text-4xl">
-            I&apos;m a Communications student at{" "}
-            <span className="display italic text-navy">RMIT Melbourne</span>, double majoring in
-            PR and Advertising. I build campaigns at the intersection of{" "}
-            <span className="display italic text-navy">earned attention</span> and{" "}
-            <span className="display italic text-navy">paid persuasion</span> — and I&apos;m
-            looking for an internship where I can prove it.
+          <p className="max-w-4xl text-2xl font-semibold leading-snug text-charcoal md:text-4xl">
+            I&apos;m studying Communications at <Em>RMIT Melbourne</Em>, double majoring in PR
+            and Advertising. I build campaigns at the intersection of{" "}
+            <Em>earned attention</Em> and <Em>paid persuasion</Em> — and I&apos;m looking for
+            an internship where I can prove it.
           </p>
         </Reveal>
       </section>
 
-      {/* ---------- Featured work ---------- */}
+      {/* ---------- Featured work: asymmetric collage ---------- */}
       <section className="px-6 pb-28 md:px-12 md:pb-40">
         <Reveal className="mb-16 flex items-end justify-between">
           <h2 className="display text-5xl text-navy md:text-7xl">Selected Work</h2>
-          <Link href="/work" className="link-sweep hidden text-sm uppercase tracking-wide text-charcoal/70 hover:text-sky md:block">
+          <Link
+            href="/work"
+            className="link-sweep hidden text-sm uppercase tracking-wide text-charcoal/70 hover:text-sky md:block"
+          >
             All projects →
           </Link>
         </Reveal>
 
-        <div className="grid gap-16 md:grid-cols-2 md:gap-x-12 md:gap-y-24">
-          {projects.slice(0, 2).map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
-          ))}
+        <div className="grid gap-8 md:grid-cols-12">
+          {/* One large feature card, two smaller offset cards */}
+          <div className="md:col-span-7">
+            <ProjectCard project={projects[0]} aspect="aspect-square" />
+          </div>
+          <div className="md:col-span-5 md:mt-24">
+            <ProjectCard project={projects[1]} aspect="aspect-square" />
+          </div>
+          <div className="md:col-span-5 md:col-start-2 md:-mt-10">
+            <ProjectCard project={projects[2]} aspect="aspect-square" />
+          </div>
         </div>
 
         <Reveal className="mt-16 md:hidden">
-          <Link href="/work" className="link-sweep text-sm uppercase tracking-wide text-charcoal/70">
-            All projects →
-          </Link>
+          <ArrowLink href="/work" variant="outline">
+            All projects
+          </ArrowLink>
         </Reveal>
       </section>
 
@@ -138,12 +150,11 @@ export default function Home() {
           className="display max-w-4xl text-5xl md:text-7xl"
         />
         <Reveal delay={0.4}>
-          <Link
-            href="/contact"
-            className="mt-12 inline-block rounded-full border border-cream/40 px-8 py-4 text-sm uppercase tracking-wide transition-all duration-300 hover:border-sky hover:bg-sky"
-          >
-            Get in touch
-          </Link>
+          <div className="mt-12">
+            <ArrowLink href="/contact" variant="light">
+              Get in touch
+            </ArrowLink>
+          </div>
         </Reveal>
       </section>
     </>

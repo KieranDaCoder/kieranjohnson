@@ -85,6 +85,24 @@ body {
   transform-origin: left;
 }
 
+/* Hide the native cursor when the custom one is active (fine pointers only) */
+.has-cursor,
+.has-cursor * {
+  cursor: none !important;
+}
+
+/* Shimmer sweep across cards on hover (triggered by TiltCard's .group) */
+.shimmer {
+  opacity: 0;
+}
+.group:hover .shimmer {
+  animation: shimmer 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+@keyframes shimmer {
+  0% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 1; transform: translateX(300%); }
+}
+
 /* Outlined display text */
 .text-outline {
   -webkit-text-stroke: 1px var(--color-navy);

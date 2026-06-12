@@ -1,46 +1,47 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+/* eslint-disable @next/next/no-img-element -- placeholder SVGs don't need optimization */
+import { TiltCard } from "@/components/TiltCard";
 import type { Project } from "@/lib/projects";
 
-export function ProjectCard({ project, index }: { project: Project; index: number }) {
+// Noteworthy-style case card: full-bleed artwork in a squircle, title and
+// category overlaid on a gradient scrim, 3D tilt + shimmer from TiltCard.
+export function ProjectCard({
+  project,
+  aspect = "aspect-square",
+}: {
+  project: Project;
+  aspect?: string;
+}) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, delay: (index % 2) * 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
-    >
-      <Link href={`/work/${project.slug}`} className="group block">
-        {/* Image placeholder — swap for a real image later */}
-        <div className="relative aspect-[4/3] overflow-hidden bg-navy/5">
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-navy/10 via-sky/5 to-transparent transition-transform duration-700 ease-out group-hover:scale-105"
-          >
-            <span className="display text-8xl text-navy/10 transition-colors duration-500 group-hover:text-navy/20">
-              {String(index + 1).padStart(2, "0")}
+    <TiltCard className={aspect}>
+      <Link
+        href={`/work/${project.slug}`}
+        data-cursor="view"
+        className="absolute inset-0 block overflow-hidden rounded-[1.75rem]"
+      >
+        <img
+          src={project.image}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/0 to-black/45" />
+        <div className="absolute inset-0 flex flex-col justify-between p-7 text-cream md:p-8">
+          <div className="flex items-start justify-between gap-4">
+            <span className="rounded-full bg-cream/15 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.18em] backdrop-blur-sm">
+              {project.category}
             </span>
-          </motion.div>
-          <div className="absolute inset-0 bg-navy opacity-0 transition-opacity duration-500 group-hover:opacity-10" />
-          <span className="absolute bottom-4 right-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-cream text-navy opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-            →
-          </span>
-        </div>
-
-        <div className="mt-5 flex items-start justify-between gap-4">
+            <span className="text-sm text-cream/70">{project.year}</span>
+          </div>
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-sky">{project.category}</p>
-            <h3 className="display mt-2 text-3xl text-charcoal transition-colors duration-300 group-hover:text-navy">
-              {project.title}
-            </h3>
-            <p className="mt-2 max-w-md text-sm leading-relaxed text-charcoal/60">
+            <h3 className="display text-3xl md:text-4xl">{project.title}</h3>
+            <p className="mt-2 max-w-sm text-sm leading-relaxed text-cream/80 opacity-0 transition-all duration-500 group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0">
               {project.description}
             </p>
           </div>
-          <span className="mt-1 shrink-0 text-sm text-charcoal/40">{project.year}</span>
         </div>
       </Link>
-    </motion.div>
+    </TiltCard>
   );
 }

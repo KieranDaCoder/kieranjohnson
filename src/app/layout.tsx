@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { Cursor } from "@/components/Cursor";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -28,6 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${cormorant.variable} ${dmSans.variable} grain antialiased`}>
+        <SmoothScroll />
+        <Cursor />
         <Nav />
         <main className="min-h-screen">{children}</main>
         <Footer />

@@ -33,11 +33,14 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         className="display mt-4 text-6xl text-navy md:text-8xl"
       />
 
-      {/* Hero image placeholder — replace with a real campaign visual */}
+      {/* Hero artwork — swap the placeholder in projects.ts for a real campaign visual */}
       <Reveal delay={0.3} className="mt-16">
-        <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-navy/10 via-sky/5 to-navy/5">
-          <span className="display text-2xl italic text-navy/30">Campaign visual goes here</span>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element -- placeholder SVG */}
+        <img
+          src={project.image}
+          alt=""
+          className="aspect-[16/9] w-full rounded-[1.75rem] object-cover"
+        />
       </Reveal>
 
       <div className="mt-20 grid gap-12 md:grid-cols-3">

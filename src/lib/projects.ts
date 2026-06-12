@@ -7,6 +7,9 @@ export type Project = {
   category: "PR Strategy" | "Advertising" | "Campaign Analysis" | "Brand Strategy";
   description: string;
   year: string;
+  // Card artwork — swap the placeholder SVGs in /public/placeholders for
+  // real campaign images (any image path under /public works).
+  image: string;
   // Case study content — swap these placeholders for your real work.
   overview: string;
   role: string;
@@ -21,6 +24,7 @@ export const projects: Project[] = [
     description:
       "A short, punchy description of the brief and what you delivered. Two sentences max.",
     year: "2026",
+    image: "/placeholders/p1.svg",
     overview:
       "Placeholder overview. Describe the client, the brief, and the challenge in a paragraph or two. What was the situation, and what needed to change?",
     role: "Strategy, media relations, copywriting — list what you actually did.",
@@ -34,6 +38,7 @@ export const projects: Project[] = [
     description:
       "A short, punchy description of the brief and what you delivered. Two sentences max.",
     year: "2026",
+    image: "/placeholders/p2.svg",
     overview:
       "Placeholder overview. Describe the campaign concept, the audience insight it was built on, and the creative idea.",
     role: "Concept development, art direction, campaign planning.",
@@ -47,6 +52,7 @@ export const projects: Project[] = [
     description:
       "A short, punchy description of the brief and what you delivered. Two sentences max.",
     year: "2025",
+    image: "/placeholders/p3.svg",
     overview:
       "Placeholder overview. Set up the campaign you analysed and the question you set out to answer.",
     role: "Research, data analysis, strategic recommendations.",
@@ -60,6 +66,7 @@ export const projects: Project[] = [
     description:
       "A short, punchy description of the brief and what you delivered. Two sentences max.",
     year: "2025",
+    image: "/placeholders/p4.svg",
     overview:
       "Placeholder overview. Walk through the brand challenge and the positioning work you did.",
     role: "Brand audit, positioning, messaging framework.",
