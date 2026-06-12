@@ -11,7 +11,7 @@ const links = [
 ];
 
 // Swap for your real email — also used by the copy button.
-const EMAIL = "hello@example.com";
+const EMAIL = "kieranjohnson262@gmail.com";
 
 // Live local time, Noteworthy-style header widget.
 function Clock() {

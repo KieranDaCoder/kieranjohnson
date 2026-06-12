@@ -24,21 +24,21 @@ export default function ContactPage() {
         <Reveal delay={0.4}>
           <p className="text-xs uppercase tracking-[0.25em] text-accent">Email</p>
           <a
-            href="mailto:hello@example.com"
+            href="mailto:kieranjohnson262@gmail.com"
             className="display mt-2 inline-block text-3xl text-charcoal transition-colors hover:text-accent md:text-5xl"
           >
-            hello@example.com
+            kieranjohnson262@gmail.com
           </a>
         </Reveal>
         <Reveal delay={0.5}>
           <p className="text-xs uppercase tracking-[0.25em] text-accent">LinkedIn</p>
           <a
-            href="https://linkedin.com/in/your-handle"
+            href="https://www.linkedin.com/in/kieran-johnson-28b372359/"
             target="_blank"
             rel="noopener noreferrer"
             className="display mt-2 inline-block text-3xl text-charcoal transition-colors hover:text-accent md:text-5xl"
           >
-            linkedin.com/in/your-handle
+            linkedin.com/in/kieran-johnson
           </a>
         </Reveal>
       </div>

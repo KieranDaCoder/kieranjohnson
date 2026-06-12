@@ -5,7 +5,7 @@ import { useState } from "react";
 import { RevealText } from "@/components/Reveal";
 import { ArrowLink } from "@/components/ArrowLink";
 
-const EMAIL = "hello@example.com";
+const EMAIL = "kieranjohnson262@gmail.com";
 
 // Closing band used on every page: a warm pulsing "sunrise" glow rising
 // behind a big serif invitation.

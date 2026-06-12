@@ -11,11 +11,11 @@ export function Footer() {
           </p>
         </div>
         <div className="flex gap-8 text-sm uppercase tracking-wide">
-          <a href="mailto:hello@example.com" className="link-sweep text-charcoal/70 hover:text-accent">
+          <a href="mailto:kieranjohnson262@gmail.com" className="link-sweep text-charcoal/70 hover:text-accent">
             Email
           </a>
           <a
-            href="https://linkedin.com/in/your-handle"
+            href="https://www.linkedin.com/in/kieran-johnson-28b372359/"
             target="_blank"
             rel="noopener noreferrer"
             className="link-sweep text-charcoal/70 hover:text-accent"
