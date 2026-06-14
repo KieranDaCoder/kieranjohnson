@@ -7,6 +7,8 @@ import type { Project } from "@/lib/projects";
 
 // Noteworthy-style case card: full-bleed artwork in a squircle, title and
 // category overlaid on a gradient scrim, 3D tilt + shimmer from TiltCard.
+// When the project provides `thumbnailImages`, the artwork becomes a row
+// (e.g. a triptych) on a cream backdrop instead of a single cover image.
 export function ProjectCard({
   project,
   aspect = "aspect-square",
@@ -21,11 +23,25 @@ export function ProjectCard({
         data-cursor="view"
         className="absolute inset-0 block overflow-hidden rounded-[1.75rem]"
       >
-        <img
-          src={project.image}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-        />
+        {project.thumbnailImages ? (
+          <div className="absolute inset-0 flex gap-1.5 bg-[#f5f0e8] p-1.5">
+            {project.thumbnailImages.map((src, i) => (
+              <div key={i} className="relative flex-1 overflow-hidden">
+                <img
+                  src={src}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <img
+            src={project.image}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/0 to-black/45" />
         <div className="absolute inset-0 flex flex-col justify-between p-7 text-cream md:p-8">
           <div className="flex items-start justify-between gap-4">
