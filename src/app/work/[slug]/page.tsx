@@ -122,17 +122,26 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
               Development process
             </p>
             <p className="mt-3 max-w-2xl text-base text-charcoal/55">
-              Each illustration was built in Photoshop through iterative scamping — rough
-              placement sketches, to line art, to coloured finals.
+              Each illustration was built in Photoshop through iterative scamping. Left to
+              right: rough placement sketch, line art, coloured final, and the working file.
             </p>
           </Reveal>
-          <Reveal delay={0.15} className="mt-10">
-            <img
-              src={cs.developmentImage}
-              alt="Photoshop development sheet showing each poster progressing from rough placement sketch to line art to coloured final"
-              className="w-full rounded-2xl bg-white p-3 shadow-sm ring-1 ring-charcoal/5"
-            />
-          </Reveal>
+          <div className="mt-10 space-y-8">
+            {cs.developmentRows.map((row, i) => (
+              <Reveal key={row.src} delay={i * 0.1}>
+                <figure className="rounded-2xl bg-white p-3 shadow-sm ring-1 ring-charcoal/5">
+                  <img
+                    src={row.src}
+                    alt={`Development progression for the '${row.label}' execution: rough sketch, line art, coloured final, and Photoshop working file`}
+                    className="w-full rounded-lg"
+                  />
+                  <figcaption className="px-2 pb-1 pt-3 text-xs uppercase tracking-[0.2em] text-charcoal/45">
+                    {row.label}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
         </section>
 
         {/* Written case study */}
