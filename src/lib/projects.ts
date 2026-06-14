@@ -25,7 +25,6 @@ export type AnalysisCaseStudy = {
   result: string; // e.g. "RMIT University, Advocacy and Voice in PR. High Distinction."
   pullquote: string; // large opening statement
   sections: { heading: string; body: string[] }[]; // labelled prose blocks
-  materials: { src: string; caption: string }[]; // analysed campaign materials
 };
 
 // When a project has a caseStudy, its page renders the matching rich layout
@@ -169,11 +168,6 @@ export const projects: Project[] = [
             "This idea came from a guest lecture by Judy Ryan, who used exactly this logic to secure the Richmond safe injecting room — I recognised the same mechanics applied here.",
           ],
         },
-      ],
-      materials: [
-        { src: "/work/agr/material-1.svg", caption: "AGR open letter to government" },
-        { src: "/work/agr/material-2.svg", caption: "Cross-party coalition imagery" },
-        { src: "/work/agr/material-3.svg", caption: "End Gambling Ads social post" },
       ],
     },
   },

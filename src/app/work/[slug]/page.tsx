@@ -77,31 +77,6 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           ))}
         </div>
 
-        {/* Materials analysed */}
-        <section className="mx-auto mt-32 max-w-6xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
-              Campaign materials analysed
-            </p>
-            <p className="mt-3 max-w-2xl text-base text-charcoal/55">
-              The strategy read above came from a close analysis of AGR&apos;s own campaign
-              outputs.
-            </p>
-          </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {cs.materials.map((m, i) => (
-              <Reveal key={m.src} delay={i * 0.1}>
-                <figure className="rounded-2xl bg-white p-3 shadow-sm ring-1 ring-charcoal/5">
-                  <img src={m.src} alt={m.caption} className="w-full rounded-lg" />
-                  <figcaption className="px-2 pb-1 pt-3 text-xs uppercase tracking-[0.2em] text-charcoal/45">
-                    {m.caption}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
         {/* Result */}
         <section className="mx-auto mt-32 max-w-2xl">
           <Reveal>
