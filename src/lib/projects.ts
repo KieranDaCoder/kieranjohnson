@@ -10,8 +10,8 @@ export type CaseStudy = {
   discipline: string; // e.g. "Advertising Campaign — Removery"
   result: string; // e.g. "RMIT University, Advertising Concepts. High Distinction."
   executions: { src: string; alt: string }[]; // final posters, shown large
-  conceptBanners: CopyBanner[]; // recreated copy-only concepts
-  developmentImage: string; // sketch-to-final progression sheet
+  scamps: string[]; // original handwritten copy scamps (image paths)
+  conceptBanners: CopyBanner[]; // refined copy-only web banners
   body: string[]; // paragraphs, in order
 };
 
@@ -70,6 +70,11 @@ export const projects: Project[] = [
           alt: "Elderly man on a mobility scooter, 'Live Fast Die Young' tattooed on his forearm",
         },
       ],
+      scamps: [
+        "/work/removery/scamp-1.png",
+        "/work/removery/scamp-2.png",
+        "/work/removery/scamp-3.png",
+      ],
       conceptBanners: [
         {
           headline: "Live Fast, Die Young.",
@@ -84,7 +89,6 @@ export const projects: Project[] = [
           subline: "Doesn't help at custody hearings.",
         },
       ],
-      developmentImage: "/work/removery/development.png",
       body: [
         "Removery is the world's largest tattoo removal company. The brief was open: communicate what the brand does and why someone might need it. No prescribed angle, no locked-in audience, no mandated tone.",
         "That openness created a real problem. Why do people remove tattoos? Regret, career change, relationship breakdown — every obvious answer leads to the same emotional territory. So the thinking went elsewhere. Keep the tattoo. Age the person wearing it.",

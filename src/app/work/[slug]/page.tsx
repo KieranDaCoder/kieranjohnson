@@ -62,15 +62,40 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           </div>
         </Reveal>
 
-        {/* Original concept sketches — recreated copy-only banners */}
-        <section className="mx-auto mt-32 max-w-4xl">
+        {/* Original concept sketches — the real handwritten scamps */}
+        <section className="mx-auto mt-32 max-w-5xl">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
               Original concept sketches
             </p>
             <p className="mt-3 max-w-2xl text-base text-charcoal/55">
-              The first executions were copy-only web banners — tattoo clichés undercut by the
-              reality of old age.
+              It started on paper — tattoo clichés paired with the punchline of old age,
+              scribbled out one line at a time.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {cs.scamps.map((src, i) => (
+              <Reveal key={src} delay={i * 0.1}>
+                <div className="rounded-2xl border border-charcoal/10 bg-white p-3 shadow-sm">
+                  <img
+                    src={src}
+                    alt={`Handwritten scamp: ${cs.conceptBanners[i]?.headline ?? "copy concept"}`}
+                    className="w-full rounded-lg"
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        {/* Development process — refined copy-only web banners */}
+        <section className="mx-auto mt-32 max-w-4xl">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
+              Development process
+            </p>
+            <p className="mt-3 max-w-2xl text-base text-charcoal/55">
+              The scamps were refined into the first executions: clean, copy-only web banners.
             </p>
           </Reveal>
           <div className="mt-10 space-y-5">
@@ -88,26 +113,6 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
               </Reveal>
             ))}
           </div>
-        </section>
-
-        {/* Development process */}
-        <section className="mx-auto mt-32 max-w-5xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
-              Development process
-            </p>
-            <p className="mt-3 max-w-2xl text-base text-charcoal/55">
-              Each illustration was built in Photoshop through iterative scamping — rough
-              placement sketches through to coloured finals.
-            </p>
-          </Reveal>
-          <Reveal delay={0.15} className="mt-10">
-            <img
-              src={cs.developmentImage}
-              alt="Development sheet showing the progression from rough sketches to finished coloured illustrations"
-              className="w-full rounded-2xl shadow-sm ring-1 ring-charcoal/5"
-            />
-          </Reveal>
         </section>
 
         {/* Written case study */}
