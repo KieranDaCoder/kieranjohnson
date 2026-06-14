@@ -33,6 +33,89 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
     </Reveal>
   );
 
+  // ---------- Analysis / strategy layout ----------
+  if (project.caseStudy?.kind === "analysis") {
+    const cs = project.caseStudy;
+    return (
+      <article className="bg-[#f5f0e8] px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
+        {/* Title + discipline */}
+        <header className="mx-auto max-w-4xl">
+          <RevealText text={project.title} className="display text-5xl text-charcoal md:text-8xl" />
+          <Reveal delay={0.2}>
+            <p className="serif-accent mt-5 text-2xl text-charcoal/60 md:text-3xl">
+              {cs.discipline} · {project.year}
+            </p>
+          </Reveal>
+        </header>
+
+        {/* Opening pullquote */}
+        <Reveal className="mx-auto mt-24 max-w-5xl md:mt-32">
+          <blockquote className="display text-3xl leading-tight text-charcoal md:text-6xl md:leading-[1.05]">
+            <span className="text-accent">“</span>
+            {cs.pullquote}
+            <span className="text-accent">”</span>
+          </blockquote>
+        </Reveal>
+
+        {/* Labelled prose sections */}
+        <div className="mx-auto mt-28 max-w-2xl space-y-20 md:mt-36">
+          {cs.sections.map((section) => (
+            <section key={section.heading}>
+              <Reveal>
+                <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
+                  {section.heading}
+                </p>
+              </Reveal>
+              <div className="mt-6 space-y-6">
+                {section.body.map((para, i) => (
+                  <Reveal key={i} delay={Math.min(i * 0.05, 0.2)}>
+                    <p className="text-lg leading-relaxed text-charcoal/80">{para}</p>
+                  </Reveal>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+
+        {/* Materials analysed */}
+        <section className="mx-auto mt-32 max-w-6xl">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
+              Campaign materials analysed
+            </p>
+            <p className="mt-3 max-w-2xl text-base text-charcoal/55">
+              The strategy read above came from a close analysis of AGR&apos;s own campaign
+              outputs.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {cs.materials.map((m, i) => (
+              <Reveal key={m.src} delay={i * 0.1}>
+                <figure className="rounded-2xl bg-white p-3 shadow-sm ring-1 ring-charcoal/5">
+                  <img src={m.src} alt={m.caption} className="w-full rounded-lg" />
+                  <figcaption className="px-2 pb-1 pt-3 text-xs uppercase tracking-[0.2em] text-charcoal/45">
+                    {m.caption}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        {/* Result */}
+        <section className="mx-auto mt-32 max-w-2xl">
+          <Reveal>
+            <p className="border-t border-charcoal/15 pt-6 text-sm font-medium uppercase tracking-[0.18em] text-charcoal/70">
+              {cs.result}
+            </p>
+          </Reveal>
+        </section>
+
+        <div className="mx-auto max-w-2xl">{NextLink}</div>
+      </article>
+    );
+  }
+
   // ---------- Rich gallery layout ----------
   if (project.caseStudy) {
     const cs = project.caseStudy;

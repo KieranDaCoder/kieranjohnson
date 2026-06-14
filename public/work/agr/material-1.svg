@@ -1,0 +1,18 @@
+<svg viewBox="0 0 1000 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder for campaign material screenshot">
+  <rect width="1000" height="720" fill="#efe9dd" />
+  <rect x="40" y="40" width="920" height="640" rx="16" fill="#ffffff" stroke="#d8cdb8" stroke-width="2" />
+  <g fill="#c9bda4">
+    <rect x="90" y="110" width="360" height="22" rx="11" />
+    <rect x="90" y="160" width="820" height="14" rx="7" />
+    <rect x="90" y="192" width="820" height="14" rx="7" />
+    <rect x="90" y="224" width="700" height="14" rx="7" />
+    <rect x="90" y="290" width="820" height="14" rx="7" />
+    <rect x="90" y="322" width="780" height="14" rx="7" />
+    <rect x="90" y="354" width="820" height="14" rx="7" />
+    <rect x="90" y="386" width="540" height="14" rx="7" />
+  </g>
+  <g font-family="Georgia, serif" text-anchor="middle" fill="#a8997c">
+    <text x="500" y="540" font-size="34" font-style="italic">Open letter</text>
+    <text x="500" y="585" font-size="20">Replace with a screenshot in /public/work/agr/material-1</text>
+  </g>
+</svg>

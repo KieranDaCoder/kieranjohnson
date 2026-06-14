@@ -1,0 +1,14 @@
+<svg viewBox="0 0 1000 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder for campaign material screenshot">
+  <rect width="1000" height="720" fill="#e7e2d6" />
+  <rect x="40" y="40" width="920" height="640" rx="16" fill="#ffffff" stroke="#d8cdb8" stroke-width="2" />
+  <g fill="#cdc1a8">
+    <circle cx="270" cy="280" r="120" />
+    <circle cx="540" cy="280" r="120" />
+    <rect x="150" y="430" width="700" height="16" rx="8" />
+    <rect x="150" y="466" width="600" height="16" rx="8" />
+  </g>
+  <g font-family="Georgia, serif" text-anchor="middle" fill="#a8997c">
+    <text x="500" y="560" font-size="34" font-style="italic">Coalition imagery</text>
+    <text x="500" y="605" font-size="20">Replace with a screenshot in /public/work/agr/material-2</text>
+  </g>
+</svg>

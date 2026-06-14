@@ -1,0 +1,16 @@
+<svg viewBox="0 0 1000 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder for campaign material screenshot">
+  <rect width="1000" height="720" fill="#ece6da" />
+  <rect x="240" y="40" width="520" height="640" rx="24" fill="#ffffff" stroke="#d8cdb8" stroke-width="2" />
+  <circle cx="300" cy="110" r="26" fill="#cdc1a8" />
+  <rect x="345" y="92" width="180" height="14" rx="7" fill="#cdc1a8" />
+  <rect x="345" y="116" width="120" height="12" rx="6" fill="#ddd4c0" />
+  <rect x="280" y="170" width="440" height="300" rx="10" fill="#e6dfce" />
+  <g fill="#cdc1a8">
+    <rect x="280" y="500" width="440" height="14" rx="7" />
+    <rect x="280" y="532" width="360" height="14" rx="7" />
+  </g>
+  <g font-family="Georgia, serif" text-anchor="middle" fill="#a8997c">
+    <text x="500" y="615" font-size="30" font-style="italic">Social post</text>
+    <text x="500" y="652" font-size="18">Replace in /public/work/agr/material-3</text>
+  </g>
+</svg>

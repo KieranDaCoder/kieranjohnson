@@ -4,9 +4,10 @@
 // A single copy concept, shown as a recreated web-banner mockup.
 export type CopyBanner = { headline: string; subline: string };
 
-// Rich case-study content. When a project has this, its page renders the
-// full gallery layout instead of the simple overview/role/outcome layout.
-export type CaseStudy = {
+// Rich creative case study (e.g. an ad campaign): final executions, scamps,
+// concept banners and a development process. Renders the gallery layout.
+export type CreativeCaseStudy = {
+  kind: "creative";
   discipline: string; // e.g. "Advertising Campaign — Removery"
   result: string; // e.g. "RMIT University, Advertising Concepts. High Distinction."
   executions: { src: string; alt: string }[]; // final posters, shown large
@@ -15,6 +16,21 @@ export type CaseStudy = {
   developmentRows: { src: string; label: string }[]; // per-execution progression strips
   body: string[]; // paragraphs, in order
 };
+
+// Analytical / strategy case study (e.g. a campaign critique): a lead
+// pullquote, labelled prose sections, and the materials that were analysed.
+export type AnalysisCaseStudy = {
+  kind: "analysis";
+  discipline: string; // e.g. "PR Strategy — Alliance for Gambling Reform"
+  result: string; // e.g. "RMIT University, Advocacy and Voice in PR. High Distinction."
+  pullquote: string; // large opening statement
+  sections: { heading: string; body: string[] }[]; // labelled prose blocks
+  materials: { src: string; caption: string }[]; // analysed campaign materials
+};
+
+// When a project has a caseStudy, its page renders the matching rich layout
+// instead of the simple overview/role/outcome layout.
+export type CaseStudy = CreativeCaseStudy | AnalysisCaseStudy;
 
 export type Project = {
   slug: string;
@@ -55,6 +71,7 @@ export const projects: Project[] = [
     role: "Concept, copywriting, art direction, illustration.",
     outcome: "RMIT University, Advertising Concepts. High Distinction.",
     caseStudy: {
+      kind: "creative",
       discipline: "Advertising Campaign — Removery",
       result: "RMIT University, Advertising Concepts. High Distinction.",
       executions: [
@@ -106,18 +123,59 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "project-two",
-    title: "Project Two",
-    category: "Advertising",
+    slug: "end-gambling-ads",
+    title: "End Gambling Ads",
+    category: "PR Strategy",
     description:
-      "A short, punchy description of the brief and what you delivered. Two sentences max.",
+      "A strategic critique of the Alliance for Gambling Reform's advocacy campaign — and two recommendations to give it real political leverage.",
     year: "2026",
-    image: "/placeholders/p2.svg",
+    image: "/work/agr/cover.svg",
     overview:
-      "Placeholder overview. Describe the campaign concept, the audience insight it was built on, and the creative idea.",
-    role: "Concept development, art direction, campaign planning.",
-    outcome:
-      "Placeholder outcome. What did the work achieve, and what did you learn from it?",
+      "A critical analysis of the Alliance for Gambling Reform's 'End Gambling Ads' campaign, identifying why a 31-point ask let the government do just enough — and how a single demand plus minor-party registration would force change.",
+    role: "Campaign analysis, strategic recommendations, advocacy theory.",
+    outcome: "RMIT University, Advocacy and Voice in Public Relations. High Distinction.",
+    caseStudy: {
+      kind: "analysis",
+      discipline: "PR Strategy — Alliance for Gambling Reform",
+      result:
+        "RMIT University, Advocacy and Voice in Public Relations. Individual assessment. High Distinction.",
+      pullquote:
+        "I receive over ten gambling ads a day. The problem isn't abstract.",
+      sections: [
+        {
+          heading: "Why this campaign",
+          body: [
+            "I chose this campaign because I live inside the problem. As a young Australian male I sit in the primary target demographic for gambling advertisers and receive over ten betting ads a day across my devices. That familiarity shaped how I read the campaign and where I saw its gaps.",
+          ],
+        },
+        {
+          heading: "The campaign",
+          body: [
+            "The Alliance for Gambling Reform is an Australian health promotion charity pushing for a full legislative ban on gambling advertising. Their End Gambling Ads campaign built an unusually broad coalition — former prime ministers from both major parties, crossbench senators, the AMA, union bodies and faith organisations.",
+            "The diagnostic framing is sharp: opening with \"Australia has a gambling addiction\" makes the issue systemic rather than personal, which is harder for government to sidestep.",
+          ],
+        },
+        {
+          heading: "The structural weakness",
+          body: [
+            "The weakness is the ask. Campaigning for all 31 Murphy Report recommendations gave the government room to pass partial legislation in April 2026 and call it progress. A campaign with 31 demands gives decision-makers 31 ways to do just enough.",
+          ],
+        },
+        {
+          heading: "Recommendations",
+          body: [
+            "Two recommendations followed from the analysis. First, isolate the advertising ban as a standalone demand. One clear ask is harder to partially satisfy.",
+            "Second, register as a minor political party before the next federal election. The goal isn't to win seats. In Australia's preferential voting system, credible minor party support in marginal electorates forces candidates to negotiate preference deals. AGR stops being a petitioner and starts having leverage.",
+            "This idea came from a guest lecture by Judy Ryan, who used exactly this logic to secure the Richmond safe injecting room — I recognised the same mechanics applied here.",
+          ],
+        },
+      ],
+      materials: [
+        { src: "/work/agr/material-1.svg", caption: "AGR open letter to government" },
+        { src: "/work/agr/material-2.svg", caption: "Cross-party coalition imagery" },
+        { src: "/work/agr/material-3.svg", caption: "End Gambling Ads social post" },
+      ],
+    },
   },
   {
     slug: "project-three",
