@@ -129,7 +129,7 @@ export const projects: Project[] = [
     description:
       "A strategic critique of the Alliance for Gambling Reform's advocacy campaign — and two recommendations to give it real political leverage.",
     year: "2026",
-    image: "/work/agr/cover.svg",
+    image: "/work/agr/cover.png",
     overview:
       "A critical analysis of the Alliance for Gambling Reform's 'End Gambling Ads' campaign, identifying why a 31-point ask let the government do just enough — and how a single demand plus minor-party registration would force change.",
     role: "Campaign analysis, strategic recommendations, advocacy theory.",
