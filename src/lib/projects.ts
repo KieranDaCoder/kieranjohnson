@@ -12,6 +12,7 @@ export type CaseStudy = {
   executions: { src: string; alt: string }[]; // final posters, shown large
   scamps: string[]; // original handwritten copy scamps (image paths)
   conceptBanners: CopyBanner[]; // refined copy-only web banners
+  developmentImage: string; // Photoshop sketch-to-final progression sheet
   body: string[]; // paragraphs, in order
 };
 
@@ -89,6 +90,7 @@ export const projects: Project[] = [
           subline: "Doesn't help at custody hearings.",
         },
       ],
+      developmentImage: "/work/removery/development.png",
       body: [
         "Removery is the world's largest tattoo removal company. The brief was open: communicate what the brand does and why someone might need it. No prescribed angle, no locked-in audience, no mandated tone.",
         "That openness created a real problem. Why do people remove tattoos? Regret, career change, relationship breakdown — every obvious answer leads to the same emotional territory. So the thinking went elsewhere. Keep the tattoo. Age the person wearing it.",

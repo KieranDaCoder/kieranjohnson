@@ -88,11 +88,11 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           </div>
         </section>
 
-        {/* Development process — refined copy-only web banners */}
+        {/* Copy-only web banners — refined first executions */}
         <section className="mx-auto mt-32 max-w-4xl">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
-              Development process
+              Copy-only web banners
             </p>
             <p className="mt-3 max-w-2xl text-base text-charcoal/55">
               The scamps were refined into the first executions: clean, copy-only web banners.
@@ -113,6 +113,26 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
               </Reveal>
             ))}
           </div>
+        </section>
+
+        {/* Development process — Photoshop sketch-to-final progression */}
+        <section className="mx-auto mt-32 max-w-6xl">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
+              Development process
+            </p>
+            <p className="mt-3 max-w-2xl text-base text-charcoal/55">
+              Each illustration was built in Photoshop through iterative scamping — rough
+              placement sketches, to line art, to coloured finals.
+            </p>
+          </Reveal>
+          <Reveal delay={0.15} className="mt-10">
+            <img
+              src={cs.developmentImage}
+              alt="Photoshop development sheet showing each poster progressing from rough placement sketch to line art to coloured final"
+              className="w-full rounded-2xl bg-white p-3 shadow-sm ring-1 ring-charcoal/5"
+            />
+          </Reveal>
         </section>
 
         {/* Written case study */}
