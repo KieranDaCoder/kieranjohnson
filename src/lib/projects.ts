@@ -27,9 +27,40 @@ export type AnalysisCaseStudy = {
   sections: { heading: string; body: string[] }[]; // labelled prose blocks
 };
 
+// Consumer-research case study (e.g. a buyer-behaviour project): lead prose,
+// a four-theme findings grid, a campaign strategy with a phone-frame mockup,
+// an award certificate and a pull-quote. Renders the research layout.
+export type ResearchCaseStudy = {
+  kind: "research";
+  discipline: string; // e.g. "Consumer Research — Victoria Police"
+  result: string; // course + grade line, shown beneath the outcome
+  // Lead prose sections before the findings (e.g. The Brief, My Role).
+  intro: { heading: string; body: string[] }[];
+  // "What We Found" — the four-theme findings grid.
+  themesHeading: string;
+  themes: { icon: ThemeIcon; title: string; description: string }[];
+  // "From Insight to Campaign Strategy".
+  strategyHeading: string;
+  strategyIntro: string[]; // prose before the recommendations
+  recommendations: { title: string; body: string }[];
+  mockup: { username: string; caption: string; likes: string; comments: string };
+  strategyOutro: string[]; // prose after the mockup
+  // "Outcome" — prose, then the certificate and the pull-quote.
+  outcomeHeading: string;
+  outcome: string[];
+  certificate: { src: string; alt: string };
+  pullquote: { quote: string; attribution: string };
+  // "What I Took From It".
+  takeawayHeading: string;
+  takeaway: string[];
+};
+
+// Icon keys for the research findings grid — mapped to inline SVGs on the page.
+export type ThemeIcon = "coolness" | "credibility" | "identity" | "gatekeeping";
+
 // When a project has a caseStudy, its page renders the matching rich layout
 // instead of the simple overview/role/outcome layout.
-export type CaseStudy = CreativeCaseStudy | AnalysisCaseStudy;
+export type CaseStudy = CreativeCaseStudy | AnalysisCaseStudy | ResearchCaseStudy;
 
 export type Project = {
   slug: string;
@@ -163,6 +194,108 @@ export const projects: Project[] = [
             "This idea came from a guest lecture by Judy Ryan, who used exactly this logic to secure the Richmond safe injecting room — I recognised the same mechanics applied here.",
           ],
         },
+      ],
+    },
+  },
+  {
+    slug: "shifting-the-norm",
+    title: "Shifting the Norm",
+    category: "Campaign Analysis",
+    description:
+      "A Buyer Behaviour study for Victoria Police into why young e-scooter riders skip helmets — and a consumer-research-led campaign strategy to change it.",
+    year: "2026",
+    image: "/work/shifting-the-norm/thumbnail.png",
+    overview:
+      "A consumer research project for Victoria Police, investigating why young e-scooter riders in Moonee Valley skip helmets despite the law — and what would actually change the behaviour.",
+    role: "Interviews, thematic coding and analysis, strategic recommendations.",
+    outcome:
+      "RMIT University, MKTG1050 Buyer Behaviour. High Distinction, and a Certificate of Appreciation from Victoria Police.",
+    caseStudy: {
+      kind: "research",
+      discipline: "Consumer Research — Victoria Police",
+      result:
+        "MKTG1050 Buyer Behaviour, RMIT University, Bachelor of Business. High Distinction, and a Certificate of Appreciation from Victoria Police.",
+      intro: [
+        {
+          heading: "The brief",
+          body: [
+            "Victoria Police brought our class a real problem: young e-scooter riders in Moonee Valley were skipping helmets despite the legal requirement, and fines and awareness campaigns weren't changing that. They asked us to investigate the cause using consumer behaviour theory instead of a road-safety lens.",
+          ],
+        },
+        {
+          heading: "My role",
+          body: [
+            "I worked in a four-person team. I conducted two of the eight semi-structured interviews behind the dataset, then helped code and analyse the data using Braun and Clarke's six-phase thematic framework. We treated helmet non-compliance as a behavioural and identity problem, closer to brand perception than road safety.",
+          ],
+        },
+      ],
+      themesHeading: "What we found",
+      themes: [
+        {
+          icon: "coolness",
+          title: "The “Coolness Tax”",
+          description:
+            "Wearing a helmet when nobody else does carries a social cost, and riders weigh that cost above the risk of injury.",
+        },
+        {
+          icon: "credibility",
+          title: "A Credibility Gap",
+          description:
+            "Riders dismiss safety messaging from police and government sources before they process the content, because the source carries no weight with them.",
+        },
+        {
+          icon: "identity",
+          title: "Identity Fusion",
+          description:
+            "For many riders, their friend group's behaviour and their own identity are the same thing.",
+        },
+        {
+          icon: "gatekeeping",
+          title: "Parental Gatekeeping That Fades at the Wrong Time",
+          description:
+            "Parental oversight weakens just when riders need it most.",
+        },
+      ],
+      strategyHeading: "From insight to campaign strategy",
+      strategyIntro: [
+        "The interviews pointed to credibility and identity as the barrier. Two recommendations followed:",
+      ],
+      recommendations: [
+        {
+          title: "Influencer-led campaigns",
+          body: "on TikTok and Instagram, using peer-credible voices instead of institutional ones to close the trust gap.",
+        },
+        {
+          title: "Mandatory point-of-sale safety briefings",
+          body: "for retailers, aimed at the one moment parents are engaged enough to set expectations before peer norms take over.",
+        },
+      ],
+      mockup: {
+        username: "@ridesmart",
+        caption:
+          "POV: you wore the helmet and your mates clowned you for 5 seconds. Still walked away with zero road rash. Worth it. 🛴⛑️",
+        likes: "12.4K",
+        comments: "340",
+      },
+      strategyOutro: [
+        "This is the part of the project that reads like PR strategy: find the actual barrier to behaviour change, then build the plan around the reference points the audience already trusts.",
+      ],
+      outcomeHeading: "Outcome",
+      outcome: [
+        "We earned a High Distinction for the project and a Certificate of Appreciation from Victoria Police for our contribution to their industry brief.",
+      ],
+      certificate: {
+        src: "/work/shifting-the-norm/certificate.png",
+        alt: "Certificate of Appreciation from Victoria Police, awarded to Kieran Johnson for contribution to the Buyer Behaviour industry report, Semester One 2026.",
+      },
+      pullquote: {
+        quote:
+          "A strong report with a clear research focus… [the discussion] provided valuable insights into why young people choose not to wear helmets.",
+        attribution: "Dr Meg Mohammadian, Course Coordinator, MKTG1050",
+      },
+      takeawayHeading: "What I took from it",
+      takeaway: [
+        "This project sharpened my ability to turn qualitative insight into something a stakeholder can act on: why the current approach isn't landing, and which channel and messenger would work instead. That skill sits at the intersection of market research and PR strategy, and it's the part of this project I'd point to first.",
       ],
     },
   },
