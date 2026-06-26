@@ -54,17 +54,12 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "tattoos-dont-age-well",
-    title: "Tattoos Don't Age Well",
+    title: "Tattoos Don't Age Well Campaign",
     category: "Advertising",
     description:
       "A print campaign for the world's largest tattoo removal company. The idea: keep the tattoo, age the person wearing it.",
     year: "2026",
     image: "/work/removery/execution-1.png",
-    thumbnailImages: [
-      "/work/removery/execution-1.png",
-      "/work/removery/execution-2.png",
-      "/work/removery/execution-3.png",
-    ],
     overview:
       "Removery is the world's largest tattoo removal company. The brief was open: communicate what the brand does and why someone might need it. The concept — keep the tattoo, age the person wearing it.",
     role: "Concept, copywriting, art direction, illustration.",
