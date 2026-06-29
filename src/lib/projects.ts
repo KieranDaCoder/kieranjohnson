@@ -88,11 +88,11 @@ export const projects: Project[] = [
     title: "Tattoos Don't Age Well Campaign",
     category: "Advertising",
     description:
-      "A print campaign for the world's largest tattoo removal company. The idea: keep the tattoo, age the person wearing it.",
+      "A print campaign for Removery. The idea: keep the tattoo, age the person wearing it.",
     year: "2026",
     image: "/work/removery/execution-1.png",
     overview:
-      "Removery is the world's largest tattoo removal company. The brief was open: communicate what the brand does and why someone might need it. The concept — keep the tattoo, age the person wearing it.",
+      "The brief was completely open — just communicate what Removery does and why someone might need it. I went with humour over guilt: keep the tattoo, age the person wearing it.",
     role: "Concept, copywriting, art direction, illustration.",
     outcome: "RMIT University, Advertising Concepts. High Distinction.",
     caseStudy: {
@@ -138,11 +138,11 @@ export const projects: Project[] = [
         { src: "/work/removery/dev-row-3.png", label: "Live Fast Die Young" },
       ],
       body: [
-        "Removery is the world's largest tattoo removal company. The brief was open: communicate what the brand does and why someone might need it. No prescribed angle, no locked-in audience, no mandated tone.",
-        "That openness created a real problem. Why do people remove tattoos? Regret, career change, relationship breakdown — every obvious answer leads to the same emotional territory. So the thinking went elsewhere. Keep the tattoo. Age the person wearing it.",
-        "The concept came from tattoo clichés: Live Fast Die Young. Young, Wild and Free. Daddy's Little Girl. Phrases that make sense at 21 and become unintentionally hilarious at 80. The first executions were copy-only web banners — “Live Fast, Die Young. Awkward when you're 80 and still kicking.” “Less believable when you need help wiping your butt.”",
-        "When the brief extended to a visual print campaign, the images took over from the words. Three posters, each showing an elderly person in an ordinary situation with an ironic tattoo on display. An old woman gripping a walking frame, “Daddy's Lil Girl” across her lower back. An elderly man on a mobility scooter, “Live Fast Die Young” on his forearm. A third figure bent over a toilet, “Young, Wild and Free” across their back.",
-        "TATTOOS DON'T AGE WELL runs across all three executions. DON'T is red. Everything else is black on cream. Humour was a strategic call — funny ads get processed more deeply and recalled more readily than fear-based ones, and for a brand selling something people feel embarrassed about, a laugh lowers the barrier before the message lands.",
+        "Removery's the world's largest tattoo removal company. The brief was completely open — no prescribed angle, no locked-in audience, no mandated tone. Just: communicate what the brand does and why someone might need it.",
+        "The obvious routes — regret, career change, relationship breakdown — all lead to the same emotional territory, and that territory's already crowded. I wanted to go somewhere else. What if the tattoo stayed the same, but the person aged?",
+        "I started with tattoo clichés. Live Fast Die Young. Young, Wild and Free. Daddy's Little Girl. Phrases that make perfect sense at 21 and become unintentionally hilarious at 80. The first executions were copy-only web banners — \"Live Fast, Die Young. Awkward when you're 80 and still kicking.\" \"Less believable when you need help wiping your butt.\"",
+        "When the brief extended to a visual print campaign, the images took over from the words. Three posters, each showing an elderly person in an ordinary situation with an ironic tattoo on display.",
+        "I went with humour over guilt deliberately. Funny ads get processed more deeply and recalled more readily than fear-based ones, and Removery's selling something people feel embarrassed about — a laugh lowers the barrier before the message lands. TATTOOS DON'T AGE WELL runs across all three. DON'T is red. Everything else is black on cream.",
         "All three illustrations were built in Photoshop through iterative scamping, from rough placement sketches to coloured finals.",
       ],
     },
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     year: "2026",
     image: "/work/agr/cover.png",
     overview:
-      "A critical analysis of the Alliance for Gambling Reform's 'End Gambling Ads' campaign, identifying why a 31-point ask let the government do just enough — and how a single demand plus minor-party registration would force change.",
+      "I picked apart the Alliance for Gambling Reform's campaign to find the structural weakness — a 31-point ask that let the government do just enough — and recommended two moves that would force real change.",
     role: "Campaign analysis, strategic recommendations, advocacy theory.",
     outcome: "RMIT University, Advocacy and Voice in Public Relations. High Distinction.",
     caseStudy: {
@@ -202,11 +202,11 @@ export const projects: Project[] = [
     title: "Shifting the Norm",
     category: "Campaign Analysis",
     description:
-      "A Buyer Behaviour study for Victoria Police into why young e-scooter riders skip helmets — and a consumer-research-led campaign strategy to change it.",
+      "A consumer research project for Victoria Police — why young riders skip helmets, and what would actually change that.",
     year: "2026",
     image: "/work/shifting-the-norm/thumbnail_1.png",
     overview:
-      "A consumer research project for Victoria Police, investigating why young e-scooter riders in Moonee Valley skip helmets despite the law — and what would actually change the behaviour.",
+      "Victoria Police asked us to figure out why young e-scooter riders in Moonee Valley skip helmets despite the law — and what would actually change the behaviour. We treated it as an identity problem, not a road-safety one.",
     role: "Interviews, thematic coding and analysis, strategic recommendations.",
     outcome:
       "RMIT University, MKTG1050 Buyer Behaviour. High Distinction, and a Certificate of Appreciation from Victoria Police.",
@@ -219,13 +219,13 @@ export const projects: Project[] = [
         {
           heading: "The brief",
           body: [
-            "Victoria Police brought our class a real problem: young e-scooter riders in Moonee Valley were skipping helmets despite the legal requirement, and fines and awareness campaigns weren't changing that. They asked us to investigate the cause using consumer behaviour theory instead of a road-safety lens.",
+            "Victoria Police brought our class a real problem: young e-scooter riders in Moonee Valley were skipping helmets despite the legal requirement, and fines weren't changing that. They wanted us to figure out why — using consumer behaviour theory instead of a road-safety lens.",
           ],
         },
         {
           heading: "My role",
           body: [
-            "I worked in a four-person team. I conducted two of the eight semi-structured interviews behind the dataset, then helped code and analyse the data using Braun and Clarke's six-phase thematic framework. We treated helmet non-compliance as a behavioural and identity problem, closer to brand perception than road safety.",
+            "I worked in a four-person team. I ran two of the eight interviews, then helped code and analyse the data using Braun and Clarke's thematic framework. The decision that shaped everything: we treated helmet non-compliance as a behavioural and identity problem — closer to brand perception than road safety.",
           ],
         },
       ],
@@ -233,7 +233,7 @@ export const projects: Project[] = [
       themes: [
         {
           icon: "coolness",
-          title: "The “Coolness Tax”",
+          title: 'The “Coolness Tax”',
           description:
             "Wearing a helmet when nobody else does carries a social cost, and riders weigh that cost above the risk of injury.",
         },
@@ -278,7 +278,7 @@ export const projects: Project[] = [
         comments: "340",
       },
       strategyOutro: [
-        "This is the part of the project that reads like PR strategy: find the actual barrier to behaviour change, then build the plan around the reference points the audience already trusts.",
+        "This is the bit that feels like PR work to me: find the actual barrier, then build the plan around the reference points the audience already trusts — not the ones we wish they did.",
       ],
       outcomeHeading: "Outcome",
       outcome: [
@@ -295,7 +295,7 @@ export const projects: Project[] = [
       },
       takeawayHeading: "What I took from it",
       takeaway: [
-        "This project sharpened my ability to turn qualitative insight into something a stakeholder can act on: why the current approach isn't landing, and which channel and messenger would work instead. That skill sits at the intersection of market research and PR strategy, and it's the part of this project I'd point to first.",
+        "This project sharpened something I keep coming back to: turning qualitative insight into something a stakeholder can actually act on. Why the current approach isn't landing, which channel would work instead, and who the messenger needs to be. That's the part of this project I'd point to first.",
       ],
     },
   },
@@ -304,11 +304,11 @@ export const projects: Project[] = [
     title: "Hidden Bites & Secret Sips",
     category: "PR Strategy",
     description:
-      "A creative media relations pitch to refresh the Melbourne Food & Wine Festival — built around the city's overlooked laneway restaurants, then defended live in a media conference format.",
+      "A media relations pitch for Melbourne Food & Wine Festival — built around the city's overlooked laneway restaurants and defended live in a press briefing.",
     year: "2026",
     image: "/work/hidden-bites/thumbnail.png",
     overview:
-      "A media relations project for Melbourne Food & Wine Festival: a creative concept redirecting attention toward the city's overlooked laneway and migrant-owned restaurants, pitched and defended live in a media conference format.",
+      "The festival runs 200 events but Melbourne has 3,500+ restaurants — most never get a look. We built a concept around the laneway and migrant-owned venues the festival misses, then defended it live in front of the room.",
     role: "Research, strategy, partnership development, live media conference pitch.",
     outcome:
       "RMIT University, COMM2921 Contemporary Media Relations. High Distinction.",
@@ -323,7 +323,7 @@ export const projects: Project[] = [
         {
           heading: "The brief",
           body: [
-            "Melbourne Food & Wine Festival has run since 1993 and is one of the largest events of its kind in the southern hemisphere, but a campaign built on the same formula every year risks losing media interest. Our brief was to design a creative concept that could refresh an established, well-known festival without abandoning what already works, then defend that concept live, in a media conference format, with our tutor and classmates playing the part of the company and the press.",
+            "Melbourne Food & Wine Festival has run since 1993 — one of the largest in the southern hemisphere — but a campaign built on the same formula every year risks losing media interest. Our brief: design a concept that refreshes the festival without abandoning what works, then defend it live in a media conference, with our tutor and classmates playing the company and the press.",
           ],
         },
         {
@@ -335,34 +335,34 @@ export const projects: Project[] = [
         {
           heading: "The concept",
           body: [
-            "We built the campaign around one idea: the festival already runs around 200 events across the city, but Melbourne has over 3,500 restaurants. Most of them never get a look from the festival spotlight. Our concept, \"Hidden Bites and Secret Sips: Discover Melbourne's Hidden Gems,\" redirected some of that attention toward the laneway and side-street restaurants that make up the city's actual food culture, particularly family-run and migrant-owned venues.",
-            "Three messages carried the campaign: Support Your Local — pushing people toward the restaurants outside their own door, not just the festival's official line-up. Experience Melbourne's Diverse Cultures — Melbourne is home to people from over 140 cultures, and the festival was a chance to make that visible. Explore Melbourne's Restaurant Scene — using the festival's existing reach to send people further into the city than the official program does on its own.",
-            "The reasoning behind it was deliberately tied to two real pressures: small, independent restaurants are the ones most exposed when spending tightens, and a food festival is one of the few cultural moments that can bring people together at a time when that kind of unity is harder to find.",
+            "The starting point was a gap we noticed: the festival runs around 200 events, but Melbourne has over 3,500 restaurants. Most never get a look. Our concept — \"Hidden Bites and Secret Sips\" — redirected some of that spotlight toward the laneway and side-street restaurants that make up the city's actual food culture, particularly family-run and migrant-owned venues.",
+            "Three messages carried it: Support Your Local, Experience Melbourne's Diverse Cultures, and Explore Melbourne's Restaurant Scene. Each one pushed people further into the city than the official program does on its own.",
+            "We tied the reasoning to two real pressures: small, independent restaurants are the most exposed when spending tightens, and a food festival is one of the few cultural moments that can genuinely bring people together.",
           ],
         },
         {
           heading: "Partnerships",
           body: [
-            "Rather than just adding more events, we built the concept around partnerships that could extend the festival's reach without extending its budget.",
-            "Google Maps, using \"Local Guides\" and a custom \"Hidden Gems\" trail to turn under-the-radar venues into something people could actually navigate to. EatClub, offering festival-branded discount dining deals to make the concept genuinely accessible, not just aspirational. Local Pegs, aimed specifically at 18 to 24 year olds, to get younger audiences engaging with venues before the main event even started. And a Google \"Review and Win\" campaign with a celebrity chef tie-in, with a daily prize draw across the ten days of the festival to keep people posting and reviewing throughout, not just on opening night.",
+            "Rather than adding more events, we built the concept around partnerships that extend the festival's reach without extending its budget.",
+            "Google Maps with a custom \"Hidden Gems\" trail so people could actually navigate to under-the-radar venues. EatClub for festival-branded discount deals — making it accessible, not just aspirational. Local Pegs to get 18-to-24s engaging with venues before the main event. And a Google \"Review and Win\" campaign with a celebrity chef tie-in, running daily across the ten days to keep people posting throughout, not just on opening night.",
           ],
         },
         {
           heading: "Media strategy",
           body: [
-            "We targeted three outlets, each chosen for a different reason rather than just reach: Broadsheet for its audience of inner-city professionals who already trust it for neighbourhood and hidden-venue recommendations, Time Out Melbourne for its younger, budget-conscious readership and \"what's on this week\" format, and The Age's Good Food section for the credibility it gives a campaign aimed at an older, more affluent audience. Each pitch was built around what that specific outlet's readers already cared about, not a one-size-fits-all media release.",
+            "We picked three outlets for different reasons, not just reach. Broadsheet for inner-city professionals who already trust it for hidden-venue recs. Time Out for its younger, budget-conscious readership. The Age's Good Food section for the credibility it lends with an older, more affluent audience. Each pitch was shaped around what that outlet's readers already care about — not a one-size-fits-all release.",
           ],
         },
         {
           heading: "The pitch",
           body: [
-            "The hardest part wasn't building the concept, it was defending it live. Presenting in a media conference format meant treating the room like an actual press briefing: justifying the strategy on the spot, answering questions we hadn't scripted answers for, and holding the narrative together under the kind of scrutiny a real client or journalist would actually bring.",
+            "The hardest part wasn't building the concept — it was defending it live. A media conference format means treating the room like a real press briefing: justifying the strategy on the spot, answering questions you haven't scripted for, and holding the narrative together under actual scrutiny.",
           ],
         },
         {
           heading: "What I took from it",
           body: [
-            "This project sat closer to the agency side of marketing than the research side, building a concept, justifying it with partnerships and data, and then standing in front of people whose job in the room was to push back on it. That combination, building a strategy and then defending it under pressure rather than just presenting it, is the part of this project I'd point to when talking about communications or PR work specifically.",
+            "This one sat closer to agency work than research — building a concept, justifying it with partnerships and data, then standing in front of people whose job was to push back. Building a strategy is one thing; defending it under pressure is something else. That's the part of this project I'd point to first.",
           ],
         },
       ],

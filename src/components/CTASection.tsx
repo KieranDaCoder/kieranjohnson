@@ -25,8 +25,8 @@ export function CTASection() {
       <div className="sunrays pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[120%]" />
 
       <h2 className="display mx-auto max-w-4xl text-5xl text-charcoal md:text-8xl">
-        <RevealText as="span" text="Let's make something" className="block" />
-        <RevealText as="span" delay={0.15} text="great, together." className="block" />
+        <RevealText as="span" text="Got a project?" className="block" />
+        <RevealText as="span" delay={0.15} text="I'm listening." className="block" />
       </h2>
 
       <motion.div

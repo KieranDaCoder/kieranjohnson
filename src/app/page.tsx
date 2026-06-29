@@ -68,8 +68,8 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
           >
-            A communications student crafting campaigns with just a touch of{" "}
-            <Em>persuasion</Em>.
+            I study comms at RMIT. Here&apos;s what I&apos;ve been{" "}
+            <Em>making</Em>.
           </motion.h2>
 
           <motion.div
@@ -100,10 +100,10 @@ export default function Home() {
       <section className="px-6 py-28 md:px-12 md:py-40">
         <Reveal>
           <p className="max-w-4xl text-2xl font-semibold leading-snug text-charcoal md:text-4xl">
-            I&apos;m studying Communications at <Em>RMIT Melbourne</Em>, double majoring in PR
-            and Advertising. I build campaigns at the intersection of{" "}
-            <Em>earned attention</Em> and <Em>paid persuasion</Em> — and I&apos;m looking for
-            an internship where I can prove it.
+            I&apos;m doing a double major in PR and Advertising at{" "}
+            <Em>RMIT Melbourne</Em>. Most of what I make sits somewhere between{" "}
+            <Em>strategy</Em> and <Em>creative</Em> — I like the part where those two
+            overlap. Currently looking for an internship.
           </p>
         </Reveal>
       </section>

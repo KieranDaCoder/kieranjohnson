@@ -15,8 +15,8 @@ export default function ContactPage() {
       />
       <Reveal delay={0.3}>
         <p className="mt-8 max-w-xl text-lg leading-relaxed text-charcoal/70">
-          Open to internships, freelance briefs and good conversations about campaigns.
-          The fastest way to reach me is email.
+          I&apos;m after an internship, but I&apos;m open to freelance briefs too.
+          Email&apos;s easiest.
         </p>
       </Reveal>
 

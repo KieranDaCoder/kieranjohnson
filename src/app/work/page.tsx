@@ -16,8 +16,7 @@ export default function WorkPage() {
       <RevealText text="Work" className="display text-7xl text-charcoal md:text-9xl" />
       <Reveal delay={0.3}>
         <p className="mt-6 max-w-xl text-lg text-charcoal/70">
-          Campaigns, strategies and analyses — a selection of projects from my studies and
-          beyond. Each one opens into a full case study.
+          Everything here is university work. Click into any project for the full case study.
         </p>
       </Reveal>
 
