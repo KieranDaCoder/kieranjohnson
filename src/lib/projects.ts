@@ -368,20 +368,6 @@ export const projects: Project[] = [
       ],
     },
   },
-  {
-    slug: "project-four",
-    title: "Project Four",
-    category: "Brand Strategy",
-    description:
-      "A short, punchy description of the brief and what you delivered. Two sentences max.",
-    year: "2025",
-    image: "/placeholders/p4.svg",
-    overview:
-      "Placeholder overview. Walk through the brand challenge and the positioning work you did.",
-    role: "Brand audit, positioning, messaging framework.",
-    outcome:
-      "Placeholder outcome. How did the strategy land, and what changed because of it?",
-  },
 ];
 
 export function getProject(slug: string) {
