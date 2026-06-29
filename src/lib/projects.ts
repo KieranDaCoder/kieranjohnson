@@ -300,18 +300,73 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "project-three",
-    title: "Project Three",
-    category: "Campaign Analysis",
+    slug: "hidden-bites-secret-sips",
+    title: "Hidden Bites & Secret Sips",
+    category: "PR Strategy",
     description:
-      "A short, punchy description of the brief and what you delivered. Two sentences max.",
-    year: "2025",
-    image: "/placeholders/p3.svg",
+      "A creative media relations pitch to refresh the Melbourne Food & Wine Festival — built around the city's overlooked laneway restaurants, then defended live in a media conference format.",
+    year: "2026",
+    image: "/work/hidden-bites/thumbnail.png",
     overview:
-      "Placeholder overview. Set up the campaign you analysed and the question you set out to answer.",
-    role: "Research, data analysis, strategic recommendations.",
+      "A media relations project for Melbourne Food & Wine Festival: a creative concept redirecting attention toward the city's overlooked laneway and migrant-owned restaurants, pitched and defended live in a media conference format.",
+    role: "Research, strategy, partnership development, live media conference pitch.",
     outcome:
-      "Placeholder outcome. Summarise your key findings and the recommendations that came out of them.",
+      "RMIT University, COMM2921 Contemporary Media Relations. High Distinction.",
+    caseStudy: {
+      kind: "analysis",
+      discipline: "Contemporary Media Relations — Melbourne Food & Wine Festival",
+      result:
+        "COMM2921 Contemporary Media Relations, RMIT University. High Distinction.",
+      pullquote:
+        "The hardest part wasn't building the concept — it was defending it live.",
+      sections: [
+        {
+          heading: "The brief",
+          body: [
+            "Melbourne Food & Wine Festival has run since 1993 and is one of the largest events of its kind in the southern hemisphere, but a campaign built on the same formula every year risks losing media interest. Our brief was to design a creative concept that could refresh an established, well-known festival without abandoning what already works, then defend that concept live, in a media conference format, with our tutor and classmates playing the part of the company and the press.",
+          ],
+        },
+        {
+          heading: "My role",
+          body: [
+            "I worked as part of a five-person team. We split the work across research, strategy, partnership development, and media targeting, then prepared and delivered the pitch together, fielding questions as if we were briefing Food and Drink Victoria and the journalists covering the event.",
+          ],
+        },
+        {
+          heading: "The concept",
+          body: [
+            "We built the campaign around one idea: the festival already runs around 200 events across the city, but Melbourne has over 3,500 restaurants. Most of them never get a look from the festival spotlight. Our concept, \"Hidden Bites and Secret Sips: Discover Melbourne's Hidden Gems,\" redirected some of that attention toward the laneway and side-street restaurants that make up the city's actual food culture, particularly family-run and migrant-owned venues.",
+            "Three messages carried the campaign: Support Your Local — pushing people toward the restaurants outside their own door, not just the festival's official line-up. Experience Melbourne's Diverse Cultures — Melbourne is home to people from over 140 cultures, and the festival was a chance to make that visible. Explore Melbourne's Restaurant Scene — using the festival's existing reach to send people further into the city than the official program does on its own.",
+            "The reasoning behind it was deliberately tied to two real pressures: small, independent restaurants are the ones most exposed when spending tightens, and a food festival is one of the few cultural moments that can bring people together at a time when that kind of unity is harder to find.",
+          ],
+        },
+        {
+          heading: "Partnerships",
+          body: [
+            "Rather than just adding more events, we built the concept around partnerships that could extend the festival's reach without extending its budget.",
+            "Google Maps, using \"Local Guides\" and a custom \"Hidden Gems\" trail to turn under-the-radar venues into something people could actually navigate to. EatClub, offering festival-branded discount dining deals to make the concept genuinely accessible, not just aspirational. Local Pegs, aimed specifically at 18 to 24 year olds, to get younger audiences engaging with venues before the main event even started. And a Google \"Review and Win\" campaign with a celebrity chef tie-in, with a daily prize draw across the ten days of the festival to keep people posting and reviewing throughout, not just on opening night.",
+          ],
+        },
+        {
+          heading: "Media strategy",
+          body: [
+            "We targeted three outlets, each chosen for a different reason rather than just reach: Broadsheet for its audience of inner-city professionals who already trust it for neighbourhood and hidden-venue recommendations, Time Out Melbourne for its younger, budget-conscious readership and \"what's on this week\" format, and The Age's Good Food section for the credibility it gives a campaign aimed at an older, more affluent audience. Each pitch was built around what that specific outlet's readers already cared about, not a one-size-fits-all media release.",
+          ],
+        },
+        {
+          heading: "The pitch",
+          body: [
+            "The hardest part wasn't building the concept, it was defending it live. Presenting in a media conference format meant treating the room like an actual press briefing: justifying the strategy on the spot, answering questions we hadn't scripted answers for, and holding the narrative together under the kind of scrutiny a real client or journalist would actually bring.",
+          ],
+        },
+        {
+          heading: "What I took from it",
+          body: [
+            "This project sat closer to the agency side of marketing than the research side, building a concept, justifying it with partnerships and data, and then standing in front of people whose job in the room was to push back on it. That combination, building a strategy and then defending it under pressure rather than just presenting it, is the part of this project I'd point to when talking about communications or PR work specifically.",
+          ],
+        },
+      ],
+    },
   },
   {
     slug: "project-four",
