@@ -204,7 +204,7 @@ export const projects: Project[] = [
     description:
       "A Buyer Behaviour study for Victoria Police into why young e-scooter riders skip helmets — and a consumer-research-led campaign strategy to change it.",
     year: "2026",
-    image: "/work/shifting-the-norm/thumbnail.png",
+    image: "/work/shifting-the-norm/thumbnail_1.png",
     overview:
       "A consumer research project for Victoria Police, investigating why young e-scooter riders in Moonee Valley skip helmets despite the law — and what would actually change the behaviour.",
     role: "Interviews, thematic coding and analysis, strategic recommendations.",
