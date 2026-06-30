@@ -8,23 +8,17 @@ export const metadata: Metadata = {
 };
 
 const skills = [
-  "Media Relations",
-  "Campaign Strategy",
+  "Communication & Stakeholder Relations",
+  "Issue & Crisis Management",
+  "Qualitative Research & Analysis",
   "Copywriting",
-  "Brand Positioning",
-  "Social Media Strategy",
-  "Audience Research",
-  "Press Releases",
-  "Content Planning",
-  "Adobe Creative Suite",
-  "Canva",
+  "Adobe Photoshop",
+  "Microsoft Office Suite",
+  "AI-Assisted Research & Drafting",
+  "POS & Retail Systems",
 ];
 
-const certifications = [
-  "Placeholder Certification — e.g. Google Digital Marketing",
-  "Placeholder Certification — e.g. HubSpot Content Marketing",
-  "Placeholder Certification — e.g. Meta Social Media Marketing",
-];
+const interests = ["Music", "Hiking", "Football", "Vibe coding"];
 
 export default function AboutPage() {
   return (
@@ -38,16 +32,21 @@ export default function AboutPage() {
           <h2 className="display text-3xl italic text-charcoal">The short version</h2>
           <div className="mt-6 space-y-5 text-lg leading-relaxed text-charcoal/80">
             <p>
-              Placeholder bio — first paragraph. Who you are, what drives you, and the kind of
-              work you want to do. Write it the way you&apos;d say it out loud.
+              I&apos;m doing a double major in PR and Advertising at RMIT, minoring in Marketing.
+              I like the creative side — finding the angle, writing the line, building the
+              visual — but I&apos;m just as interested in why something actually works, which is
+              probably why I keep ending up on the research and strategy side of group projects
+              too.
             </p>
             <p>
-              Placeholder bio — second paragraph. What you&apos;ve done so far: coursework
-              highlights, student clubs, freelance projects, anything that shows initiative.
+              Before uni I spent four years at Macpac, working up to Key Holder and
+              person-in-charge. I helped open a new store and ended up informally training a
+              team of nine along the way — a lot of that turned out to be the same skill PR
+              runs on: explaining things clearly to people, under pressure, without losing them.
             </p>
             <p>
-              Placeholder bio — third paragraph. What you&apos;re looking for: the internship,
-              the team, the kind of campaigns you want to be part of.
+              Right now I&apos;m looking for an internship — somewhere I can run real briefs,
+              not just university ones.
             </p>
           </div>
         </Reveal>
@@ -74,7 +73,7 @@ export default function AboutPage() {
                 minor in Marketing
               </p>
             </div>
-            <span className="text-sm text-charcoal/50">2025 — present</span>
+            <span className="text-sm text-charcoal/50">2025 — expected 2027</span>
           </div>
         </Reveal>
       </section>
@@ -95,20 +94,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Certifications */}
+      {/* Interests */}
       <section className="mt-28">
         <Reveal>
-          <h2 className="display text-4xl text-charcoal md:text-5xl">Certifications</h2>
+          <h2 className="display text-4xl text-charcoal md:text-5xl">Outside of uni</h2>
         </Reveal>
-        <ul className="mt-8 space-y-4">
-          {certifications.map((cert, i) => (
-            <Reveal key={cert} delay={i * 0.08}>
-              <li className="border-t border-charcoal/10 pt-4 text-lg text-charcoal/80">
-                {cert}
-              </li>
+        <div className="mt-8 flex flex-wrap gap-3">
+          {interests.map((interest, i) => (
+            <Reveal key={interest} delay={i * 0.06}>
+              <span className="inline-block rounded-full border border-charcoal/20 px-5 py-2.5 text-sm text-charcoal/80 transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-cream">
+                {interest}
+              </span>
             </Reveal>
           ))}
-        </ul>
+        </div>
       </section>
       </div>
       <CTASection />
