@@ -34,12 +34,6 @@ const Icons = {
       <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
     </svg>
   ),
-  writing: (p: IconProps) => (
-    <svg viewBox="0 0 24 24" className={p.className} {...stroke}>
-      <path d="M4 4h16v16H4z" />
-      <path d="M8 8h8M8 12h8M8 16h5" />
-    </svg>
-  ),
   contact: (p: IconProps) => (
     <svg viewBox="0 0 24 24" className={p.className} {...stroke}>
       <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -50,18 +44,6 @@ const Icons = {
     <svg viewBox="0 0 24 24" className={p.className} {...stroke}>
       <rect x="3" y="3" width="18" height="18" rx="2" />
       <path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 13v4" />
-    </svg>
-  ),
-  instagram: (p: IconProps) => (
-    <svg viewBox="0 0 24 24" className={p.className} {...stroke}>
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <path d="M17.5 6.5v.01" />
-    </svg>
-  ),
-  twitter: (p: IconProps) => (
-    <svg viewBox="0 0 24 24" className={p.className} {...stroke}>
-      <path d="M4 4l7.5 9.5L4.5 20H7l5.3-5.7L16.5 20H20l-7.8-10L19.5 4H17l-4.9 5.3L8.2 4Z" />
     </svg>
   ),
   chevron: (p: IconProps) => (
@@ -85,20 +67,21 @@ const nav = [
   { href: "/", label: "Home", icon: Icons.home },
   { href: "/about", label: "About", icon: Icons.about },
   { href: "/work", label: "Work", icon: Icons.work },
-  { href: "/writing", label: "Writing", icon: Icons.writing },
-  { href: "/contact", label: "Contact", icon: Icons.contact },
 ];
 
-const socials = [
+const contactLinks = [
+  {
+    href: "mailto:kieranjohnson262@gmail.com",
+    label: "Email",
+    icon: Icons.contact,
+    external: false,
+  },
   {
     href: "https://www.linkedin.com/in/kieran-johnson-28b372359/",
     label: "LinkedIn",
     icon: Icons.linkedin,
     external: true,
   },
-  // Filler — swap the href for your real profiles.
-  { href: "#", label: "Instagram", icon: Icons.instagram, external: false },
-  { href: "#", label: "Twitter", icon: Icons.twitter, external: false },
 ];
 
 function NavItems({ onNavigate }: { onNavigate?: () => void }) {
@@ -129,10 +112,10 @@ function NavItems({ onNavigate }: { onNavigate?: () => void }) {
         })}
       </nav>
 
-      <p className="mt-8 mb-2 px-2 text-xs font-semibold text-charcoal">Socials</p>
+      <p className="mt-8 mb-2 px-2 text-xs font-semibold text-charcoal">Contact</p>
       <nav className="flex flex-col gap-1">
-        {socials.map(({ href, label, icon: Icon, external }) => (
-          <Link
+        {contactLinks.map(({ href, label, icon: Icon, external }) => (
+          <a
             key={label}
             href={href}
             onClick={onNavigate}
@@ -142,7 +125,7 @@ function NavItems({ onNavigate }: { onNavigate?: () => void }) {
           >
             <Icon className="h-[18px] w-[18px]" />
             {label}
-          </Link>
+          </a>
         ))}
       </nav>
     </>
