@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Reveal, RevealText } from "@/components/Reveal";
-import { CTASection } from "@/components/CTASection";
+import { Reveal } from "@/components/Reveal";
+import { PageHeader } from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "About — Kieran Johnson",
@@ -21,73 +21,85 @@ const skills = [
 ];
 
 const certifications = [
-  "Placeholder Certification — e.g. Google Digital Marketing",
-  "Placeholder Certification — e.g. HubSpot Content Marketing",
-  "Placeholder Certification — e.g. Meta Social Media Marketing",
+  "Filler Certification — e.g. Google Digital Marketing",
+  "Filler Certification — e.g. HubSpot Content Marketing",
+  "Filler Certification — e.g. Meta Social Media Marketing",
 ];
+
+// Filler tiles standing in for Sidefolio's scattered photo row. Drop real
+// images into /public and swap these for <img> tags when you have them.
+const photoTilts = ["-rotate-3", "rotate-2", "-rotate-1", "rotate-3"];
 
 export default function AboutPage() {
   return (
     <>
-      <div className="px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
-      <RevealText text="About" className="display text-7xl text-charcoal md:text-9xl" />
+      <PageHeader emoji="💬" title="About Me" />
+
+      {/* Scattered photo row (filler) */}
+      <Reveal delay={0.1} className="mt-10">
+        <div className="flex gap-4 overflow-x-auto pb-2">
+          {photoTilts.map((tilt, i) => (
+            <div
+              key={i}
+              className={`flex h-56 w-40 shrink-0 items-center justify-center rounded-md border border-hairline bg-gradient-to-br from-neutral-200 to-neutral-100 text-sm text-muted shadow-sm ${tilt}`}
+            >
+              Filler photo
+            </div>
+          ))}
+        </div>
+      </Reveal>
 
       {/* Bio */}
-      <section className="mt-20 grid gap-12 md:grid-cols-5">
-        <Reveal className="md:col-span-3">
-          <h2 className="display text-3xl italic text-charcoal">The short version</h2>
-          <div className="mt-6 space-y-5 text-lg leading-relaxed text-charcoal/80">
-            <p>
-              Placeholder bio — first paragraph. Who you are, what drives you, and the kind of
-              work you want to do. Write it the way you&apos;d say it out loud.
-            </p>
-            <p>
-              Placeholder bio — second paragraph. What you&apos;ve done so far: coursework
-              highlights, student clubs, freelance projects, anything that shows initiative.
-            </p>
-            <p>
-              Placeholder bio — third paragraph. What you&apos;re looking for: the internship,
-              the team, the kind of campaigns you want to be part of.
-            </p>
-          </div>
+      <section className="mt-14 max-w-2xl space-y-5 text-base leading-relaxed text-muted md:text-lg">
+        <Reveal>
+          <p>
+            Hey — I&apos;m Kieran, a Communications student at RMIT Melbourne, double majoring in
+            Public Relations and Advertising. I&apos;m happiest somewhere between the strategy
+            deck and the finished ad.
+          </p>
         </Reveal>
-
-        {/* Photo placeholder */}
-        <Reveal delay={0.2} className="md:col-span-2">
-          <div className="flex aspect-[3/4] items-center justify-center bg-gradient-to-br from-charcoal/10 via-accent/5 to-charcoal/5">
-            <span className="display text-xl italic text-charcoal/30">Your photo here</span>
-          </div>
+        <Reveal delay={0.1}>
+          <p>
+            Filler bio — second paragraph. What you&apos;ve done so far: coursework highlights,
+            student clubs, freelance projects, anything that shows initiative.
+          </p>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <p>
+            Filler bio — third paragraph. What you&apos;re looking for: the internship, the team,
+            the kind of campaigns you want to be part of.
+          </p>
         </Reveal>
       </section>
 
       {/* Education */}
-      <section className="mt-28">
+      <section className="mt-20">
         <Reveal>
-          <h2 className="display text-4xl text-charcoal md:text-5xl">Education</h2>
+          <h2 className="display text-lg text-charcoal">Education</h2>
         </Reveal>
-        <Reveal delay={0.1} className="mt-8 border-t border-charcoal/10 pt-8">
-          <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
+        <Reveal delay={0.1} className="mt-6 border-t border-hairline pt-6">
+          <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
             <div>
-              <h3 className="text-xl font-medium">Bachelor of Communication</h3>
-              <p className="mt-1 text-charcoal/60">
+              <h3 className="font-medium text-charcoal">Bachelor of Communication</h3>
+              <p className="mt-1 text-sm text-muted">
                 RMIT University, Melbourne — Double major in Public Relations &amp; Advertising,
                 minor in Marketing
               </p>
             </div>
-            <span className="text-sm text-charcoal/50">2025 — present</span>
+            <span className="text-sm text-muted">2025 — present</span>
           </div>
         </Reveal>
       </section>
 
       {/* Skills */}
-      <section className="mt-28">
+      <section className="mt-16">
         <Reveal>
-          <h2 className="display text-4xl text-charcoal md:text-5xl">Skills</h2>
+          <h2 className="display text-lg text-charcoal">Skills</h2>
         </Reveal>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap gap-2.5">
           {skills.map((skill, i) => (
-            <Reveal key={skill} delay={i * 0.04}>
-              <span className="inline-block rounded-full border border-charcoal/20 px-5 py-2.5 text-sm text-charcoal/80 transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-cream">
+            <Reveal key={skill} delay={Math.min(i * 0.04, 0.3)}>
+              <span className="rounded-md bg-surface px-3 py-1.5 text-sm text-muted shadow-sm">
                 {skill}
               </span>
             </Reveal>
@@ -96,22 +108,18 @@ export default function AboutPage() {
       </section>
 
       {/* Certifications */}
-      <section className="mt-28">
+      <section className="mt-16">
         <Reveal>
-          <h2 className="display text-4xl text-charcoal md:text-5xl">Certifications</h2>
+          <h2 className="display text-lg text-charcoal">Certifications</h2>
         </Reveal>
-        <ul className="mt-8 space-y-4">
+        <ul className="mt-6 space-y-3">
           {certifications.map((cert, i) => (
-            <Reveal key={cert} delay={i * 0.08}>
-              <li className="border-t border-charcoal/10 pt-4 text-lg text-charcoal/80">
-                {cert}
-              </li>
+            <Reveal key={cert} delay={Math.min(i * 0.08, 0.3)}>
+              <li className="border-t border-hairline pt-3 text-sm text-muted">{cert}</li>
             </Reveal>
           ))}
         </ul>
       </section>
-      </div>
-      <CTASection />
     </>
   );
 }

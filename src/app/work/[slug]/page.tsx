@@ -13,6 +13,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return { title: project ? `${project.title} — Kieran Johnson` : "Work" };
 }
 
+function BackLink() {
+  return (
+    <Link
+      href="/work"
+      className="link-sweep inline-block text-sm text-muted transition-colors hover:text-charcoal"
+    >
+      ← Work
+    </Link>
+  );
+}
+
+const LABEL = "text-xs font-medium uppercase tracking-[0.25em] text-muted";
+
 export default async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = getProject(slug);
@@ -22,54 +35,58 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
   const next = projects[(index + 1) % projects.length];
 
   const NextLink = (
-    <Reveal className="mt-28 border-t border-charcoal/10 pt-12">
-      <p className="text-xs uppercase tracking-[0.25em] text-charcoal/50">Next project</p>
+    <Reveal className="mt-24 border-t border-hairline pt-10">
+      <p className={LABEL}>Next project</p>
       <Link
         href={`/work/${next.slug}`}
-        className="display mt-3 inline-block text-4xl text-charcoal transition-colors hover:text-accent md:text-6xl"
+        className="display mt-3 inline-block text-3xl text-charcoal transition-colors hover:text-muted md:text-4xl"
       >
         {next.title} →
       </Link>
     </Reveal>
   );
 
+  const Header = (
+    <header>
+      <BackLink />
+      <RevealText
+        text={project.title}
+        delay={0.05}
+        className="display mt-6 text-4xl text-charcoal md:text-5xl"
+      />
+      <Reveal delay={0.2}>
+        <p className="serif-accent mt-3 text-lg text-muted">
+          {project.caseStudy?.discipline ?? project.category} · {project.year}
+        </p>
+      </Reveal>
+    </header>
+  );
+
   // ---------- Analysis / strategy layout ----------
   if (project.caseStudy?.kind === "analysis") {
     const cs = project.caseStudy;
     return (
-      <article className="bg-[#f5f0e8] px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
-        {/* Title + discipline */}
-        <header className="mx-auto max-w-4xl">
-          <RevealText text={project.title} className="display text-5xl text-charcoal md:text-8xl" />
-          <Reveal delay={0.2}>
-            <p className="serif-accent mt-5 text-2xl text-charcoal/60 md:text-3xl">
-              {cs.discipline} · {project.year}
-            </p>
-          </Reveal>
-        </header>
+      <article>
+        {Header}
 
-        {/* Opening pullquote */}
-        <Reveal className="mx-auto mt-24 max-w-5xl md:mt-32">
-          <blockquote className="display text-3xl leading-tight text-charcoal md:text-6xl md:leading-[1.05]">
-            <span className="text-accent">“</span>
+        <Reveal className="mt-16">
+          <blockquote className="display text-2xl leading-tight text-charcoal md:text-4xl md:leading-[1.1]">
+            <span className="text-muted">“</span>
             {cs.pullquote}
-            <span className="text-accent">”</span>
+            <span className="text-muted">”</span>
           </blockquote>
         </Reveal>
 
-        {/* Labelled prose sections */}
-        <div className="mx-auto mt-28 max-w-2xl space-y-20 md:mt-36">
+        <div className="mt-16 max-w-2xl space-y-14">
           {cs.sections.map((section) => (
             <section key={section.heading}>
               <Reveal>
-                <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
-                  {section.heading}
-                </p>
+                <p className={LABEL}>{section.heading}</p>
               </Reveal>
-              <div className="mt-6 space-y-6">
+              <div className="mt-4 space-y-5">
                 {section.body.map((para, i) => (
                   <Reveal key={i} delay={Math.min(i * 0.05, 0.2)}>
-                    <p className="text-lg leading-relaxed text-charcoal/80">{para}</p>
+                    <p className="text-base leading-relaxed text-muted md:text-lg">{para}</p>
                   </Reveal>
                 ))}
               </div>
@@ -77,16 +94,13 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           ))}
         </div>
 
-        {/* Result */}
-        <section className="mx-auto mt-32 max-w-2xl">
-          <Reveal>
-            <p className="border-t border-charcoal/15 pt-6 text-sm font-medium uppercase tracking-[0.18em] text-charcoal/70">
-              {cs.result}
-            </p>
-          </Reveal>
-        </section>
+        <Reveal className="mt-16 max-w-2xl">
+          <p className="border-t border-hairline pt-5 text-sm font-medium text-charcoal">
+            {cs.result}
+          </p>
+        </Reveal>
 
-        <div className="mx-auto max-w-2xl">{NextLink}</div>
+        {NextLink}
       </article>
     );
   }
@@ -95,50 +109,40 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
   if (project.caseStudy) {
     const cs = project.caseStudy;
     return (
-      <article className="bg-[#f5f0e8] px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
-        {/* Title block */}
-        <header className="mx-auto max-w-6xl">
-          <RevealText text={project.title} className="display text-5xl text-charcoal md:text-8xl" />
-          <Reveal delay={0.2}>
-            <p className="serif-accent mt-5 text-2xl text-charcoal/60 md:text-3xl">
-              {cs.discipline} · {project.year}
-            </p>
-          </Reveal>
-        </header>
+      <article>
+        {Header}
 
-        {/* Final executions, large, side by side */}
-        <Reveal className="mx-auto mt-20 max-w-7xl">
-          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+        {/* Final executions */}
+        <Reveal className="mt-14">
+          <div className="grid gap-4 sm:grid-cols-3">
             {cs.executions.map((ex) => (
               <img
                 key={ex.src}
                 src={ex.src}
                 alt={ex.alt}
-                className="w-full rounded-2xl shadow-sm ring-1 ring-charcoal/5"
+                className="w-full rounded-xl border border-hairline shadow-sm"
               />
             ))}
           </div>
         </Reveal>
 
-        {/* Original concept sketches — the real handwritten scamps */}
-        <section className="mx-auto mt-32 max-w-5xl">
+        {/* Original concept sketches */}
+        <section className="mt-20">
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
-              Original concept sketches
-            </p>
-            <p className="mt-3 max-w-2xl text-base text-charcoal/55">
+            <p className={LABEL}>Original concept sketches</p>
+            <p className="mt-3 max-w-xl text-sm text-muted">
               It started on paper — tattoo clichés paired with the punchline of old age,
               scribbled out one line at a time.
             </p>
           </Reveal>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {cs.scamps.map((src, i) => (
               <Reveal key={src} delay={i * 0.1}>
-                <div className="rounded-2xl border border-charcoal/10 bg-white p-3 shadow-sm">
+                <div className="rounded-xl border border-hairline bg-surface p-3 shadow-sm">
                   <img
                     src={src}
                     alt={`Handwritten scamp: ${cs.conceptBanners[i]?.headline ?? "copy concept"}`}
-                    className="w-full rounded-lg"
+                    className="w-full rounded-md"
                   />
                 </div>
               </Reveal>
@@ -146,25 +150,23 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           </div>
         </section>
 
-        {/* Copy-only web banners — refined first executions */}
-        <section className="mx-auto mt-32 max-w-4xl">
+        {/* Copy-only web banners */}
+        <section className="mt-20">
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
-              Copy-only web banners
-            </p>
-            <p className="mt-3 max-w-2xl text-base text-charcoal/55">
+            <p className={LABEL}>Copy-only web banners</p>
+            <p className="mt-3 max-w-xl text-sm text-muted">
               The scamps were refined into the first executions: clean, copy-only web banners.
             </p>
           </Reveal>
-          <div className="mt-10 space-y-5">
+          <div className="mt-8 space-y-4">
             {cs.conceptBanners.map((b, i) => (
               <Reveal key={b.headline} delay={i * 0.1}>
-                <div className="flex items-baseline justify-between gap-6 rounded-2xl border border-charcoal/15 bg-[#fcfaf4] px-8 py-7 md:px-10 md:py-8">
+                <div className="flex items-baseline justify-between gap-6 rounded-xl border border-hairline bg-surface px-6 py-5 shadow-sm">
                   <div>
-                    <p className="display text-2xl text-charcoal md:text-3xl">{b.headline}</p>
-                    <p className="mt-2 text-base text-charcoal/60 md:text-lg">{b.subline}</p>
+                    <p className="display text-xl text-charcoal md:text-2xl">{b.headline}</p>
+                    <p className="mt-1.5 text-sm text-muted md:text-base">{b.subline}</p>
                   </div>
-                  <span className="hidden shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-charcoal/35 sm:block">
+                  <span className="hidden shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-muted sm:block">
                     Removery
                   </span>
                 </div>
@@ -173,27 +175,25 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           </div>
         </section>
 
-        {/* Development process — Photoshop sketch-to-final progression */}
-        <section className="mx-auto mt-32 max-w-6xl">
+        {/* Development process */}
+        <section className="mt-20">
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
-              Development process
-            </p>
-            <p className="mt-3 max-w-2xl text-base text-charcoal/55">
-              Each illustration was built in Photoshop through iterative scamping. Left to
-              right: rough placement sketch, line art, coloured final, and the working file.
+            <p className={LABEL}>Development process</p>
+            <p className="mt-3 max-w-xl text-sm text-muted">
+              Each illustration was built in Photoshop through iterative scamping. Left to right:
+              rough placement sketch, line art, coloured final, and the working file.
             </p>
           </Reveal>
-          <div className="mt-10 space-y-8">
+          <div className="mt-8 space-y-6">
             {cs.developmentRows.map((row, i) => (
               <Reveal key={row.src} delay={i * 0.1}>
-                <figure className="rounded-2xl bg-white p-3 shadow-sm ring-1 ring-charcoal/5">
+                <figure className="rounded-xl border border-hairline bg-surface p-3 shadow-sm">
                   <img
                     src={row.src}
                     alt={`Development progression for the '${row.label}' execution: rough sketch, line art, coloured final, and Photoshop working file`}
-                    className="w-full rounded-lg"
+                    className="w-full rounded-md"
                   />
-                  <figcaption className="px-2 pb-1 pt-3 text-xs uppercase tracking-[0.2em] text-charcoal/45">
+                  <figcaption className="px-1 pb-1 pt-3 text-xs uppercase tracking-[0.2em] text-muted">
                     {row.label}
                   </figcaption>
                 </figure>
@@ -203,62 +203,57 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         </section>
 
         {/* Written case study */}
-        <section className="mx-auto mt-32 max-w-2xl">
+        <section className="mt-20 max-w-2xl">
           <Reveal>
-            <h2 className="display text-4xl text-charcoal md:text-5xl">{project.title}</h2>
-            <p className="serif-accent mt-3 text-xl text-charcoal/60">{cs.discipline}</p>
+            <h2 className="display text-2xl text-charcoal md:text-3xl">{project.title}</h2>
           </Reveal>
-          <div className="mt-10 space-y-6">
+          <div className="mt-6 space-y-5">
             {cs.body.map((para, i) => (
               <Reveal key={i} delay={Math.min(i * 0.05, 0.2)}>
-                <p className="text-lg leading-relaxed text-charcoal/80">{para}</p>
+                <p className="text-base leading-relaxed text-muted md:text-lg">{para}</p>
               </Reveal>
             ))}
           </div>
           <Reveal delay={0.1}>
-            <p className="mt-10 border-t border-charcoal/15 pt-6 text-sm font-medium uppercase tracking-[0.18em] text-charcoal/70">
+            <p className="mt-8 border-t border-hairline pt-5 text-sm font-medium text-charcoal">
               {cs.result}
             </p>
           </Reveal>
         </section>
 
-        <div className="mx-auto max-w-2xl">{NextLink}</div>
+        {NextLink}
       </article>
     );
   }
 
   // ---------- Simple default layout ----------
   return (
-    <article className="px-6 pt-36 pb-28 md:px-12 md:pt-48 md:pb-40">
-      <RevealText text={project.title} className="display text-5xl text-charcoal md:text-8xl" />
-      <Reveal delay={0.25}>
-        <p className="serif-accent mt-5 text-2xl text-charcoal/60 md:text-3xl">
-          {project.category} — {project.year}
-        </p>
-      </Reveal>
+    <article>
+      {Header}
 
-      {/* Hero artwork — swap the placeholder in projects.ts for a real campaign visual */}
-      <Reveal delay={0.3} className="mt-16">
+      <Reveal delay={0.2} className="mt-12">
         <img
           src={project.image}
           alt=""
-          className="aspect-[16/9] w-full rounded-[1.75rem] object-cover"
+          className="aspect-[16/9] w-full rounded-xl border border-hairline object-cover"
         />
       </Reveal>
 
-      <div className="mt-20 grid gap-12 md:grid-cols-3">
+      <div className="mt-14 grid gap-10 md:grid-cols-3">
         <Reveal className="md:col-span-2">
-          <h2 className="display text-3xl text-charcoal">Overview</h2>
-          <p className="mt-4 text-lg leading-relaxed text-charcoal/80">{project.overview}</p>
+          <h2 className="display text-xl text-charcoal">Overview</h2>
+          <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
+            {project.overview}
+          </p>
         </Reveal>
-        <div className="space-y-10">
+        <div className="space-y-8">
           <Reveal delay={0.1}>
-            <h3 className="text-xs uppercase tracking-[0.25em] text-accent">My role</h3>
-            <p className="mt-3 leading-relaxed text-charcoal/80">{project.role}</p>
+            <h3 className={LABEL}>My role</h3>
+            <p className="mt-3 leading-relaxed text-muted">{project.role}</p>
           </Reveal>
           <Reveal delay={0.2}>
-            <h3 className="text-xs uppercase tracking-[0.25em] text-accent">Outcome</h3>
-            <p className="mt-3 leading-relaxed text-charcoal/80">{project.outcome}</p>
+            <h3 className={LABEL}>Outcome</h3>
+            <p className="mt-3 leading-relaxed text-muted">{project.outcome}</p>
           </Reveal>
         </div>
       </div>

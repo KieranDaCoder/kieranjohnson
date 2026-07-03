@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette — warm ivory, charcoal, vivid orange + supporting warm tones */
-  --color-cream: #fdfff7;
-  --color-charcoal: #2c2c2c;
-  --color-accent: #ff6102;
-  --color-peach: #fee2b3;
-  --color-sand: #e3d9c9;
-  --color-amber: #f2b05f;
+  /* Sidefolio palette — light neutral surfaces, near-black ink, muted labels */
+  --color-bg: #f3f4f6; /* page background (gray-100) */
+  --color-surface: #ffffff; /* raised cards / inputs */
+  --color-cream: #ffffff; /* light ink on dark pills */
+  --color-charcoal: #171717; /* primary ink / dark pills (neutral-900) */
+  --color-muted: #737373; /* secondary text (neutral-500) */
+  --color-accent: #525252; /* small labels (neutral-600) */
+  --color-sky: #0ea5e9; /* single interactive accent (active nav) */
+  --color-hairline: #e5e7eb; /* borders / dividers */
 }
 
 /* "inline" makes Tailwind substitute the var() reference where it's used,
    so the next/font variables (set on <body>) resolve correctly. */
 @theme inline {
-  --font-display: var(--font-playfair), Georgia, serif;
-  --font-body: var(--font-hanken), system-ui, sans-serif;
+  --font-display: var(--font-cal), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -22,61 +24,41 @@ html {
 }
 
 body {
-  background: var(--color-cream);
+  background: var(--color-bg);
   color: var(--color-charcoal);
-  font-family: var(--font-hanken), system-ui, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: var(--color-cream);
+  background: var(--color-charcoal);
+  color: #ffffff;
 }
 
-/* Display type: warm editorial serif */
+/* Display type: Cal Sans — the chunky rounded heading face */
 .display {
-  font-family: var(--font-playfair), Georgia, serif;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 0.98;
-}
-
-/* Serif italic — reserved for single accent words */
-.serif-accent {
-  font-family: var(--font-playfair), Georgia, serif;
-  font-style: italic;
-  font-weight: 500;
+  font-family: var(--font-cal), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400; /* Cal Sans ships a single heavy weight */
   letter-spacing: -0.01em;
+  line-height: 1.05;
 }
 
-/* Soft elevation for floating header widgets */
-.shadow-widget {
-  box-shadow:
-    0 1px 2px rgba(44, 44, 44, 0.05),
-    0 8px 24px rgba(44, 44, 44, 0.09);
+/* Repurposed: neutral sub-label (was a serif italic accent) */
+.serif-accent {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 500;
 }
 
-/* Subtle animated film-grain overlay */
-.grain::after {
-  content: "";
-  position: fixed;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
-  pointer-events: none;
-  z-index: 60;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grain 8s steps(10) infinite;
-}
-
-@keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  20% { transform: translate(-3%, 2%); }
-  40% { transform: translate(2%, -3%); }
-  60% { transform: translate(-2%, -2%); }
-  80% { transform: translate(3%, 3%); }
+/* Inline highlight badge — the subtle white pill Sidefolio wraps key phrases in */
+.hl {
+  background: #ffffff;
+  color: var(--color-muted);
+  padding: 2px 6px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  white-space: nowrap;
 }
 
 /* Underline sweep on hover */
@@ -100,56 +82,7 @@ body {
   transform-origin: left;
 }
 
-/* Hide the native cursor when the custom one is active (fine pointers only) */
-.has-cursor,
-.has-cursor * {
-  cursor: none !important;
-}
-
-/* Shimmer sweep across cards on hover (triggered by TiltCard's .group) */
-.shimmer {
-  opacity: 0;
-}
-.group:hover .shimmer {
-  animation: shimmer 0.9s cubic-bezier(0.65, 0, 0.35, 1);
-}
-@keyframes shimmer {
-  0% { opacity: 1; transform: translateX(0); }
-  100% { opacity: 1; transform: translateX(300%); }
-}
-
-/* Sunrise glow behind the CTA — soft pulsing warmth */
-.sunrise {
-  background: radial-gradient(ellipse at 50% 100%, rgba(242, 176, 95, 0.45) 0%, rgba(254, 226, 179, 0.25) 45%, transparent 75%);
-  filter: blur(60px);
-  animation: sunrise-pulse 5s ease-in-out infinite;
-}
-.sunrays {
-  background: repeating-conic-gradient(
-    from 0deg at 50% 100%,
-    rgba(255, 97, 2, 0.06) 0deg,
-    rgba(255, 97, 2, 0.06) 2deg,
-    transparent 2deg,
-    transparent 7deg
-  );
-  filter: blur(30px);
-  animation: ray-drift 12s ease-in-out infinite alternate;
-}
-@keyframes sunrise-pulse {
-  0%, 100% { opacity: 0.8; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.06); }
-}
-@keyframes ray-drift {
-  from { transform: rotate(-4deg); }
-  to { transform: rotate(4deg); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .grain::after,
-  .sunrise,
-  .sunrays {
-    animation: none;
-  }
   html {
     scroll-behavior: auto;
   }

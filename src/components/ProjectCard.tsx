@@ -1,63 +1,53 @@
 "use client";
 
 import Link from "next/link";
-/* eslint-disable @next/next/no-img-element -- placeholder SVGs don't need optimization */
-import { TiltCard } from "@/components/TiltCard";
+/* eslint-disable @next/next/no-img-element -- portfolio imagery is pre-optimized */
+import { motion } from "framer-motion";
 import type { Project } from "@/lib/projects";
 
-// Noteworthy-style case card: full-bleed artwork in a squircle, title and
-// category overlaid on a gradient scrim, 3D tilt + shimmer from TiltCard.
-// When the project provides `thumbnailImages`, the artwork becomes a row
-// (e.g. a triptych) on a cream backdrop instead of a single cover image.
-export function ProjectCard({
-  project,
-  aspect = "aspect-square",
-}: {
-  project: Project;
-  aspect?: string;
-}) {
+// Sidefolio-style horizontal case card: thumbnail on the left, title +
+// description + tags on the right. The whole row links to the case study.
+export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
+  const thumb = project.thumbnailImages?.[0] ?? project.image;
+
   return (
-    <TiltCard className={aspect}>
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.3), ease: [0.21, 0.47, 0.32, 0.98] }}
+    >
       <Link
         href={`/work/${project.slug}`}
-        data-cursor="view"
-        className="absolute inset-0 block overflow-hidden rounded-[1.75rem]"
+        className="group flex flex-col gap-5 rounded-2xl p-2 transition-colors hover:bg-black/[0.03] md:flex-row"
       >
-        {project.thumbnailImages ? (
-          <div className="absolute inset-0 flex gap-1.5 bg-[#f5f0e8] p-1.5">
-            {project.thumbnailImages.map((src, i) => (
-              <div key={i} className="relative flex-1 overflow-hidden">
-                <img
-                  src={src}
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </div>
-            ))}
-          </div>
-        ) : (
+        <div className="w-full shrink-0 overflow-hidden rounded-xl border border-hairline bg-surface md:w-52">
           <img
-            src={project.image}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            src={thumb}
+            alt={project.title}
+            className="h-40 w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03] md:h-full"
           />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/0 to-black/45" />
-        <div className="absolute inset-0 flex flex-col justify-between p-7 text-cream md:p-8">
-          <div className="flex items-start justify-between gap-4">
-            <span className="rounded-full bg-cream/15 px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.18em] backdrop-blur-sm">
-              {project.category}
-            </span>
-            <span className="text-sm text-cream/70">{project.year}</span>
-          </div>
-          <div>
-            <h3 className="display text-3xl md:text-4xl">{project.title}</h3>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-cream/80 opacity-0 transition-all duration-500 group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0">
-              {project.description}
-            </p>
+        </div>
+
+        <div className="flex flex-col justify-center">
+          <h3 className="display text-xl text-charcoal">{project.title}</h3>
+          <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-muted">
+            {project.description}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Tag>{project.category}</Tag>
+            <Tag>{project.year}</Tag>
           </div>
         </div>
       </Link>
-    </TiltCard>
+    </motion.div>
+  );
+}
+
+function Tag({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="rounded-sm bg-surface px-2 py-1 text-xs text-muted shadow-sm">
+      {children}
+    </span>
   );
 }
