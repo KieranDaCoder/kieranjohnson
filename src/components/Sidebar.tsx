@@ -135,9 +135,11 @@ function NavItems({ onNavigate }: { onNavigate?: () => void }) {
 function Header() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-neutral-700 to-neutral-900 text-sm font-semibold text-white">
-        KJ
-      </span>
+      <img
+        src="/profile/kieran.jpg"
+        alt="Kieran Johnson"
+        className="h-10 w-10 shrink-0 rounded-full object-cover"
+      />
       <span className="flex flex-col leading-tight">
         <span className="text-sm font-semibold text-charcoal">Kieran Johnson</span>
         <span className="text-xs text-muted">Communications Student</span>

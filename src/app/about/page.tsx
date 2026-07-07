@@ -26,27 +26,17 @@ const certifications = [
   "Filler Certification — e.g. Meta Social Media Marketing",
 ];
 
-// Filler tiles standing in for Sidefolio's scattered photo row. Drop real
-// images into /public and swap these for <img> tags when you have them.
-const photoTilts = ["-rotate-3", "rotate-2", "-rotate-1", "rotate-3"];
-
 export default function AboutPage() {
   return (
     <>
       <PageHeader emoji="💬" title="About Me" />
 
-      {/* Scattered photo row (filler) */}
       <Reveal delay={0.1} className="mt-10">
-        <div className="flex gap-4 overflow-x-auto pb-2">
-          {photoTilts.map((tilt, i) => (
-            <div
-              key={i}
-              className={`flex h-56 w-40 shrink-0 items-center justify-center rounded-md border border-hairline bg-gradient-to-br from-neutral-200 to-neutral-100 text-sm text-muted shadow-sm ${tilt}`}
-            >
-              Filler photo
-            </div>
-          ))}
-        </div>
+        <img
+          src="/profile/kieran.jpg"
+          alt="Kieran Johnson"
+          className="h-56 w-40 rounded-md border border-hairline object-cover shadow-sm"
+        />
       </Reveal>
 
       {/* Bio */}

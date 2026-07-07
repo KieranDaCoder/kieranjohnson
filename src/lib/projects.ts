@@ -34,7 +34,7 @@ export type CaseStudy = CreativeCaseStudy | AnalysisCaseStudy;
 export type Project = {
   slug: string;
   title: string;
-  category: "PR Strategy" | "Advertising" | "Campaign Analysis" | "Brand Strategy";
+  category: "PR Strategy" | "Advertising" | "Campaign Analysis" | "Brand Strategy" | "Product Build";
   description: string;
   year: string;
   // Card artwork — swap the placeholder SVGs in /public/placeholders for
@@ -52,6 +52,21 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "summit-signal",
+    title: "Summit Signal",
+    category: "Product Build",
+    description:
+      "A media-trend and consumer-sentiment dashboard for the outdoor & adventure gear niche, turning social chatter into brand-ready insight with an AI pipeline.",
+    year: "2026",
+    // ponytail: no product screenshot yet — swap for a real dashboard capture once the pipeline's live.
+    image: "/placeholders/p1.svg",
+    overview:
+      "Built to track the outdoor gear category's shift from purely functional positioning (\"waterproof, breathable, 20L\") to lifestyle/fashion positioning (\"gorpcore\"). A scheduled pipeline ingests RSS, Reddit and YouTube chatter, tags sentiment with Claude Haiku, and synthesizes weekly Trend Cards and reports with Claude Opus — visitors only ever read pre-computed insight, never raw data.",
+    role: "Product design, full-stack build (Next.js, Postgres/Supabase), AI pipeline architecture.",
+    outcome:
+      "A fully built, end-to-end dashboard (Overview, Trends, Brands, Reports) demonstrating applied AI for market insight, not just a metrics dashboard.",
+  },
   {
     slug: "tattoos-dont-age-well",
     title: "Tattoos Don't Age Well",
