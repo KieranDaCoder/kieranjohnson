@@ -123,9 +123,21 @@ body {
   pointer-events: none;
   /* Tinted enough that busy text/imagery behind the pill can't bleed through
      and compete with the nav's own text — glassy, but no longer see-through. */
-  background: rgba(245, 245, 247, 0.82);
-  backdrop-filter: url(#glass-distortion) blur(20px) saturate(180%) brightness(1.05);
-  -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.05);
+  background: rgba(245, 245, 247, 0.88);
+  /* Plain blur first — this alone must always work, on every browser, with
+     nothing that can invalidate it. The SVG distortion (below, in @supports)
+     is a pure enhancement layered on top, never a replacement for this. */
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.05);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.05);
+}
+/* A single unsupported function anywhere in a backdrop-filter list voids the
+   *entire* declaration (spec behaviour) — so the wobble/refraction only ever
+   applies where url() filters are confirmed supported, guarding the base
+   blur above from silently vanishing on browsers that don't support it. */
+@supports (backdrop-filter: url(#glass-distortion)) {
+  .glass-navbar::before {
+    backdrop-filter: url(#glass-distortion) blur(20px) saturate(180%) brightness(1.05);
+  }
 }
 
 @media (prefers-reduced-transparency: reduce) {
