@@ -14,7 +14,7 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Kieran Johnson — Communications",
+  title: "Kieran Johnson's Portfolio",
   description:
     "Portfolio of Kieran Johnson, Communications student at RMIT Melbourne specialising in PR, Advertising and Marketing.",
 };
