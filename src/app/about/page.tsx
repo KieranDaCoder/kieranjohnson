@@ -29,7 +29,7 @@ const certifications = [
 export default function AboutPage() {
   return (
     <>
-      <PageHeader emoji="💬" title="About Me" />
+      <PageHeader icon="/icons/about.svg" title="About Me" />
 
       <Reveal delay={0.1} className="mt-10">
         <img
@@ -40,7 +40,7 @@ export default function AboutPage() {
       </Reveal>
 
       {/* Bio */}
-      <section className="mt-14 max-w-2xl space-y-5 text-base leading-relaxed text-muted md:text-lg">
+      <section id="about-me" className="mt-14 max-w-2xl scroll-mt-24 space-y-5 text-base leading-relaxed text-muted md:text-lg">
         <Reveal>
           <p>
             Hey — I&apos;m Kieran, a Communications student at RMIT Melbourne, double majoring in
@@ -89,7 +89,7 @@ export default function AboutPage() {
         <div className="mt-6 flex flex-wrap gap-2.5">
           {skills.map((skill, i) => (
             <Reveal key={skill} delay={Math.min(i * 0.04, 0.3)}>
-              <span className="rounded-md bg-surface px-3 py-1.5 text-sm text-muted shadow-sm">
+              <span className="glass-pill rounded-md px-3 py-1.5 text-sm font-medium text-sky">
                 {skill}
               </span>
             </Reveal>
@@ -109,6 +109,24 @@ export default function AboutPage() {
             </Reveal>
           ))}
         </ul>
+      </section>
+
+      {/* A little more — casual, non-professional */}
+      <section id="more" className="mt-16 scroll-mt-24">
+        <Reveal>
+          <h2 className="display text-lg text-charcoal">A little more…</h2>
+        </Reveal>
+        <Reveal delay={0.1} className="mt-6 max-w-2xl space-y-4 border-t border-hairline pt-6 text-base leading-relaxed text-muted">
+          <p>
+            Filler — outside of coursework: hobbies, the shows you can&apos;t stop watching, the
+            hikes you go on, the music taste nobody asked for. Whatever makes you feel like a
+            person and not just a résumé.
+          </p>
+          <p>
+            Filler — a fun fact or two. The kind of thing that comes up in an interview and makes
+            people remember you.
+          </p>
+        </Reveal>
       </section>
     </>
   );

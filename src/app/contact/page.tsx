@@ -24,7 +24,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHeader emoji="✉️" title="Contact Me">
+      <PageHeader icon="/icons/contact.svg" title="Contact Me">
         Reach out over email or fill in the form and I&apos;ll get back to you as soon as I can.
       </PageHeader>
 

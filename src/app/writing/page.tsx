@@ -32,7 +32,7 @@ const posts = [
 export default function WritingPage() {
   return (
     <>
-      <PageHeader emoji="✍️" title="Writing">
+      <PageHeader icon="/icons/writing.svg" title="Writing">
         Notes on campaigns, strategy and the craft of persuasion. Filler entries for now — real
         posts on the way.
       </PageHeader>

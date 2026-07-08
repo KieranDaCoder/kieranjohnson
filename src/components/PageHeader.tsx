@@ -1,19 +1,24 @@
 import { Reveal, RevealText } from "@/components/Reveal";
 
-// Sidefolio page opener: an emoji glyph, a big Cal Sans title, optional intro.
+// Sidefolio page opener: a pixel-art icon, a big Geist display title, optional intro.
 export function PageHeader({
-  emoji,
+  icon,
   title,
   children,
 }: {
-  emoji: string;
+  icon: string;
   title: string;
   children?: React.ReactNode;
 }) {
   return (
     <header>
       <Reveal>
-        <span className="block text-3xl md:text-4xl">{emoji}</span>
+        <img
+          src={icon}
+          alt=""
+          aria-hidden="true"
+          className="h-10 w-10 [image-rendering:pixelated] md:h-12 md:w-12"
+        />
       </Reveal>
       <RevealText
         text={title}

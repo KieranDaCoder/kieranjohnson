@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
-import { Sidebar } from "@/components/Sidebar";
+import { Geist } from "next/font/google";
+import { TopNav } from "@/components/TopNav";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { Preloader } from "@/components/Preloader";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Geist — Vercel's clean sans (skiper-ui.com's typeface). One variable face
+// used for both body and headings; the heavier weight is applied via .display.
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
-});
-
-// Cal Sans — Sidefolio's chunky display face, self-hosted from /public/fonts.
-const cal = localFont({
-  src: "../../public/fonts/cal-sans.woff2",
-  variable: "--font-cal",
-  display: "swap",
-  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -30,17 +24,26 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${cal.variable} antialiased`}>
+      <body className={`${geist.variable} antialiased`}>
+        {/* Liquid-glass displacement filter — feTurbulence noise drives a
+            feDisplacementMap that bends the backdrop, giving the refracted,
+            wobbly edges of real Apple glass (backdrop-filter: url(#…) in CSS). */}
+        <svg aria-hidden="true" width="0" height="0" style={{ position: "absolute" }}>
+          <filter id="glass-distortion" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.012" numOctaves="2" seed="17" result="noise" />
+            <feGaussianBlur in="noise" stdDeviation="2" result="softNoise" />
+            <feDisplacementMap in="SourceGraphic" in2="softNoise" scale="60" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
+        <Preloader />
         <SmoothScroll />
-        <div className="md:flex">
-          <Sidebar />
-          <main className="min-w-0 flex-1">
-            <div className="mx-auto max-w-4xl px-5 py-14 md:px-10 md:py-20">
-              {children}
-              <Footer />
-            </div>
-          </main>
-        </div>
+        <TopNav />
+        <main>
+          <div className="mx-auto max-w-4xl px-5 py-14 md:px-10 md:py-20">
+            {children}
+            <Footer />
+          </div>
+        </main>
       </body>
     </html>
   );

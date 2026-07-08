@@ -1,71 +1,94 @@
+import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { PageHeader } from "@/components/PageHeader";
+import { Hero } from "@/components/Hero";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projects } from "@/lib/projects";
+import { contactLinks } from "@/lib/contact";
 
 // Inline highlight badge — the subtle white pill Sidefolio wraps phrases in.
 function Hl({ children }: { children: React.ReactNode }) {
   return <span className="hl">{children}</span>;
 }
 
-const toolkit = [
-  "Campaign Strategy",
-  "Copywriting",
-  "Media Relations",
-  "Brand Positioning",
-  "Audience Research",
-  "Adobe Creative Suite",
-  "Canva",
-  "Social Strategy",
-];
+const keyWorks = projects.slice(0, 2);
 
 export default function Home() {
   return (
     <>
-      <PageHeader emoji="👋" title="Hi, I'm Kieran" />
+      <Hero />
 
-      <div className="mt-6 max-w-2xl space-y-5 text-base leading-relaxed text-muted md:text-lg">
-        <Reveal delay={0.1}>
-          <p>
-            I&apos;m a Communications student at <Hl>RMIT Melbourne</Hl>, double majoring in{" "}
-            <Hl>PR &amp; Advertising</Hl>. I build campaigns that live at the intersection of
-            earned attention and paid persuasion.
-          </p>
-        </Reveal>
-        <Reveal delay={0.18}>
-          <p>
-            I&apos;m currently looking for an <Hl>internship</Hl> where I can turn strategy into
-            work that actually moves people — and I&apos;ve got the case studies to back it up.
-          </p>
-        </Reveal>
-      </div>
-
-      {/* ---------- Selected work ---------- */}
-      <section className="mt-20">
+      {/* ---------- Located in Melbourne ---------- */}
+      <section className="mt-20 flex flex-col items-center gap-8 text-center md:flex-row md:items-center md:text-left">
         <Reveal>
-          <h2 className="display text-lg text-charcoal">What I&apos;ve been working on</h2>
+          <img
+            src="/profile/kieran.jpg"
+            alt="Kieran Johnson"
+            className="h-32 w-32 shrink-0 rounded-full object-cover shadow-sm md:h-40 md:w-40"
+          />
         </Reveal>
-        <div className="mt-8 flex flex-col gap-10">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
-          ))}
+        <div className="max-w-2xl space-y-4 text-base leading-relaxed text-muted md:text-lg">
+          <Reveal delay={0.1}>
+            <p className="display text-sm uppercase tracking-wide text-accent">
+              Located in Melbourne
+            </p>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p>
+              I&apos;m a Communications student at <Hl>RMIT Melbourne</Hl>, double majoring in{" "}
+              <Hl>PR &amp; Advertising</Hl>. I build campaigns that live at the intersection of
+              earned attention and paid persuasion.
+            </p>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p>
+              I&apos;m currently looking for an <Hl>internship</Hl> where I can turn strategy into
+              work that actually moves people — and I&apos;ve got the case studies to back it up.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      {/* ---------- Toolkit (adapted from Sidefolio's "Tech Stack") ---------- */}
-      <section className="mt-20">
+      {/* ---------- Key works ---------- */}
+      <section className="mt-24">
         <Reveal>
-          <h2 className="display text-lg text-charcoal">Toolkit</h2>
+          <h2 className="display text-lg text-charcoal">Key works</h2>
         </Reveal>
-        <div className="mt-6 flex flex-wrap gap-2.5">
-          {toolkit.map((tool, i) => (
-            <Reveal key={tool} delay={Math.min(i * 0.04, 0.3)}>
-              <span className="rounded-md bg-surface px-3 py-1.5 text-sm text-muted shadow-sm">
-                {tool}
-              </span>
-            </Reveal>
+        <div className="mt-6">
+          {keyWorks.map((project, i) => (
+            <ProjectCard key={project.slug} project={project} index={i} />
           ))}
         </div>
+        <Reveal delay={0.1} className="mt-6">
+          <Link href="/work" className="link-sweep text-sm font-medium text-sky">
+            See all work →
+          </Link>
+        </Reveal>
+      </section>
+
+      {/* ---------- Connect ---------- */}
+      <section className="mt-24 border-t border-hairline pt-16 text-center">
+        <Reveal>
+          <h2 className="display text-2xl text-charcoal md:text-3xl">Let&apos;s talk</h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="mt-3 text-base text-muted">
+            Open to internships and opportunities in PR &amp; Advertising.
+          </p>
+        </Reveal>
+        <Reveal delay={0.15} className="mt-6 flex justify-center gap-3">
+          {contactLinks.map(({ href, label, icon, external }) => (
+            <a
+              key={label}
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              className="glass-pill flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-charcoal transition-transform hover:scale-[1.03]"
+            >
+              <img src={icon} alt="" aria-hidden="true" className="h-4 w-4 [image-rendering:pixelated]" />
+              {label}
+            </a>
+          ))}
+        </Reveal>
       </section>
     </>
   );
