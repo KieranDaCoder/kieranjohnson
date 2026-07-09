@@ -69,7 +69,7 @@ export default function ContactPage() {
           />
           <button
             type="submit"
-            className="w-full rounded-md bg-charcoal py-3 text-sm font-medium text-white transition-transform hover:scale-[1.01]"
+            className="w-full rounded-md bg-sky py-3 text-sm font-medium text-white transition-transform hover:scale-[1.01]"
           >
             Submit
           </button>

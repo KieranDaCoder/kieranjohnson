@@ -9,7 +9,7 @@
   --color-charcoal: #1d1d1f; /* primary ink — Apple near-black */
   --color-muted: #6e6e73; /* secondary text — Apple grey */
   --color-accent: #424245; /* small labels / icons — dark grey */
-  --color-sky: #1d1d1f; /* CTA / active nav — pure black, no blue (mono scheme) */
+  --color-sky: #0071e3; /* CTA / active nav — Apple system blue, the single 10% accent */
   --color-hairline: #d2d2d7; /* borders / dividers — light grey */
 }
 
