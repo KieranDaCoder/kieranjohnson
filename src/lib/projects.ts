@@ -34,7 +34,13 @@ export type CaseStudy = CreativeCaseStudy | AnalysisCaseStudy;
 export type Project = {
   slug: string;
   title: string;
-  category: "PR Strategy" | "Advertising" | "Campaign Analysis" | "Brand Strategy" | "Product Build";
+  category:
+    | "PR Strategy"
+    | "Advertising"
+    | "Campaign Analysis"
+    | "Brand Strategy"
+    | "Product Build"
+    | "Market Research";
   description: string;
   year: string;
   // Card artwork — swap the placeholder SVGs in /public/placeholders for
@@ -187,32 +193,105 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "project-three",
-    title: "Project Three",
-    category: "Campaign Analysis",
+    slug: "hidden-bites-and-secret-sips",
+    title: "Hidden Bites and Secret Sips",
+    category: "PR Strategy",
     description:
-      "A short, punchy description of the brief and what you delivered. Two sentences max.",
-    year: "2025",
+      "A national media strategy for the Melbourne Food & Wine Festival, built to solve 30 years of press fatigue. Hidden Bites and Secret Sips spotlighted the city's 3,500 unsung restaurants instead of the same big names.",
+    year: "2026",
     image: "/placeholders/p3.svg",
     overview:
-      "Placeholder overview. Set up the campaign you analysed and the question you set out to answer.",
-    role: "Research, data analysis, strategic recommendations.",
+      "A 2026 PR and media strategy for the Melbourne Food & Wine Festival, built to solve 30 years of media fatigue by spotlighting Melbourne's overlooked, family-run restaurants instead of the usual big names.",
+    role: "Campaign concept development, media alert writing, live pitch to a simulated media panel.",
     outcome:
-      "Placeholder outcome. Summarise your key findings and the recommendations that came out of them.",
+      "High Distinction. Restructured from five to three presenters on the day and still delivered a strong result.",
+    caseStudy: {
+      kind: "analysis",
+      discipline: "PR Strategy — Melbourne Food & Wine Festival",
+      result:
+        "RMIT University, Contemporary Media Relations. Five-person team, live pitch to a simulated media panel. High Distinction.",
+      pullquote:
+        "Melbourne has over 3,500 restaurants. The festival kept spotlighting the same names year after year.",
+      sections: [
+        {
+          heading: "The brief",
+          body: [
+            "The Melbourne Food & Wine Festival runs 10 days every March and is Australia's largest food and wine event. After 30-plus years, it was heading toward media fatigue, with journalists and audiences expecting the same coverage on repeat. Our 2026 brief was to give outlets a genuinely new story to run with.",
+            "I worked in a five-person team, co-developing the campaign concept, writing the media alert, and was one of three team members who pitched and defended the strategy live to a simulated media panel.",
+          ],
+        },
+        {
+          heading: "The strategy",
+          body: [
+            "Melbourne has over 3,500 restaurants, and the festival kept spotlighting the same well-known names every year while the rest of the scene stayed invisible — at a time when small hospitality businesses were under real cost-of-living pressure. We built the 2026 concept around one idea: Hidden Bites and Secret Sips, Discover Melbourne's Hidden Gems. It moved the festival away from culinary prestige and gave Melburnians a reason to try the family-run, culturally diverse restaurants that rarely get any spotlight.",
+          ],
+        },
+        {
+          heading: "Key executions",
+          body: [
+            "A Google Maps partnership built a curated 'Hidden Gems' trail, surfacing a new local restaurant each day of the festival with an exclusive deal — we picked Maps because 74% of Australians already use it to find restaurants, so there was no new habit to build.",
+            "Partnerships with EatClub and Local Pegs reached younger, budget-conscious diners through flash deals, student promos and hidden-venue discounts, while a daily 'Review and Win with Gordon Ramsay' competition kept user content and social sharing going across the 10 days.",
+            "Media pitching targeted three outlets with three angles: Broadsheet for inner-city Melburnians (2.5 million monthly readers), Time Out Melbourne for 20s and 30s after affordable experiences, and The Age Good Food for affluent food enthusiasts (1.6 million readers).",
+          ],
+        },
+        {
+          heading: "Outcome",
+          body: [
+            "Two of our five team members pulled out on the day of the presentation. We restructured on the spot and delivered with three — the tutor said we handled it well and still landed a strong result under those conditions.",
+          ],
+        },
+      ],
+    },
   },
   {
-    slug: "project-four",
-    title: "Project Four",
-    category: "Brand Strategy",
+    slug: "the-coolness-tax",
+    title: "The Coolness Tax",
+    category: "Market Research",
     description:
-      "A short, punchy description of the brief and what you delivered. Two sentences max.",
-    year: "2025",
+      "Qualitative research for Victoria Police into why teen e-scooter riders skip helmets — reframed as an identity and social-cost problem, not a road-safety one. Recommendations shifted the fix from institutional warnings to peer-credible influencer voices.",
+    year: "2026",
     image: "/placeholders/p4.svg",
     overview:
-      "Placeholder overview. Walk through the brand challenge and the positioning work you did.",
-    role: "Brand audit, positioning, messaging framework.",
-    outcome:
-      "Placeholder outcome. How did the strategy land, and what changed because of it?",
+      "Consumer-behaviour research for Victoria Police into why 13–17 year old e-scooter riders skip helmets despite the legal requirement, reframing it as an identity and social-cost problem rather than a safety one.",
+    role: "Semi-structured interviews, thematic analysis (Braun & Clarke), stakeholder report writing.",
+    outcome: "High Distinction and a Certificate of Appreciation from Victoria Police.",
+    caseStudy: {
+      kind: "analysis",
+      discipline: "Market Research — Victoria Police E-Scooter Safety",
+      result:
+        "RMIT University, Buyer Behaviour, Bachelor of Business. High Distinction. Certificate of Appreciation, Victoria Police.",
+      pullquote:
+        "Riders already know helmets are legally required. What stops them is the social cost of wearing one when nobody else does.",
+      sections: [
+        {
+          heading: "The brief",
+          body: [
+            "Victoria Police brought us a real problem: young e-scooter riders in Moonee Valley, aged 13 to 17, were skipping helmets despite the legal requirement, and fines and awareness campaigns weren't shifting that. They wanted it looked at through consumer behaviour theory instead of a road-safety lens, as part of an industry partnership between Victoria Police and RMIT.",
+            "I worked in a four-person team, conducting two of eight semi-structured interviews with riders aged 18–25, contributing to the thematic analysis, and co-writing sections of the final report using Braun and Clarke's six-phase framework. We ended up treating helmet non-compliance as an identity and social-cost problem, closer to brand perception than road safety.",
+          ],
+        },
+        {
+          heading: "What we found",
+          body: [
+            "Four themes came out of the interviews. The Coolness Tax: riders already know helmets are legally required — what stops them is the social cost of wearing one when nobody else does. The Credibility Gap: safety messaging from police and government sources gets dismissed before riders even process the content; the messenger matters more than the message.",
+            "Identity Fusion: for a lot of these riders, their friend group's behaviour and their own identity aren't separate things, so breaking from the group isn't a safety decision, it's a threat to who they are. Parental Gatekeeping: parents have the authority to counter peer influence, but that oversight fades right when peer norms take over — most parents buy the scooter without knowing the road rules themselves.",
+          ],
+        },
+        {
+          heading: "Recommendations",
+          body: [
+            "An influencer-led campaign on TikTok and Instagram, using peer-credible voices instead of institutional ones to close the credibility gap. Mandatory point-of-sale safety briefings for retailers, aimed at the one moment parents are actually engaged enough to set expectations before peer influence takes over.",
+          ],
+        },
+        {
+          heading: "Outcome",
+          body: [
+            "High Distinction grade and a Certificate of Appreciation from Victoria Police. Our course coordinator called the report 'a strong report with a clear research focus' and flagged the Coolness Tax and parental influence findings as valuable insight into why young riders skip helmets.",
+            "This is the project I'd point to first for market research skill — turning a stack of interview transcripts into something a stakeholder can act on, naming the actual barrier to behaviour change, then matching the channel and messenger to it.",
+          ],
+        },
+      ],
+    },
   },
 ];
 
