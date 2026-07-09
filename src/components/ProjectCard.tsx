@@ -16,7 +16,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
     >
       <Link
         href={`/work/${project.slug}`}
-        className="group block border-b border-hairline py-8 transition-colors first:pt-0"
+        className={`group block border-b border-hairline pb-8 transition-colors ${index === 0 ? "pt-0" : "pt-8"}`}
       >
         <div className="flex items-baseline justify-between gap-4">
           <h3 className="display link-sweep text-2xl text-charcoal md:text-3xl">
