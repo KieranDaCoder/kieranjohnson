@@ -53,12 +53,12 @@ export default function Home() {
         <Reveal>
           <h2 className="display text-lg text-charcoal">Key works</h2>
         </Reveal>
-        <div className="mt-10">
+        <div className="mt-8">
           {keyWorks.map((project, i) => (
             <ProjectCard key={project.slug} project={project} index={i} />
           ))}
         </div>
-        <Reveal delay={0.1} className="mt-10">
+        <Reveal delay={0.1} className="mt-8">
           <Link href="/work" className="link-sweep text-sm font-medium text-sky">
             See all work →
           </Link>
