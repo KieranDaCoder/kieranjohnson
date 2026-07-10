@@ -35,8 +35,8 @@ export default function Home() {
           <Reveal delay={0.15}>
             <p>
               I&apos;m a Communications student at <Hl>RMIT Melbourne</Hl>, double majoring in{" "}
-              <Hl>PR &amp; Advertising</Hl>. I build campaigns that live at the intersection of
-              earned attention and paid persuasion.
+              <Hl>PR &amp; Advertising</Hl>. Whether you want your brand in the headlines or need
+              to keep it out of them, I&apos;m your guy.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
