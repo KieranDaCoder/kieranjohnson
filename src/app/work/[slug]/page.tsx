@@ -131,7 +131,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           <Reveal>
             <p className={LABEL}>Original concept sketches</p>
             <p className="mt-3 max-w-xl text-sm text-muted">
-              It started on paper — tattoo clichés paired with the punchline of old age,
+              It started on paper: tattoo clichés paired with the punchline of old age,
               scribbled out one line at a time.
             </p>
           </Reveal>

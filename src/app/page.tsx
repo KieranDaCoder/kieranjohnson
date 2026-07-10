@@ -42,7 +42,7 @@ export default function Home() {
           <Reveal delay={0.2}>
             <p>
               I&apos;m currently looking for an <Hl>internship</Hl> where I can turn strategy into
-              work that actually moves people — and I&apos;ve got the case studies to back it up.
+              work that actually moves people. I&apos;ve got the case studies to back it up.
             </p>
           </Reveal>
         </div>

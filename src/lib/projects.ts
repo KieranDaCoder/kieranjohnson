@@ -68,7 +68,7 @@ export const projects: Project[] = [
     // ponytail: no product screenshot yet — swap for a real dashboard capture once the pipeline's live.
     image: "/placeholders/p1.svg",
     overview:
-      "Built to track the outdoor gear category's shift from purely functional positioning (\"waterproof, breathable, 20L\") to lifestyle/fashion positioning (\"gorpcore\"). A scheduled pipeline ingests RSS, Reddit and YouTube chatter, tags sentiment with Claude Haiku, and synthesizes weekly Trend Cards and reports with Claude Opus — visitors only ever read pre-computed insight, never raw data.",
+      "Built to track the outdoor gear category's shift from purely functional positioning (\"waterproof, breathable, 20L\") to lifestyle/fashion positioning (\"gorpcore\"). A scheduled pipeline ingests RSS, Reddit and YouTube chatter, tags sentiment with Claude Haiku, and synthesizes weekly Trend Cards and reports with Claude Opus. Visitors only ever read pre-computed insight, never raw data.",
     role: "Product design, full-stack build (Next.js, Postgres/Supabase), AI pipeline architecture.",
     outcome:
       "A fully built, end-to-end dashboard (Overview, Trends, Brands, Reports) demonstrating applied AI for market insight, not just a metrics dashboard.",
@@ -87,7 +87,7 @@ export const projects: Project[] = [
       "/work/removery/execution-3.png",
     ],
     overview:
-      "Removery is the world's largest tattoo removal company. The brief was open: communicate what the brand does and why someone might need it. The concept — keep the tattoo, age the person wearing it.",
+      "Removery is the world's largest tattoo removal company. The brief was open: communicate what the brand does and why someone might need it. The concept: keep the tattoo, age the person wearing it.",
     role: "Concept, copywriting, art direction, illustration.",
     outcome: "RMIT University, Advertising Concepts. High Distinction.",
     caseStudy: {
@@ -134,10 +134,10 @@ export const projects: Project[] = [
       ],
       body: [
         "Removery is the world's largest tattoo removal company. The brief was open: communicate what the brand does and why someone might need it. No prescribed angle, no locked-in audience, no mandated tone.",
-        "That openness created a real problem. Why do people remove tattoos? Regret, career change, relationship breakdown — every obvious answer leads to the same emotional territory. So the thinking went elsewhere. Keep the tattoo. Age the person wearing it.",
-        "The concept came from tattoo clichés: Live Fast Die Young. Young, Wild and Free. Daddy's Little Girl. Phrases that make sense at 21 and become unintentionally hilarious at 80. The first executions were copy-only web banners — “Live Fast, Die Young. Awkward when you're 80 and still kicking.” “Less believable when you need help wiping your butt.”",
+        "That openness created a real problem. Why do people remove tattoos? Regret, career change, relationship breakdown: every obvious answer leads to the same emotional territory. So the thinking went elsewhere. Keep the tattoo. Age the person wearing it.",
+        "The concept came from tattoo clichés: Live Fast Die Young. Young, Wild and Free. Daddy's Little Girl. Phrases that make sense at 21 and become unintentionally hilarious at 80. The first executions were copy-only web banners: “Live Fast, Die Young. Awkward when you're 80 and still kicking.” “Less believable when you need help wiping your butt.”",
         "When the brief extended to a visual print campaign, the images took over from the words. Three posters, each showing an elderly person in an ordinary situation with an ironic tattoo on display. An old woman gripping a walking frame, “Daddy's Lil Girl” across her lower back. An elderly man on a mobility scooter, “Live Fast Die Young” on his forearm. A third figure bent over a toilet, “Young, Wild and Free” across their back.",
-        "TATTOOS DON'T AGE WELL runs across all three executions. DON'T is red. Everything else is black on cream. Humour was a strategic call — funny ads get processed more deeply and recalled more readily than fear-based ones, and for a brand selling something people feel embarrassed about, a laugh lowers the barrier before the message lands.",
+        "TATTOOS DON'T AGE WELL runs across all three executions. DON'T is red. Everything else is black on cream. Humour was a strategic call. Funny ads get processed more deeply and recalled more readily than fear-based ones, and for a brand selling something people feel embarrassed about, a laugh lowers the barrier before the message lands.",
         "All three illustrations were built in Photoshop through iterative scamping, from rough placement sketches to coloured finals.",
       ],
     },
@@ -147,11 +147,11 @@ export const projects: Project[] = [
     title: "End Gambling Ads",
     category: "PR Strategy",
     description:
-      "A strategic critique of the Alliance for Gambling Reform's advocacy campaign — and two recommendations to give it real political leverage.",
+      "A strategic critique of the Alliance for Gambling Reform's advocacy campaign, and two recommendations to give it real political leverage.",
     year: "2026",
     image: "/work/agr/cover.png",
     overview:
-      "A critical analysis of the Alliance for Gambling Reform's 'End Gambling Ads' campaign, identifying why a 31-point ask let the government do just enough — and how a single demand plus minor-party registration would force change.",
+      "A critical analysis of the Alliance for Gambling Reform's 'End Gambling Ads' campaign, identifying why a 31-point ask let the government do just enough, and how a single demand plus minor-party registration would force change.",
     role: "Campaign analysis, strategic recommendations, advocacy theory.",
     outcome: "RMIT University, Advocacy and Voice in Public Relations. High Distinction.",
     caseStudy: {
@@ -171,7 +171,7 @@ export const projects: Project[] = [
         {
           heading: "The campaign",
           body: [
-            "The Alliance for Gambling Reform is an Australian health promotion charity pushing for a full legislative ban on gambling advertising. Their End Gambling Ads campaign built an unusually broad coalition — former prime ministers from both major parties, crossbench senators, the AMA, union bodies and faith organisations.",
+            "The Alliance for Gambling Reform is an Australian health promotion charity pushing for a full legislative ban on gambling advertising. Their End Gambling Ads campaign built an unusually broad coalition: former prime ministers from both major parties, crossbench senators, the AMA, union bodies and faith organisations.",
             "The diagnostic framing is sharp: opening with \"Australia has a gambling addiction\" makes the issue systemic rather than personal, which is harder for government to sidestep.",
           ],
         },
@@ -186,7 +186,7 @@ export const projects: Project[] = [
           body: [
             "Two recommendations followed from the analysis. First, isolate the advertising ban as a standalone demand. One clear ask is harder to partially satisfy.",
             "Second, register as a minor political party before the next federal election. The goal isn't to win seats. In Australia's preferential voting system, credible minor party support in marginal electorates forces candidates to negotiate preference deals. AGR stops being a petitioner and starts having leverage.",
-            "This idea came from a guest lecture by Judy Ryan, who used exactly this logic to secure the Richmond safe injecting room — I recognised the same mechanics applied here.",
+            "This idea came from a guest lecture by Judy Ryan, who used exactly this logic to secure the Richmond safe injecting room. I recognised the same mechanics applied here.",
           ],
         },
       ],
@@ -223,13 +223,13 @@ export const projects: Project[] = [
         {
           heading: "The strategy",
           body: [
-            "Melbourne has over 3,500 restaurants, and the festival kept spotlighting the same well-known names every year while the rest of the scene stayed invisible — at a time when small hospitality businesses were under real cost-of-living pressure. We built the 2026 concept around one idea: Hidden Bites and Secret Sips, Discover Melbourne's Hidden Gems. It moved the festival away from culinary prestige and gave Melburnians a reason to try the family-run, culturally diverse restaurants that rarely get any spotlight.",
+            "Melbourne has over 3,500 restaurants, and the festival kept spotlighting the same well-known names every year while the rest of the scene stayed invisible, at a time when small hospitality businesses were under real cost-of-living pressure. We built the 2026 concept around one idea: Hidden Bites and Secret Sips, Discover Melbourne's Hidden Gems. It moved the festival away from culinary prestige and gave Melburnians a reason to try the family-run, culturally diverse restaurants that rarely get any spotlight.",
           ],
         },
         {
           heading: "Key executions",
           body: [
-            "A Google Maps partnership built a curated 'Hidden Gems' trail, surfacing a new local restaurant each day of the festival with an exclusive deal — we picked Maps because 74% of Australians already use it to find restaurants, so there was no new habit to build.",
+            "A Google Maps partnership built a curated 'Hidden Gems' trail, surfacing a new local restaurant each day of the festival with an exclusive deal. We picked Maps because 74% of Australians already use it to find restaurants, so there was no new habit to build.",
             "Partnerships with EatClub and Local Pegs reached younger, budget-conscious diners through flash deals, student promos and hidden-venue discounts, while a daily 'Review and Win with Gordon Ramsay' competition kept user content and social sharing going across the 10 days.",
             "Media pitching targeted three outlets with three angles: Broadsheet for inner-city Melburnians (2.5 million monthly readers), Time Out Melbourne for 20s and 30s after affordable experiences, and The Age Good Food for affluent food enthusiasts (1.6 million readers).",
           ],
@@ -237,7 +237,7 @@ export const projects: Project[] = [
         {
           heading: "Outcome",
           body: [
-            "Two of our five team members pulled out on the day of the presentation. We restructured on the spot and delivered with three — the tutor said we handled it well and still landed a strong result under those conditions.",
+            "Two of our five team members pulled out on the day of the presentation. We restructured on the spot and delivered with three. The tutor said we handled it well and still landed a strong result under those conditions.",
           ],
         },
       ],
@@ -248,7 +248,7 @@ export const projects: Project[] = [
     title: "The Coolness Tax",
     category: "Market Research",
     description:
-      "Qualitative research for Victoria Police into why teen e-scooter riders skip helmets — reframed as an identity and social-cost problem, not a road-safety one. Recommendations shifted the fix from institutional warnings to peer-credible influencer voices.",
+      "Qualitative research for Victoria Police into why teen e-scooter riders skip helmets, reframed as an identity and social-cost problem, not a road-safety one. Recommendations shifted the fix from institutional warnings to peer-credible influencer voices.",
     year: "2026",
     image: "/placeholders/p4.svg",
     overview:
@@ -273,8 +273,8 @@ export const projects: Project[] = [
         {
           heading: "What we found",
           body: [
-            "Four themes came out of the interviews. The Coolness Tax: riders already know helmets are legally required — what stops them is the social cost of wearing one when nobody else does. The Credibility Gap: safety messaging from police and government sources gets dismissed before riders even process the content; the messenger matters more than the message.",
-            "Identity Fusion: for a lot of these riders, their friend group's behaviour and their own identity aren't separate things, so breaking from the group isn't a safety decision, it's a threat to who they are. Parental Gatekeeping: parents have the authority to counter peer influence, but that oversight fades right when peer norms take over — most parents buy the scooter without knowing the road rules themselves.",
+            "Four themes came out of the interviews. The Coolness Tax: riders already know helmets are legally required. What stops them is the social cost of wearing one when nobody else does. The Credibility Gap: safety messaging from police and government sources gets dismissed before riders even process the content; the messenger matters more than the message.",
+            "Identity Fusion: for a lot of these riders, their friend group's behaviour and their own identity aren't separate things, so breaking from the group isn't a safety decision, it's a threat to who they are. Parental Gatekeeping: parents have the authority to counter peer influence, but that oversight fades right when peer norms take over. Most parents buy the scooter without knowing the road rules themselves.",
           ],
         },
         {
@@ -287,7 +287,7 @@ export const projects: Project[] = [
           heading: "Outcome",
           body: [
             "High Distinction grade and a Certificate of Appreciation from Victoria Police. Our course coordinator called the report 'a strong report with a clear research focus' and flagged the Coolness Tax and parental influence findings as valuable insight into why young riders skip helmets.",
-            "This is the project I'd point to first for market research skill — turning a stack of interview transcripts into something a stakeholder can act on, naming the actual barrier to behaviour change, then matching the channel and messenger to it.",
+            "This is the project I'd point to first for market research skill: turning a stack of interview transcripts into something a stakeholder can act on, naming the actual barrier to behaviour change, then matching the channel and messenger to it.",
           ],
         },
       ],

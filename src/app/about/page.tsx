@@ -43,7 +43,7 @@ export default function AboutPage() {
       <section id="about-me" className="mt-14 max-w-2xl scroll-mt-24 space-y-5 text-base leading-relaxed text-muted md:text-lg">
         <Reveal>
           <p>
-            Hey — I&apos;m Kieran, a Communications student at RMIT Melbourne, double majoring in
+            Hey, I&apos;m Kieran, a Communications student at RMIT Melbourne, double majoring in
             Public Relations and Advertising. I&apos;m happiest somewhere between the strategy
             deck and the finished ad.
           </p>
