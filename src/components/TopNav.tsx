@@ -6,10 +6,7 @@ import { useState } from "react";
 import { projects } from "@/lib/projects";
 import { contactLinks } from "@/lib/contact";
 
-const aboutLinks = [
-  { href: "/about#about-me", label: "About Me" },
-  { href: "/about#more", label: "A little more…" },
-];
+const aboutLinks = [{ href: "/about#about-me", label: "About Me" }];
 
 function Icon({ className }: { className?: string }) {
   return (

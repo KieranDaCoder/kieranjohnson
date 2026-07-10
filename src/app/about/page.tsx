@@ -44,14 +44,17 @@ export default function AboutPage() {
         </Reveal>
         <Reveal delay={0.1}>
           <p>
-            Filler bio — second paragraph. What you&apos;ve done so far: coursework highlights,
-            student clubs, freelance projects, anything that shows initiative.
+            I moved to Melbourne on my own a year ago for uni, and most of what I&apos;ve picked
+            up outside class has come from just working things out myself. This year that&apos;s
+            meant teaching myself to build with AI tools, going from a bit of casual coding to
+            actually shipping things, like the Summit Signal dashboard on this site.
           </p>
         </Reveal>
         <Reveal delay={0.15}>
           <p>
-            Filler bio — third paragraph. What you&apos;re looking for: the internship, the team,
-            the kind of campaigns you want to be part of.
+            I&apos;m looking for an internship or a permanent role in PR or advertising, somewhere
+            I can keep working across both the strategy and the creative side, the way I have on
+            the projects in this portfolio.
           </p>
         </Reveal>
       </section>
@@ -89,24 +92,6 @@ export default function AboutPage() {
             </Reveal>
           ))}
         </div>
-      </section>
-
-      {/* A little more — casual, non-professional */}
-      <section id="more" className="mt-16 scroll-mt-24">
-        <Reveal>
-          <h2 className="display text-lg text-charcoal">A little more…</h2>
-        </Reveal>
-        <Reveal delay={0.1} className="mt-6 max-w-2xl space-y-4 border-t border-hairline pt-6 text-base leading-relaxed text-muted">
-          <p>
-            Filler — outside of coursework: hobbies, the shows you can&apos;t stop watching, the
-            hikes you go on, the music taste nobody asked for. Whatever makes you feel like a
-            person and not just a résumé.
-          </p>
-          <p>
-            Filler — a fun fact or two. The kind of thing that comes up in an interview and makes
-            people remember you.
-          </p>
-        </Reveal>
       </section>
     </>
   );
