@@ -28,7 +28,7 @@ export function Hero() {
           Kieran Johnson
         </h1>
         <p className="mt-5 text-base text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)] md:text-lg">
-          Communications student — PR &amp; Advertising, RMIT Melbourne
+          PR &amp; Advertising
         </p>
       </div>
 
