@@ -20,12 +20,6 @@ const skills = [
   "Canva",
 ];
 
-const certifications = [
-  "Filler Certification — e.g. Google Digital Marketing",
-  "Filler Certification — e.g. HubSpot Content Marketing",
-  "Filler Certification — e.g. Meta Social Media Marketing",
-];
-
 export default function AboutPage() {
   return (
     <>
@@ -95,20 +89,6 @@ export default function AboutPage() {
             </Reveal>
           ))}
         </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="mt-16">
-        <Reveal>
-          <h2 className="display text-lg text-charcoal">Certifications</h2>
-        </Reveal>
-        <ul className="mt-6 space-y-3">
-          {certifications.map((cert, i) => (
-            <Reveal key={cert} delay={Math.min(i * 0.08, 0.3)}>
-              <li className="border-t border-hairline pt-3 text-sm text-muted">{cert}</li>
-            </Reveal>
-          ))}
-        </ul>
       </section>
 
       {/* A little more — casual, non-professional */}
