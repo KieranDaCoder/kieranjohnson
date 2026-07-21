@@ -93,12 +93,14 @@ export function TopNav() {
           </div>
         </div>
 
-        <Link
-          href="#"
+        <a
+          href="/KieranJohnson_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="ml-1 rounded-full bg-sky px-3.5 py-1.5 text-sm font-medium text-white shadow-sm transition-transform hover:scale-[1.03]"
         >
           Résumé
-        </Link>
+        </a>
       </nav>
 
       {/* ---------- Mobile trigger ---------- */}
@@ -164,13 +166,15 @@ export function TopNav() {
               </a>
             ))}
 
-            <Link
-              href="#"
+            <a
+              href="/KieranJohnson_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="mt-6 rounded-full bg-sky px-4 py-3 text-center text-sm font-medium text-white shadow-sm"
             >
               Résumé
-            </Link>
+            </a>
           </div>
         </div>
       )}
