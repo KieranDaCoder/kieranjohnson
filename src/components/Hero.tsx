@@ -24,7 +24,15 @@ export function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at var(--gx) var(--gy), rgba(242,180,90,0.55), rgba(217,142,43,0.18) 28%, transparent 55%)",
+            "linear-gradient(to bottom, transparent 60%, #1A0F08 100%), linear-gradient(to right, rgba(26,15,8,0.55), transparent 55%), radial-gradient(ellipse 75% 70% at 70% 46%, transparent 20%, rgba(26,15,8,0.6) 60%, rgba(26,15,8,0.95) 100%), rgba(26,15,8,0.45)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at var(--gx) var(--gy), rgba(242,180,90,0.75), rgba(217,142,43,0.18) 28%, transparent 55%)",
           mixBlendMode: "soft-light",
         }}
       />
@@ -33,15 +41,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at var(--gx) var(--gy), rgba(217,142,43,0.22), transparent 40%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, transparent 60%, #1A0F08 100%), linear-gradient(to right, rgba(26,15,8,0.55), transparent 55%), radial-gradient(ellipse at 60% 45%, transparent 35%, rgba(26,15,8,0.85) 100%)",
+            "radial-gradient(circle at var(--gx) var(--gy), rgba(242,180,90,0.38), rgba(217,142,43,0.16) 22%, transparent 42%)",
         }}
       />
       <div

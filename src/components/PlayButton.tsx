@@ -51,7 +51,7 @@ export function PlayButton({ onPlay, hidden = false, className = "" }: Props) {
         aria-label="Play: start a guided tour of the site"
         onClick={onPlay}
         tabIndex={hidden ? -1 : undefined}
-        className="kj-play absolute inset-0 flex items-center justify-center rounded-full"
+        className="kj-play focus-visible:outline-offset-[8px] absolute inset-0 flex items-center justify-center rounded-full"
         style={{
           background: "radial-gradient(circle at 32% 28%, #F2B45A, #D98E2B 45%, #A8661C 100%)",
           boxShadow:
@@ -71,6 +71,16 @@ export function PlayButton({ onPlay, hidden = false, className = "" }: Props) {
             strokeLinejoin="round"
           />
         </svg>
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 rounded-full"
+          style={{
+            width: "78%",
+            height: "78%",
+            transform: "translate(-50%, -50%)",
+            border: "1px solid rgba(42,27,18,0.18)",
+          }}
+        />
       </button>
       <p className="mono-label pointer-events-none absolute left-1/2 top-full mt-8 w-max -translate-x-1/2 text-center leading-relaxed text-cream/80 lg:mt-12">
         PRESS PLAY
