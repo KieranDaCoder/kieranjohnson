@@ -51,7 +51,7 @@ export function PlayButton({ onPlay, hidden = false, className = "" }: Props) {
         aria-label="Play: start a guided tour of the site"
         onClick={onPlay}
         tabIndex={hidden ? -1 : undefined}
-        className="kj-play focus-visible:outline-offset-[8px] absolute inset-0 flex items-center justify-center rounded-full"
+        className="kj-play focus-visible:outline-[3px] focus-visible:outline-cream focus-visible:outline-offset-[8px] absolute inset-0 flex items-center justify-center rounded-full"
         style={{
           background: "radial-gradient(circle at 32% 28%, #F2B45A, #D98E2B 45%, #A8661C 100%)",
           boxShadow:
