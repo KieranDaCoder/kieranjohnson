@@ -12,7 +12,7 @@ export function AboutSection() {
     <section
       id="about"
       data-section="about"
-      className="paper-grain relative bg-paper px-6 py-24 md:px-10 md:py-32"
+      className="paper-grain relative bg-paper px-6 py-20 md:px-10 md:py-24"
     >
       <div className="lg:max-w-[62vw]">
         <SectionHeader label="03 / LOCATED IN MELBOURNE" title="ABOUT ME" />

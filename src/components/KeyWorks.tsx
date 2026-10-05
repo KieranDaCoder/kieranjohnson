@@ -22,7 +22,7 @@ export function KeyWorks({ standalone = false }: { standalone?: boolean }) {
     <section
       id="key-works"
       data-section="key-works"
-      className="paper-grain relative bg-paper px-6 py-24 md:px-10 md:py-32"
+      className="paper-grain relative bg-paper px-6 py-20 md:px-10 md:py-24"
     >
       <SectionHeader label="01 / KEY WORKS" title="SIDE A: KEY WORKS" />
       <div className="mt-12 md:mt-16">

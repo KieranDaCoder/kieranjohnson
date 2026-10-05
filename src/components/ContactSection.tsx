@@ -9,7 +9,7 @@ export function ContactSection() {
     <section
       id="contact"
       data-section="contact"
-      className="paper-grain relative flex min-h-[80svh] flex-col justify-center bg-paper px-6 py-24 md:px-10 md:py-32"
+      className="paper-grain relative flex min-h-[60svh] flex-col justify-center bg-paper px-6 py-20 md:px-10 md:py-24"
     >
       <div className="lg:max-w-[62vw]">
         <Reveal>

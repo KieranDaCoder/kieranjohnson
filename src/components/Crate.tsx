@@ -10,7 +10,7 @@ export function Crate() {
     <section
       id="crate"
       data-section="crate"
-      className="paper-grain relative bg-paper px-6 py-24 md:px-10 md:py-32"
+      className="paper-grain relative bg-paper px-6 py-20 md:px-10 md:py-24"
     >
       <SectionHeader label="02 / THE CRATE" title="SIDE B: THE CRATE" />
       <Reveal delay={0.05}>
@@ -18,7 +18,7 @@ export function Crate() {
           Every project, from campaign strategy to product builds.
         </p>
       </Reveal>
-      <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 xl:grid-cols-4">
+      <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 xl:grid-cols-5">
         {projects.map((p, i) => (
           <Reveal key={p.slug} delay={(i % 4) * 0.06} className="h-full">
             <Link
