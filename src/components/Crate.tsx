@@ -39,7 +39,7 @@ export function Crate() {
               <p className="mono-label mt-3 text-ink-muted">
                 {p.category} · {p.year}
               </p>
-              <h3 className="display mt-2 text-[1.4rem] text-ink">{p.title}</h3>
+              <h3 className="display mt-2 text-[1.4rem] leading-[1.05] text-ink">{p.title}</h3>
             </Link>
           </Reveal>
         ))}

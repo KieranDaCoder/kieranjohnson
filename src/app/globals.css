@@ -138,3 +138,14 @@ body {
     animation: none;
   }
 }
+
+/* Scroll reveal (see Reveal.tsx): only ever applied after JS has mounted. */
+[data-reveal] {
+  transition:
+    opacity 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98) var(--reveal-delay, 0s),
+    transform 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98) var(--reveal-delay, 0s);
+}
+[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 32px));
+}

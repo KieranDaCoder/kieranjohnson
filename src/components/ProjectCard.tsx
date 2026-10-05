@@ -1,18 +1,11 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import type { Project } from "@/lib/projects";
 
-// Numbered block row: hard navy rule on top, fills navy on hover.
+// Numbered row: ink rule on top, fills ink on hover.
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.3), ease: [0.21, 0.47, 0.32, 0.98] }}
-    >
+    <Reveal y={24} delay={Math.min(index * 0.08, 0.3)}>
       <Link
         href={`/work/${project.slug}`}
         className="group block border-t-2 border-ink px-1 py-7 transition-colors hover:bg-ink hover:text-white md:px-5"
@@ -29,6 +22,6 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           {project.description}
         </p>
       </Link>
-    </motion.div>
+    </Reveal>
   );
 }

@@ -29,7 +29,7 @@ export function KeyWorkCard({ project }: { project: Project }) {
         />
         <KeyWorkSticker className="absolute -right-2 -top-2 h-16 w-16" />
       </div>
-      <h3 className="display mt-5 text-[2rem] text-ink">{project.title}</h3>
+      <h3 className="display mt-5 text-[2rem] leading-[1.02] text-ink">{project.title}</h3>
       <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
         {project.cardOutcome ?? project.description}
       </p>
