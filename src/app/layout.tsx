@@ -15,7 +15,7 @@ const anton = Anton({
 });
 
 const plexMono = IBM_Plex_Mono({
-  variable: "--font-mono",
+  variable: "--font-plex",
   weight: ["400", "500", "600"],
   subsets: ["latin"],
   display: "swap",
