@@ -65,7 +65,7 @@ body {
 
 /* Liner-note labels: Plex Mono, caps, wide tracking. Never for body copy. */
 .mono-label {
-  font-family: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-family: var(--font-plex), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
