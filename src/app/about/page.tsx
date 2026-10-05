@@ -29,7 +29,7 @@ export default function AboutPage() {
         <img
           src="/profile/kieran.jpg"
           alt="Kieran Johnson"
-          className="h-56 w-40 rounded-md border border-hairline object-cover shadow-sm"
+          className="h-56 w-40 border-2 border-charcoal object-cover"
         />
       </Reveal>
 
@@ -86,7 +86,7 @@ export default function AboutPage() {
         <div className="mt-6 flex flex-wrap gap-2.5">
           {skills.map((skill, i) => (
             <Reveal key={skill} delay={Math.min(i * 0.04, 0.3)}>
-              <span className="glass-pill rounded-md px-3 py-1.5 text-sm font-medium text-sky">
+              <span className="border-2 border-charcoal bg-white px-3 py-1.5 text-sm font-medium text-charcoal">
                 {skill}
               </span>
             </Reveal>

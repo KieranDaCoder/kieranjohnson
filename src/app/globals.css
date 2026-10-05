@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  /* Premium monochrome — Apple/tech: white & light-grey surfaces, near-black
-     ink, grey secondary, with a single refined blue reserved for the key CTA. */
-  --color-bg: #f5f5f7; /* page background — Apple light grey */
-  --color-surface: #ffffff; /* raised cards / inputs — white to pop */
-  --color-cream: #ffffff; /* light ink on dark pills */
-  --color-charcoal: #1d1d1f; /* primary ink — Apple near-black */
-  --color-muted: #6e6e73; /* secondary text — Apple grey */
-  --color-accent: #424245; /* small labels / icons — dark grey */
-  --color-sky: #0071e3; /* CTA / active nav — Apple system blue, the single 10% accent */
-  --color-hairline: #d2d2d7; /* borders / dividers — light grey */
+  /* Brand palette: navy ground + ink, sky blue accent, pale-blue wash, white page. */
+  --color-bg: #ffffff; /* page below the hero */
+  --color-hero: #0f2a4a; /* hero ground */
+  --color-surface: #e8f1fa; /* tags, hover fills, inputs */
+  --color-cream: #ffffff; /* light ink on dark */
+  --color-charcoal: #0f2a4a; /* primary ink (navy) */
+  --color-muted: #4a6079; /* secondary text, AA on white */
+  --color-accent: #0f2a4a; /* small labels / icons */
+  --color-sky: #8fc1e8; /* accent: shapes, underlines, hover; text only on navy */
+  --color-hairline: #cfe2f3; /* soft dividers on inner pages */
 }
 
-/* "inline" makes Tailwind substitute the var() reference where it's used,
-   so the next/font variable (set on <body>) resolves correctly. Both body and
-   display use Geist — the display face just renders at a heavier weight. */
+/* "inline" makes Tailwind substitute the var() reference where it is used, so
+   the next/font variables (set on <body>) resolve correctly. */
 @theme inline {
-  --font-display: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-gambarino), ui-serif, Georgia, serif;
+  --font-body: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-hero: var(--font-anton), Impact, "Arial Narrow", sans-serif;
 }
 
 html {
@@ -28,91 +28,108 @@ html {
 body {
   background: var(--color-bg);
   color: var(--color-charcoal);
-  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--color-charcoal);
-  color: #ffffff;
+  background: var(--color-sky);
+  color: var(--color-hero);
 }
 
-/* Display type: Geist at a heavy weight — Skiper-style clean headings */
+/* Titles: Gambarino (single weight, so no font-weight to avoid faux bold). */
 .display {
-  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  font-weight: 650;
-  letter-spacing: -0.02em;
+  font-family: var(--font-gambarino), ui-serif, Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
   line-height: 1.05;
 }
 
-/* Repurposed: neutral sub-label (was a serif italic accent) */
+/* Hero name: Anton, uppercase, tight. */
+.hero-name {
+  font-family: var(--font-anton), Impact, "Arial Narrow", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+}
+
+/* As large as the viewport allows: two lines, plus room for the nav above and
+   the subtitle below, capped by width so "JOHNSON" never overflows. */
+.hero-name-size {
+  font-size: min(calc((100svh - 15rem) / 1.9), 25vw);
+}
+
+/* Small technical caption (corner labels, kickers). */
+.caption {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* Sub-label (was a serif italic accent). */
 .serif-accent {
-  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   font-style: normal;
   font-weight: 500;
 }
 
-/* Inline highlight badge — soft neutral pill wrapping key phrases */
-.hl {
-  background: #e8e8ed;
-  color: #1d1d1f;
-  padding: 2px 6px;
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  white-space: nowrap;
+/* Fine film grain over the navy hero (decorative, never intercepts input). */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.1 -0.1'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-/* Continuous ambient drift on the hero photo — slow, smooth, directional.
-   Scale stays >1 so the translate never exposes the image edges. */
-@keyframes heroDrift {
-  0%,
-  100% {
-    transform: scale(1.06) translate3d(0, 0, 0);
-  }
-  50% {
-    transform: scale(1.11) translate3d(-1.8%, -1.4%, 0);
-  }
-}
-.hero-drift {
-  animation: heroDrift 26s ease-in-out infinite;
-  will-change: transform;
+/* Concentric corners: inner radius = outer radius - padding (Apple's rule),
+   never below a minimum so far-from-edge shapes keep a soft corner. */
+.concentric {
+  --r-outer: 1rem;
+  --pad: 0.5rem;
+  --r-min: 0.25rem;
+  border-radius: max(calc(var(--r-outer) - var(--pad)), var(--r-min));
 }
 
-/* Liquid glass — frosted translucent panel with an inset edge highlight.
-   Reserved for a few prominent "tiles" (project cards) per perf guidance. */
-.glass {
-  background: color-mix(in srgb, #ffffff 60%, transparent);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  box-shadow:
-    0 6px 28px rgba(27, 35, 32, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75);
-}
-
-/* Cheap translucent pill — tint + faint blur, safe to use on many at once. */
-.glass-pill {
-  background: color-mix(in srgb, #ffffff 45%, transparent);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-/* Apple "liquid glass" for the floating top nav pill — pure-CSS layered recipe
-   (backdrop blur/saturate + tint + inset highlight + a specular ::after shine).
-   Tint kept fairly opaque so charcoal/muted nav text stays legible while it
-   frosts the full-bleed hero video behind it. */
+/* Floating glass nav. Theme flips with the ground behind it:
+   data-nav-theme="dark" over the navy hero, "light" over the white page. */
 .glass-navbar {
-  /* Refractive rim: light top-left / dark bottom-right inset edges make the
-     border read as a bent glass lip catching light. Tint + blur + distortion
-     live on ::before so the backdrop can be displaced, not just frosted. */
+  --nav-ink: var(--color-charcoal);
+  --nav-accent: var(--color-hero);
+  --nav-tint: rgba(255, 255, 255, 0.78);
+  --nav-rim: rgba(255, 255, 255, 0.55);
+  --nav-hover: rgba(143, 193, 232, 0.35);
+  --cta-bg: var(--color-hero);
+  --cta-ink: #ffffff;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--nav-rim);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.14),
-    inset 1px 1px 1px rgba(255, 255, 255, 0.75),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.08);
+    0 8px 32px rgba(15, 42, 74, 0.16),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.7),
+    inset -1px -1px 2px rgba(15, 42, 74, 0.08);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+[data-nav-theme="dark"] .glass-navbar {
+  --nav-ink: #ffffff;
+  --nav-accent: var(--color-sky);
+  --nav-tint: rgba(15, 42, 74, 0.55);
+  --nav-rim: rgba(255, 255, 255, 0.22);
+  --nav-hover: rgba(143, 193, 232, 0.22);
+  --cta-bg: #ffffff;
+  --cta-ink: var(--color-hero);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.28),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.2);
 }
 .glass-navbar::before {
   content: "";
@@ -121,35 +138,46 @@ body {
   z-index: -1;
   border-radius: inherit;
   pointer-events: none;
-  /* Tinted enough that busy text/imagery behind the pill can't bleed through
-     and compete with the nav's own text — glassy, but no longer see-through. */
-  background: rgba(245, 245, 247, 0.88);
-  /* Plain blur first — this alone must always work, on every browser, with
-     nothing that can invalidate it. The SVG distortion (below, in @supports)
-     is a pure enhancement layered on top, never a replacement for this. */
-  backdrop-filter: blur(20px) saturate(180%) brightness(1.05);
-  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.05);
+  background: var(--nav-tint);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  transition: background 0.3s ease;
 }
-/* A single unsupported function anywhere in a backdrop-filter list voids the
-   *entire* declaration (spec behaviour) — so the wobble/refraction only ever
-   applies where url() filters are confirmed supported, guarding the base
-   blur above from silently vanishing on browsers that don't support it. */
+/* A single unsupported function voids a whole backdrop-filter list, so the
+   displacement refinement only applies where url() filters are supported. */
 @supports (backdrop-filter: url(#glass-distortion)) {
   .glass-navbar::before {
-    backdrop-filter: url(#glass-distortion) blur(20px) saturate(180%) brightness(1.05);
+    backdrop-filter: url(#glass-distortion) blur(20px) saturate(160%);
   }
 }
 
+.nav-ink {
+  color: var(--nav-ink);
+}
+.nav-link:hover {
+  background: var(--nav-hover);
+}
+.nav-link[data-active="true"] {
+  background: var(--nav-hover);
+  font-weight: 600;
+}
+.nav-cta {
+  background: var(--cta-bg);
+  color: var(--cta-ink);
+}
+/* Pixel icons are dark; flip them to white over the navy hero. */
+[data-nav-theme="dark"] .nav-icon {
+  filter: brightness(0) invert(1);
+}
+
 @media (prefers-reduced-transparency: reduce) {
-  .glass,
-  .glass-pill,
-  .glass-navbar {
-    background: var(--color-surface);
+  .glass-navbar::before {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    background: var(--color-bg);
   }
-  .glass-navbar::before {
-    display: none;
+  [data-nav-theme="dark"] .glass-navbar::before {
+    background: var(--color-hero);
   }
 }
 
@@ -174,11 +202,25 @@ body {
   transform-origin: left;
 }
 
+/* Scroll-prompt arrow nudge */
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+.nudge {
+  animation: nudge 1.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .hero-drift {
+  .nudge {
     animation: none;
   }
 }

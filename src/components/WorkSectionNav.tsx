@@ -45,7 +45,7 @@ export function WorkSectionNav() {
                 <a
                   href={`#${project.slug}`}
                   className={`block text-sm transition-colors ${
-                    isActive ? "font-medium text-sky" : "text-muted hover:text-charcoal"
+                    isActive ? "font-semibold text-charcoal underline decoration-sky decoration-2 underline-offset-4" : "text-muted hover:text-charcoal"
                   }`}
                 >
                   {project.title}

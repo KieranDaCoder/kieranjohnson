@@ -1,16 +1,31 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Anton } from "next/font/google";
+import localFont from "next/font/local";
 import { TopNav } from "@/components/TopNav";
-import { Footer } from "@/components/Footer";
+import { ContentShell } from "@/components/ContentShell";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { Preloader } from "@/components/Preloader";
 import "./globals.css";
 
-// Geist — Vercel's clean sans (skiper-ui.com's typeface). One variable face
-// used for both body and headings; the heavier weight is applied via .display.
-const geist = Geist({
-  variable: "--font-geist",
+// Anton: hero name only. Gambarino: titles. Sora: everything else.
+const anton = Anton({
+  variable: "--font-anton",
+  weight: "400",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const gambarino = localFont({
+  variable: "--font-gambarino",
+  src: "../../public/fonts/Gambarino-Regular.woff2",
+  weight: "400",
+  display: "swap",
+});
+
+const sora = localFont({
+  variable: "--font-sora",
+  src: "../../public/fonts/Sora-Variable.woff2",
+  weight: "100 800",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,10 +39,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} antialiased`}>
-        {/* Liquid-glass displacement filter — feTurbulence noise drives a
-            feDisplacementMap that bends the backdrop, giving the refracted,
-            wobbly edges of real Apple glass (backdrop-filter: url(#…) in CSS). */}
+      <body className={`${anton.variable} ${gambarino.variable} ${sora.variable} antialiased`}>
+        {/* Liquid-glass displacement filter: feTurbulence noise drives a
+            feDisplacementMap that bends the backdrop (backdrop-filter: url(#…) in CSS). */}
         <svg aria-hidden="true" width="0" height="0" style={{ position: "absolute" }}>
           <filter id="glass-distortion" x="-20%" y="-20%" width="140%" height="140%">
             <feTurbulence type="fractalNoise" baseFrequency="0.012 0.012" numOctaves="2" seed="17" result="noise" />
@@ -35,15 +49,9 @@ export default function RootLayout({
             <feDisplacementMap in="SourceGraphic" in2="softNoise" scale="60" xChannelSelector="R" yChannelSelector="G" />
           </filter>
         </svg>
-        <Preloader />
         <SmoothScroll />
         <TopNav />
-        <main>
-          <div className="mx-auto max-w-4xl px-5 py-14 md:px-10 md:py-20">
-            {children}
-            <Footer />
-          </div>
-        </main>
+        <ContentShell>{children}</ContentShell>
       </body>
     </html>
   );

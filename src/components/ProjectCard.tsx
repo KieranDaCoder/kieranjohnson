@@ -4,8 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Project } from "@/lib/projects";
 
-// Dennis-list-style row: title, category/year, one-line description. No
-// thumbnail, no hover-reveals-image — just a text/underline shift on hover.
+// Numbered block row: hard navy rule on top, fills navy on hover.
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   return (
     <motion.div
@@ -16,18 +15,19 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
     >
       <Link
         href={`/work/${project.slug}`}
-        className={`group block border-b border-hairline pb-8 transition-colors ${index === 0 ? "pt-0" : "pt-8"}`}
+        className="group block border-t-2 border-charcoal px-1 py-7 transition-colors hover:bg-charcoal hover:text-white md:px-5"
       >
-        <div className="flex items-baseline justify-between gap-4">
-          <h3 className="display link-sweep text-2xl text-charcoal md:text-3xl">
-            {project.title}
-          </h3>
-          <span className="shrink-0 text-sm text-muted">{project.year}</span>
+        <div className="flex items-baseline gap-5">
+          <span className="caption text-muted transition-colors group-hover:text-sky">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <h3 className="display flex-1 text-2xl md:text-4xl">{project.title}</h3>
+          <span className="shrink-0 text-sm text-muted transition-colors group-hover:text-sky">{project.year}</span>
         </div>
-        <p className="mt-1.5 text-sm font-medium uppercase tracking-wide text-muted">
-          {project.category}
+        <p className="caption mt-3 text-muted transition-colors group-hover:text-sky md:pl-10">{project.category}</p>
+        <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted transition-colors group-hover:text-white/80 md:pl-10">
+          {project.description}
         </p>
-        <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">{project.description}</p>
       </Link>
     </motion.div>
   );

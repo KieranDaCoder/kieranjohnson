@@ -20,7 +20,7 @@ export default function ContactPage() {
   };
 
   const field =
-    "w-full rounded-md border border-hairline bg-surface px-4 py-3 text-sm text-charcoal placeholder:text-muted focus:border-charcoal/40 focus:outline-none";
+    "w-full border-2 border-charcoal bg-surface px-4 py-3 text-sm text-charcoal placeholder:text-muted focus:bg-white focus:outline-none";
 
   return (
     <>
@@ -69,7 +69,7 @@ export default function ContactPage() {
           />
           <button
             type="submit"
-            className="w-full rounded-md bg-sky py-3 text-sm font-medium text-white transition-transform hover:scale-[1.01]"
+            className="w-full border-2 border-charcoal bg-charcoal py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-charcoal"
           >
             Submit
           </button>

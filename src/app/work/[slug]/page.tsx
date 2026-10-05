@@ -120,7 +120,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
                 key={ex.src}
                 src={ex.src}
                 alt={ex.alt}
-                className="w-full rounded-xl border border-hairline shadow-sm"
+                className="w-full border-2 border-charcoal"
               />
             ))}
           </div>
@@ -138,11 +138,11 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {cs.scamps.map((src, i) => (
               <Reveal key={src} delay={i * 0.1}>
-                <div className="rounded-xl border border-hairline bg-surface p-3 shadow-sm">
+                <div className="border-2 border-charcoal bg-surface p-3 shadow-[6px_6px_0_0_var(--color-hero)]">
                   <img
                     src={src}
                     alt={`Handwritten scamp: ${cs.conceptBanners[i]?.headline ?? "copy concept"}`}
-                    className="w-full rounded-md"
+                    className="w-full"
                   />
                 </div>
               </Reveal>
@@ -161,7 +161,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           <div className="mt-8 space-y-4">
             {cs.conceptBanners.map((b, i) => (
               <Reveal key={b.headline} delay={i * 0.1}>
-                <div className="flex items-baseline justify-between gap-6 rounded-xl border border-hairline bg-surface px-6 py-5 shadow-sm">
+                <div className="flex items-baseline justify-between gap-6 border-2 border-charcoal bg-surface px-6 py-5 shadow-[6px_6px_0_0_var(--color-hero)]">
                   <div>
                     <p className="display text-xl text-charcoal md:text-2xl">{b.headline}</p>
                     <p className="mt-1.5 text-sm text-muted md:text-base">{b.subline}</p>
@@ -187,11 +187,11 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           <div className="mt-8 space-y-6">
             {cs.developmentRows.map((row, i) => (
               <Reveal key={row.src} delay={i * 0.1}>
-                <figure className="rounded-xl border border-hairline bg-surface p-3 shadow-sm">
+                <figure className="border-2 border-charcoal bg-surface p-3 shadow-[6px_6px_0_0_var(--color-hero)]">
                   <img
                     src={row.src}
                     alt={`Development progression for the '${row.label}' execution: rough sketch, line art, coloured final, and Photoshop working file`}
-                    className="w-full rounded-md"
+                    className="w-full"
                   />
                   <figcaption className="px-1 pb-1 pt-3 text-xs uppercase tracking-[0.2em] text-muted">
                     {row.label}
@@ -235,7 +235,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         <img
           src={project.image}
           alt=""
-          className="aspect-[16/9] w-full rounded-xl border border-hairline object-cover"
+          className="aspect-[16/9] w-full border-2 border-charcoal object-cover"
         />
       </Reveal>
 
