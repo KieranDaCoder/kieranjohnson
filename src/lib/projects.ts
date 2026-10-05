@@ -34,6 +34,12 @@ export type CaseStudy = CreativeCaseStudy | AnalysisCaseStudy;
 export type Project = {
   slug: string;
   title: string;
+  // Short all-caps label for tight spots on the home page.
+  shortTitle?: string;
+  // Featured on the home page and /key-works.
+  keyWork?: boolean;
+  // Short result line for key work cards (`outcome` below is case-study text).
+  cardOutcome?: string;
   category:
     | "PR Strategy"
     | "Advertising"
@@ -60,6 +66,10 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "summit-signal",
+    // TODO(Kieran): confirm outcome lines
+    shortTitle: "SUMMIT SIGNAL",
+    keyWork: true,
+    cardOutcome: "An AI-powered market intelligence dashboard for the outdoor and adventure gear niche. Built end to end and live in beta.",
     title: "Summit Signal",
     category: "Product Build",
     description:
@@ -75,6 +85,7 @@ export const projects: Project[] = [
   },
   {
     slug: "tattoos-dont-age-well",
+    shortTitle: "TATTOOS",
     title: "Tattoos Don't Age Well",
     category: "Advertising",
     description:
@@ -144,6 +155,7 @@ export const projects: Project[] = [
   },
   {
     slug: "end-gambling-ads",
+    shortTitle: "GAMBLING ADS",
     title: "End Gambling Ads",
     category: "PR Strategy",
     description:
@@ -194,6 +206,10 @@ export const projects: Project[] = [
   },
   {
     slug: "hidden-bites-and-secret-sips",
+    // TODO(Kieran): confirm outcome lines
+    shortTitle: "HIDDEN BITES",
+    keyWork: true,
+    cardOutcome: "A national media strategy for the Melbourne Food & Wine Festival, pitched live in a simulated press conference.",
     title: "Hidden Bites and Secret Sips",
     category: "PR Strategy",
     description:
@@ -245,6 +261,10 @@ export const projects: Project[] = [
   },
   {
     slug: "the-coolness-tax",
+    // TODO(Kieran): confirm outcome lines
+    shortTitle: "COOLNESS TAX",
+    keyWork: true,
+    cardOutcome: "Research for Victoria Police on why teen e-scooter riders skip helmets. Earned a Certificate of Appreciation from Victoria Police.",
     title: "The Coolness Tax",
     category: "Market Research",
     description:
@@ -298,3 +318,8 @@ export const projects: Project[] = [
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);
 }
+
+// Key works, in display order.
+export const keyWorks: Project[] = ["the-coolness-tax", "hidden-bites-and-secret-sips", "summit-signal"]
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter((p): p is Project => Boolean(p));
