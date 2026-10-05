@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Anton, IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
-import { TopNav } from "@/components/TopNav";
+import { TracklistNav } from "@/components/TracklistNav";
+import { SectionObserver } from "@/lib/sections";
 import { ContentShell } from "@/components/ContentShell";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
@@ -41,7 +42,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${anton.variable} ${plexMono.variable} ${sora.variable} antialiased`}>
         <SmoothScroll />
-        <TopNav />
+        <TracklistNav />
+        <SectionObserver />
         <ContentShell>{children}</ContentShell>
       </body>
     </html>

@@ -13,7 +13,7 @@ export function ContentShell({ children }: { children: React.ReactNode }) {
 
   return (
     <main>
-      <div className="mx-auto max-w-4xl px-5 py-14 md:px-10 md:py-20">
+      <div className="mx-auto max-w-4xl px-5 pb-14 pt-[calc(var(--nav-h)+3.5rem)] md:px-10 md:pb-20 md:pt-[calc(var(--nav-h)+5rem)]">
         {children}
         <Footer />
       </div>
