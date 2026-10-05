@@ -3,6 +3,7 @@
 import Lenis from "lenis";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { setLenis } from "@/lib/lenis";
 
 // Lenis gives the whole site a weighted, glide-to-a-stop scroll feel.
 export function SmoothScroll() {
@@ -16,6 +17,8 @@ export function SmoothScroll() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
+    setLenis(lenis);
+
     let frame: number;
     const raf = (time: number) => {
       lenis.raf(time);
@@ -25,6 +28,7 @@ export function SmoothScroll() {
 
     return () => {
       cancelAnimationFrame(frame);
+      setLenis(null);
       lenis.destroy();
     };
   }, []);
