@@ -1,0 +1,16 @@
+/* Listening Room palette (brief 3.1). */
+:root {
+  --leather-900: #1a0f08;
+  --brown: #2a1b12;
+  --leather-600: #4a3022;
+  --cognac: #8a5232;
+  --amber: #d98e2b;
+  --amber-light: #f2b45a;
+  --rust: #9b4027;
+  --cream: #f2ebdd;
+  --olive: #6b6f3a;
+  --concrete: #8c8a84;
+  --blue: #a9c7e0;
+
+  --nav-h: 76px;
+}

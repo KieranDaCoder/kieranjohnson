@@ -23,10 +23,10 @@ export function PageHeader({
       <RevealText
         text={title}
         delay={0.05}
-        className="display mt-3 text-4xl text-charcoal md:text-5xl"
+        className="display mt-3 text-4xl text-ink md:text-5xl"
       />
       {children ? (
-        <Reveal delay={0.15} className="mt-4 max-w-xl text-base leading-relaxed text-muted">
+        <Reveal delay={0.15} className="mt-4 max-w-xl text-base leading-relaxed text-ink-muted">
           {children}
         </Reveal>
       ) : null}

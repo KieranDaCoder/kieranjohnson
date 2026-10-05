@@ -3,8 +3,8 @@ import { Reveal } from "@/components/Reveal";
 import { PageHeader } from "@/components/PageHeader";
 
 export const metadata: Metadata = {
-  title: "About — Kieran Johnson",
-  description: "About Kieran Johnson — Communications student at RMIT Melbourne.",
+  title: "About | Kieran Johnson",
+  description: "About Kieran Johnson, Communications student at RMIT Melbourne.",
 };
 
 const skills = [
@@ -29,12 +29,12 @@ export default function AboutPage() {
         <img
           src="/profile/kieran.jpg"
           alt="Kieran Johnson"
-          className="h-56 w-40 border-2 border-charcoal object-cover"
+          className="h-56 w-40 border-2 border-ink object-cover"
         />
       </Reveal>
 
       {/* Bio */}
-      <section id="about-me" className="mt-14 max-w-2xl scroll-mt-24 space-y-5 text-base leading-relaxed text-muted md:text-lg">
+      <section id="about-me" className="mt-14 max-w-2xl scroll-mt-24 space-y-5 text-base leading-relaxed text-ink-muted md:text-lg">
         <Reveal>
           <p>
             Hey, I&apos;m Kieran, a Communications student at RMIT Melbourne, double majoring in
@@ -62,18 +62,18 @@ export default function AboutPage() {
       {/* Education */}
       <section className="mt-20">
         <Reveal>
-          <h2 className="display text-lg text-charcoal">Education</h2>
+          <h2 className="display text-lg text-ink">Education</h2>
         </Reveal>
-        <Reveal delay={0.1} className="mt-6 border-t border-hairline pt-6">
+        <Reveal delay={0.1} className="mt-6 border-t border-line pt-6">
           <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
             <div>
-              <h3 className="font-medium text-charcoal">Bachelor of Communication</h3>
-              <p className="mt-1 text-sm text-muted">
-                RMIT University, Melbourne — Double major in Public Relations &amp; Advertising,
+              <h3 className="font-medium text-ink">Bachelor of Communication</h3>
+              <p className="mt-1 text-sm text-ink-muted">
+                RMIT University, Melbourne. Double major in Public Relations &amp; Advertising,
                 minor in Marketing
               </p>
             </div>
-            <span className="text-sm text-muted">2025 — present</span>
+            <span className="text-sm text-ink-muted">2025 to present</span>
           </div>
         </Reveal>
       </section>
@@ -81,12 +81,12 @@ export default function AboutPage() {
       {/* Skills */}
       <section className="mt-16">
         <Reveal>
-          <h2 className="display text-lg text-charcoal">Skills</h2>
+          <h2 className="display text-lg text-ink">Skills</h2>
         </Reveal>
         <div className="mt-6 flex flex-wrap gap-2.5">
           {skills.map((skill, i) => (
             <Reveal key={skill} delay={Math.min(i * 0.04, 0.3)}>
-              <span className="border-2 border-charcoal bg-white px-3 py-1.5 text-sm font-medium text-charcoal">
+              <span className="border-2 border-ink bg-white px-3 py-1.5 text-sm font-medium text-ink">
                 {skill}
               </span>
             </Reveal>

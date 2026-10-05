@@ -37,7 +37,7 @@ export function WorkSectionNav() {
       </div>
 
       <nav className="hidden w-48 shrink-0 lg:block">
-        <ul className="sticky top-20 space-y-2.5 border-l border-hairline pl-4">
+        <ul className="sticky top-20 space-y-2.5 border-l border-line pl-4">
           {projects.map((project) => {
             const isActive = active === project.slug;
             return (
@@ -45,7 +45,7 @@ export function WorkSectionNav() {
                 <a
                   href={`#${project.slug}`}
                   className={`block text-sm transition-colors ${
-                    isActive ? "font-semibold text-charcoal underline decoration-sky decoration-2 underline-offset-4" : "text-muted hover:text-charcoal"
+                    isActive ? "font-semibold text-ink underline decoration-amber decoration-2 underline-offset-4" : "text-ink-muted hover:text-ink"
                   }`}
                 >
                   {project.title}

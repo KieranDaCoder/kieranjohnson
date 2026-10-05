@@ -23,8 +23,8 @@ function CloseIcon({ className }: { className?: string }) {
   );
 }
 
-const linkBase = "nav-link nav-ink rounded-full px-3.5 py-1.5 text-sm transition-colors";
-const dropItem = "nav-link nav-ink block rounded-lg px-3 py-2 text-sm transition-colors";
+const linkBase = "hover:bg-white/10 text-cream rounded-full px-3.5 py-1.5 text-sm transition-colors";
+const dropItem = "hover:bg-white/10 text-cream block rounded-lg px-3 py-2 text-sm transition-colors";
 
 // Floating glass pill with hover-revealed dropdowns. Its colours follow the
 // ground behind it: white-on-navy over the hero, navy-on-white everywhere else
@@ -57,7 +57,7 @@ export function TopNav() {
   return (
     <>
       {/* ---------- Desktop floating pill ---------- */}
-      <nav className="fixed left-1/2 top-4 z-50 hidden -translate-x-1/2 items-center gap-0.5 rounded-full px-1.5 py-1 transition-all duration-300 ease-out hover:gap-1 hover:px-2.5 hover:py-2 md:flex glass-navbar">
+      <nav className="fixed left-1/2 top-4 z-50 hidden -translate-x-1/2 items-center gap-0.5 rounded-full px-1.5 py-1 transition-all duration-300 ease-out hover:gap-1 hover:px-2.5 hover:py-2 md:flex bg-leather/85 backdrop-blur-md">
         <Link href="/" data-active={pathname === "/"} className={linkBase}>
           Home
         </Link>
@@ -66,7 +66,7 @@ export function TopNav() {
           <Link href="/about" data-active={isActive("/about")} className={linkBase}>
             About
           </Link>
-          <div className="invisible absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-2xl p-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 glass-navbar">
+          <div className="invisible absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-2xl p-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 bg-leather/85 backdrop-blur-md">
             {aboutLinks.map((l) => (
               <a key={l.href} href={l.href} className={dropItem}>
                 {l.label}
@@ -79,7 +79,7 @@ export function TopNav() {
           <Link href="/work" data-active={isActive("/work")} className={linkBase}>
             Work
           </Link>
-          <div className="invisible absolute left-1/2 top-full mt-2 w-56 -translate-x-1/2 rounded-2xl p-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 glass-navbar">
+          <div className="invisible absolute left-1/2 top-full mt-2 w-56 -translate-x-1/2 rounded-2xl p-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 bg-leather/85 backdrop-blur-md">
             {projects.map((p) => (
               <a key={p.slug} href={`/work#${p.slug}`} className={dropItem}>
                 {p.title}
@@ -89,8 +89,8 @@ export function TopNav() {
         </div>
 
         <div className="group relative">
-          <span className="nav-ink cursor-default rounded-full px-3.5 py-1.5 text-sm">Contact</span>
-          <div className="invisible absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-2xl p-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 glass-navbar">
+          <span className="text-cream cursor-default rounded-full px-3.5 py-1.5 text-sm">Contact</span>
+          <div className="invisible absolute left-1/2 top-full mt-2 w-44 -translate-x-1/2 rounded-2xl p-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 bg-leather/85 backdrop-blur-md">
             {contactLinks.map((c) => (
               <a
                 key={c.label}
@@ -99,7 +99,7 @@ export function TopNav() {
                 rel={c.external ? "noopener noreferrer" : undefined}
                 className={`${dropItem} flex items-center gap-2`}
               >
-                <img src={c.icon} alt="" aria-hidden="true" className="nav-icon h-4 w-4 [image-rendering:pixelated]" />
+                <img src={c.icon} alt="" aria-hidden="true" className="invert brightness-0 h-4 w-4 [image-rendering:pixelated]" />
                 {c.label}
               </a>
             ))}
@@ -110,7 +110,7 @@ export function TopNav() {
           href="/KieranJohnson_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="nav-cta ml-1 rounded-full px-3.5 py-1.5 text-sm font-semibold shadow-sm transition-transform hover:scale-[1.03]"
+          className="bg-amber text-ink ml-1 rounded-full px-3.5 py-1.5 text-sm font-semibold shadow-sm transition-transform hover:scale-[1.03]"
         >
           Résumé
         </a>
@@ -121,7 +121,7 @@ export function TopNav() {
         <button
           aria-label="Open menu"
           onClick={() => setOpen(true)}
-          className="glass-navbar nav-ink relative flex min-h-11 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium"
+          className="bg-leather/85 backdrop-blur-md text-cream relative flex min-h-11 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium"
         >
           <Icon className="h-4 w-4" />
           Menu
@@ -132,39 +132,39 @@ export function TopNav() {
       {open && (
         <div className="fixed inset-0 z-50 md:hidden">
           <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-          <div className="absolute inset-x-4 top-4 flex max-h-[85vh] flex-col overflow-y-auto border-2 border-charcoal bg-white p-6 shadow-[8px_8px_0_0_var(--color-hero)]">
+          <div className="absolute inset-x-4 top-4 flex max-h-[85vh] flex-col overflow-y-auto border-2 border-ink bg-white p-6 shadow-[8px_8px_0_0_var(--color-leather)]">
             <div className="mb-4 flex items-center justify-between">
-              <span className="display text-2xl text-charcoal">Menu</span>
-              <button aria-label="Close menu" onClick={() => setOpen(false)} className="p-1.5 text-charcoal">
+              <span className="display text-2xl text-ink">Menu</span>
+              <button aria-label="Close menu" onClick={() => setOpen(false)} className="p-1.5 text-ink">
                 <CloseIcon className="h-6 w-6" />
               </button>
             </div>
 
-            <Link href="/" onClick={() => setOpen(false)} className="border-b border-hairline py-3 text-base font-medium text-charcoal">
+            <Link href="/" onClick={() => setOpen(false)} className="border-b border-line py-3 text-base font-medium text-ink">
               Home
             </Link>
 
-            <p className="caption mt-3 text-muted">About</p>
-            <Link href="/about" onClick={() => setOpen(false)} className="border-b border-hairline py-3 text-base text-charcoal">
+            <p className="caption mt-3 text-ink-muted">About</p>
+            <Link href="/about" onClick={() => setOpen(false)} className="border-b border-line py-3 text-base text-ink">
               About
             </Link>
             {aboutLinks.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="border-b border-hairline py-2.5 pl-3 text-sm text-muted">
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="border-b border-line py-2.5 pl-3 text-sm text-ink-muted">
                 {l.label}
               </a>
             ))}
 
-            <p className="caption mt-3 text-muted">Work</p>
-            <Link href="/work" onClick={() => setOpen(false)} className="border-b border-hairline py-3 text-base text-charcoal">
+            <p className="caption mt-3 text-ink-muted">Work</p>
+            <Link href="/work" onClick={() => setOpen(false)} className="border-b border-line py-3 text-base text-ink">
               Work
             </Link>
             {projects.map((p) => (
-              <a key={p.slug} href={`/work#${p.slug}`} onClick={() => setOpen(false)} className="border-b border-hairline py-2.5 pl-3 text-sm text-muted">
+              <a key={p.slug} href={`/work#${p.slug}`} onClick={() => setOpen(false)} className="border-b border-line py-2.5 pl-3 text-sm text-ink-muted">
                 {p.title}
               </a>
             ))}
 
-            <p className="caption mt-3 text-muted">Contact</p>
+            <p className="caption mt-3 text-ink-muted">Contact</p>
             {contactLinks.map((c) => (
               <a
                 key={c.label}
@@ -172,7 +172,7 @@ export function TopNav() {
                 target={c.external ? "_blank" : undefined}
                 rel={c.external ? "noopener noreferrer" : undefined}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 border-b border-hairline py-2.5 text-sm text-charcoal"
+                className="flex items-center gap-2 border-b border-line py-2.5 text-sm text-ink"
               >
                 <img src={c.icon} alt="" aria-hidden="true" className="h-4 w-4 [image-rendering:pixelated]" />
                 {c.label}
@@ -184,7 +184,7 @@ export function TopNav() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="mt-6 rounded-full bg-charcoal px-4 py-3 text-center text-sm font-semibold text-white"
+              className="mt-6 rounded-full bg-ink px-4 py-3 text-center text-sm font-semibold text-white"
             >
               Résumé
             </a>

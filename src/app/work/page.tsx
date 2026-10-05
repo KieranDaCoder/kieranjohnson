@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { WorkSectionNav } from "@/components/WorkSectionNav";
 
 export const metadata: Metadata = {
-  title: "Work — Kieran Johnson",
+  title: "Work | Kieran Johnson",
   description: "Selected PR, advertising and campaign work by Kieran Johnson.",
 };
 

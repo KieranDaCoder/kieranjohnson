@@ -11,16 +11,16 @@ export default function ContactPage() {
   const [from, setFrom] = useState("");
   const [message, setMessage] = useState("");
 
-  // No backend — compose an email in the visitor's mail client instead.
+  // No backend: compose an email in the visitor's mail client instead.
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(`Portfolio enquiry from ${name || "someone"}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name}${from ? ` (${from})` : ""}`);
+    const body = encodeURIComponent(`${message}\n\n${name}${from ? ` (${from})` : ""}`);
     window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
   };
 
   const field =
-    "w-full border-2 border-charcoal bg-surface px-4 py-3 text-sm text-charcoal placeholder:text-muted focus:bg-white focus:outline-none";
+    "w-full border-2 border-ink bg-paper-2 px-4 py-3 text-sm text-ink placeholder:text-ink-muted focus:bg-white focus:outline-none";
 
   return (
     <>
@@ -29,14 +29,14 @@ export default function ContactPage() {
       </PageHeader>
 
       <Reveal delay={0.15} className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm">
-        <a href={`mailto:${EMAIL}`} className="link-sweep text-charcoal">
+        <a href={`mailto:${EMAIL}`} className="link-sweep text-ink">
           {EMAIL}
         </a>
         <a
           href="https://www.linkedin.com/in/kieran-johnson-28b372359/"
           target="_blank"
           rel="noopener noreferrer"
-          className="link-sweep text-charcoal"
+          className="link-sweep text-ink"
         >
           LinkedIn
         </a>
@@ -69,7 +69,7 @@ export default function ContactPage() {
           />
           <button
             type="submit"
-            className="w-full border-2 border-charcoal bg-charcoal py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-charcoal"
+            className="w-full border-2 border-ink bg-ink py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-ink"
           >
             Submit
           </button>

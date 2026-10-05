@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Anton } from "next/font/google";
+import { Anton, IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { TopNav } from "@/components/TopNav";
 import { ContentShell } from "@/components/ContentShell";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
-// Anton: hero name only. Gambarino: titles. Sora: everything else.
+// Anton: display. Sora: body. IBM Plex Mono: liner-note labels.
 const anton = Anton({
   variable: "--font-anton",
   weight: "400",
@@ -14,10 +14,10 @@ const anton = Anton({
   display: "swap",
 });
 
-const gambarino = localFont({
-  variable: "--font-gambarino",
-  src: "../../public/fonts/Gambarino-Regular.woff2",
-  weight: "400",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -39,16 +39,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${anton.variable} ${gambarino.variable} ${sora.variable} antialiased`}>
-        {/* Liquid-glass displacement filter: feTurbulence noise drives a
-            feDisplacementMap that bends the backdrop (backdrop-filter: url(#…) in CSS). */}
-        <svg aria-hidden="true" width="0" height="0" style={{ position: "absolute" }}>
-          <filter id="glass-distortion" x="-20%" y="-20%" width="140%" height="140%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.012" numOctaves="2" seed="17" result="noise" />
-            <feGaussianBlur in="noise" stdDeviation="2" result="softNoise" />
-            <feDisplacementMap in="SourceGraphic" in2="softNoise" scale="60" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-        </svg>
+      <body className={`${anton.variable} ${plexMono.variable} ${sora.variable} antialiased`}>
         <SmoothScroll />
         <TopNav />
         <ContentShell>{children}</ContentShell>

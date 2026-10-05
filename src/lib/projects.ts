@@ -92,7 +92,7 @@ export const projects: Project[] = [
     outcome: "RMIT University, Advertising Concepts. High Distinction.",
     caseStudy: {
       kind: "creative",
-      discipline: "Advertising Campaign — Removery",
+      discipline: "Advertising Campaign: Removery",
       result: "RMIT University, Advertising Concepts. High Distinction.",
       executions: [
         {
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     outcome: "RMIT University, Advocacy and Voice in Public Relations. High Distinction.",
     caseStudy: {
       kind: "analysis",
-      discipline: "PR Strategy — Alliance for Gambling Reform",
+      discipline: "PR Strategy: Alliance for Gambling Reform",
       result:
         "RMIT University, Advocacy and Voice in Public Relations. Individual assessment. High Distinction.",
       pullquote:
@@ -207,7 +207,7 @@ export const projects: Project[] = [
       "High Distinction. Restructured from five to three presenters on the day and still delivered a strong result.",
     caseStudy: {
       kind: "analysis",
-      discipline: "PR Strategy — Melbourne Food & Wine Festival",
+      discipline: "PR Strategy: Melbourne Food & Wine Festival",
       result:
         "RMIT University, Contemporary Media Relations. Five-person team, live pitch to a simulated media panel. High Distinction.",
       pullquote:
@@ -257,7 +257,7 @@ export const projects: Project[] = [
     outcome: "High Distinction and a Certificate of Appreciation from Victoria Police.",
     caseStudy: {
       kind: "analysis",
-      discipline: "Market Research — Victoria Police E-Scooter Safety",
+      discipline: "Market Research: Victoria Police E-Scooter Safety",
       result:
         "RMIT University, Buyer Behaviour, Bachelor of Business. High Distinction. Certificate of Appreciation, Victoria Police.",
       pullquote:
