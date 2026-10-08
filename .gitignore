@@ -40,6 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Hero wall source + generated derivatives (Adobe Stock, licence pending)
+# Hero wall master (30MB Adobe Stock original, licensed). The compressed
+# derivatives under public/hero ARE committed so deploys render the hero;
+# regenerate them with `npm run hero:images`.
 /hero-src
-/public/hero

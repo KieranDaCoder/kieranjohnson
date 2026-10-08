@@ -1,8 +1,8 @@
 // Generates the billboard hero's responsive images from the Adobe Stock source.
 //
-// Source and output are BOTH gitignored: the comp is unlicensed until Kieran
-// buys it, and preview URLs are public. When the images are absent the hero
-// renders a flat dark ground instead (see Hero.tsx), so the build never breaks.
+// The 30MB master stays out of git; these derivatives are committed. If they
+// are ever absent (a fresh checkout without them), the hero falls back to a
+// flat dark ground (see Hero.tsx), so the build never breaks.
 //
 //   npm run hero:images
 //
