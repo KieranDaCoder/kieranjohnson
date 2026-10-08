@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import type { Project } from "@/lib/projects";
 
 // Numbered block row: hard navy rule on top, fills navy on hover.

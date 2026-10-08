@@ -34,6 +34,8 @@ export type CaseStudy = CreativeCaseStudy | AnalysisCaseStudy;
 export type Project = {
   slug: string;
   title: string;
+  // Controls display sequence in the carousel and gallery.
+  order: number;
   category:
     | "PR Strategy"
     | "Advertising"
@@ -61,6 +63,7 @@ export const projects: Project[] = [
   {
     slug: "summit-signal",
     title: "Summit Signal",
+    order: 1,
     category: "Product Build",
     description:
       "A media-trend and consumer-sentiment dashboard for the outdoor & adventure gear niche, turning social chatter into brand-ready insight with an AI pipeline.",
@@ -76,6 +79,7 @@ export const projects: Project[] = [
   {
     slug: "tattoos-dont-age-well",
     title: "Tattoos Don't Age Well",
+    order: 2,
     category: "Advertising",
     description:
       "A print campaign for the world's largest tattoo removal company. The idea: keep the tattoo, age the person wearing it.",
@@ -145,6 +149,7 @@ export const projects: Project[] = [
   {
     slug: "end-gambling-ads",
     title: "End Gambling Ads",
+    order: 3,
     category: "PR Strategy",
     description:
       "A strategic critique of the Alliance for Gambling Reform's advocacy campaign, and two recommendations to give it real political leverage.",
@@ -195,6 +200,7 @@ export const projects: Project[] = [
   {
     slug: "hidden-bites-and-secret-sips",
     title: "Hidden Bites and Secret Sips",
+    order: 4,
     category: "PR Strategy",
     description:
       "A national media strategy for the Melbourne Food & Wine Festival, built to solve 30 years of press fatigue. Hidden Bites and Secret Sips spotlighted the city's 3,500 unsung restaurants instead of the same big names.",
@@ -246,6 +252,7 @@ export const projects: Project[] = [
   {
     slug: "the-coolness-tax",
     title: "The Coolness Tax",
+    order: 5,
     category: "Market Research",
     description:
       "Qualitative research for Victoria Police into why teen e-scooter riders skip helmets, reframed as an identity and social-cost problem, not a road-safety one. Recommendations shifted the fix from institutional warnings to peer-credible influencer voices.",

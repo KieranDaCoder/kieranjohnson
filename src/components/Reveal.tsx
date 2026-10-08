@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
 
 // Fades + lifts children into view when they scroll into the viewport.
