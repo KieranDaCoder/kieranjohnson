@@ -4,11 +4,17 @@ import { useEffect, useState, type CSSProperties } from "react";
 import { FlipBoard } from "@/components/FlipBoard";
 import { SmileTile } from "@/components/SmileTile";
 import {
-  BOARD,
+  BOARD_NAME,
+  BOARD_NAME_STACKED,
+  BOARD_TITLE,
+  BOARD_TITLE_STACKED,
   FLIP_DURATION_S,
-  PANEL_STACKED_ASPECT,
+  BOARD_GAP,
+  TILE_RATIO,
   PANEL_WIDE,
   WALL_ASPECT,
+  WALL_OFFSET_Y,
+  WALL_ZOOM,
   WIDE_FROM_PX,
 } from "@/components/hero.config";
 
@@ -21,11 +27,10 @@ const DESKTOP_H = 1120;
 const MOBILE_W = 800;
 const MOBILE_H = 1600;
 
-// No PANEL_WIDE-equivalent aspect exists for a standalone drawn panel (the
-// no-wall fallback at wide widths), so derive one with the same tile-ratio
-// formula hero.config uses for PANEL_STACKED_ASPECT (its comment: tileRatio =
-// panelAspect * rows / cols, tuned to ~0.5 so tiles stay near 1:2).
-const WIDE_DRAWN_PANEL_ASPECT = (0.5 * BOARD.cols) / BOARD.rows.length;
+// Aspect of the drawn panel in the no-wall fallback at wide widths. Matches
+// the real billboard's 2.27 closely enough that the fallback reads as the same
+// object, without depending on the photo being present.
+const WIDE_DRAWN_PANEL_ASPECT = 2.2;
 
 // The 2px overlap that hides the seam between the baked panel and the real
 // board, per brief: "overlap the panel edge by ~2px... background:
@@ -39,16 +44,46 @@ const WIDE_FRAME_STYLE: CSSProperties = {
   background: "var(--color-black)",
 };
 
+// Reads as a board recessed behind the frame rather than a flat sticker: a
+// hard dark rim, then a soft cast shadow falling from the top edge, then a
+// faint lift along the bottom where light would bounce back up.
+const RECESS: CSSProperties = {
+  boxShadow:
+    "inset 0 0 0 1px rgba(0,0,0,0.55), inset 0 14px 28px -6px rgba(0,0,0,0.55), inset 0 -6px 14px -6px rgba(255,255,255,0.35)",
+};
+
 const WIDE_PANEL_FACE_STYLE: CSSProperties = {
   position: "absolute",
   inset: "2px",
   background: "var(--color-panel)",
 };
 
-function drawnFrame(width: string, aspect: number, board: React.ReactNode) {
+const cn = (...a: (string | false | undefined)[]) => a.filter(Boolean).join(" ");
+
+// `aspect: null` lets the panel take its height from the boards inside it, so
+// the frame hugs the content instead of leaving dead space around it.
+function drawnFrame(
+  width: string,
+  aspect: number | null,
+  board: React.ReactNode,
+) {
   return (
-    <div style={{ background: "var(--color-black)", padding: "10px", width }}>
-      <div style={{ position: "relative", aspectRatio: String(aspect), background: "var(--color-panel)" }}>
+    <div
+      style={{
+        background: "var(--color-black)",
+        padding: "10px",
+        width,
+        boxShadow: "0 18px 40px -12px rgba(0,0,0,0.7)",
+      }}
+    >
+      <div
+        style={{
+          position: "relative",
+          aspectRatio: aspect === null ? undefined : String(aspect),
+          background: "var(--color-panel)",
+          ...RECESS,
+        }}
+      >
         {board}
       </div>
     </div>
@@ -76,22 +111,54 @@ export function BillboardHero({
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
-  const wideBoard = isWide === true && (
-    <FlipBoard
-      rows={BOARD.rows}
-      cols={BOARD.cols}
-      duration={FLIP_DURATION_S}
-      cornerSlot={<SmileTile />}
-    />
+  // Name above, title below, with a blank gap between them. Two boards rather
+  // than two rows of one board, so the title gets its own finer grid and so
+  // reads smaller. The smile tile lives on the title board's last cell.
+  // Each board gets a height derived from its own column count and TILE_RATIO,
+  // then the pair is centred in the panel. Stretching them to fill the panel
+  // instead makes tiles much taller than the letters, which reads as dead
+  // space. boardAspect = cols / rows * TILE_RATIO.
+  const boardAspect = (b: { cols: number; rows: readonly string[] }) =>
+    String((b.cols / b.rows.length) * TILE_RATIO);
+
+  type Cfg = { cols: number; rows: readonly string[] };
+  const boardStack = (name: Cfg, title: Cfg, fill: boolean) => (
+    <div
+      className={cn(
+        "flex flex-col items-center justify-center px-[3%]",
+        // Wide sits over the baked panel, so it fills it; stacked drives the
+        // height of a frame drawn around it, so it flows instead.
+        fill ? "absolute inset-0" : "w-full py-[4%]",
+      )}
+    >
+      <div className="w-full" style={{ aspectRatio: boardAspect(name) }}>
+        <FlipBoard rows={name.rows} cols={name.cols} duration={FLIP_DURATION_S} />
+      </div>
+      {/* Margin, not flex `gap`: a percentage gap resolves against the
+          container's height, which is `auto` in the stacked layout, so it
+          collapsed to nothing there. Percentage margins resolve against width,
+          which is definite in both layouts. */}
+      <div
+        className="w-full"
+        style={{
+          aspectRatio: boardAspect(title),
+          marginTop: `${BOARD_GAP * 100}%`,
+        }}
+      >
+        <FlipBoard
+          rows={title.rows}
+          cols={title.cols}
+          duration={FLIP_DURATION_S}
+          cornerSlot={<SmileTile />}
+        />
+      </div>
+    </div>
   );
-  const stackedBoard = isWide === false && (
-    <FlipBoard
-      rows={BOARD.rows}
-      cols={BOARD.cols}
-      duration={FLIP_DURATION_S}
-      cornerSlot={<SmileTile />}
-    />
-  );
+
+  const wideBoard = isWide === true && boardStack(BOARD_NAME, BOARD_TITLE, true);
+  const stackedBoard =
+    isWide === false &&
+    boardStack(BOARD_NAME_STACKED, BOARD_TITLE_STACKED, false);
 
   return (
     <div
@@ -124,10 +191,13 @@ export function BillboardHero({
               the baked-in panel. */}
           <div className="bh-wide absolute inset-0">
             <div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="absolute left-1/2 top-1/2"
               style={{
-                width: `max(100%, calc(var(--hero-h) * ${WALL_ASPECT}))`,
+                // Cover the hero, then scale past it to push in on the
+                // billboard; the overflow is what gives the Y nudge its slack.
+                width: `calc(max(100%, calc(var(--hero-h) * ${WALL_ASPECT})) * ${WALL_ZOOM})`,
                 aspectRatio: String(WALL_ASPECT),
+                transform: `translate(-50%, calc(-50% + ${WALL_OFFSET_Y}svh))`,
               }}
             >
               <div
@@ -152,7 +222,9 @@ export function BillboardHero({
                 </picture>
               </div>
               <div style={WIDE_FRAME_STYLE}>
-                <div style={WIDE_PANEL_FACE_STYLE}>{wideBoard}</div>
+                <div style={{ ...WIDE_PANEL_FACE_STYLE, ...RECESS }}>
+                  {wideBoard}
+                </div>
               </div>
             </div>
           </div>
@@ -179,7 +251,7 @@ export function BillboardHero({
               </picture>
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
-              {drawnFrame("88vw", PANEL_STACKED_ASPECT, stackedBoard)}
+              {drawnFrame("88vw", null, stackedBoard)}
             </div>
           </div>
         </>
@@ -193,7 +265,7 @@ export function BillboardHero({
             {drawnFrame("min(70vw, 900px)", WIDE_DRAWN_PANEL_ASPECT, wideBoard)}
           </div>
           <div className="bh-stacked absolute inset-0 flex items-center justify-center">
-            {drawnFrame("88vw", PANEL_STACKED_ASPECT, stackedBoard)}
+            {drawnFrame("88vw", null, stackedBoard)}
           </div>
         </>
       )}

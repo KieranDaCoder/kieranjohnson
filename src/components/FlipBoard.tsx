@@ -164,11 +164,16 @@ const FlapCell = React.memo(function FlapCell({
         <motion.div
           key={flipId}
           className="absolute inset-x-0 top-0 z-10 h-[calc(50%-0.5px)] origin-bottom overflow-hidden bg-panel backface-hidden transform-3d"
-          initial={{ rotateX: 0 }}
-          animate={{ rotateX: -100 }}
+          initial={{ rotateX: 0, opacity: 1 }}
+          /* Faded out as well as rotated past 90°: `container-type` on the cell
+             applies layout containment, which flattens transform-style, so
+             backface-hidden can't be relied on to hide the spent flap — it was
+             leaving ghost letters sitting on the board. */
+          animate={{ rotateX: -100, opacity: 0 }}
           transition={{
             duration: flipDuration,
             ease: [0.55, 0.055, 0.675, 0.19],
+            opacity: { delay: flipDuration * 0.7, duration: flipDuration * 0.3 },
           }}
         >
           <div className={cn(textCx, "top-0 h-[200%]")} style={CELL_TEXT_STYLE}>

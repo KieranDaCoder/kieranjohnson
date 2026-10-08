@@ -19,24 +19,59 @@ export const PANEL_WIDE = {
 // inside that plane, so it stays locked to the panel at every viewport size.
 export const WALL_ASPECT = 5888 / 3296;
 
-// Mobile crops to brick only and the frame is drawn in code, because the baked
-// panel is a short wide strip that can't hold five rows of readable tiles.
-// 1.1 (not the brief's 3:4) keeps tiles near 1:2 so the letters stay big:
-// tileRatio = panelAspect * rows / cols.
-export const PANEL_STACKED_ASPECT = 1.1;
+// Scale applied on top of "just cover the hero", to push in on the billboard
+// so it fills more of the frame and less brick shows. 1 = no zoom.
+export const WALL_ZOOM = 1.2;
 
-// One grid for both layouts. 11 columns, not 18: "JUNIOR STRATEGIST" is 17
-// characters on one line, which was forcing the column count up and the tiles
-// (and so the letters) down. Breaking it over its own row makes "STRATEGIST"
-// the longest line at 10, +1 for the smile tile = 11 columns, so every letter
-// renders ~60% larger on the same panel.
-//
-// Trailing blank on the last row is the smile tile's cell, keeping it in the
-// bottom-right corner.
-export const BOARD = {
+// Nudges the whole wall down so the floating nav pill clears the board instead
+// of sitting on top of it. Percentage of the hero's height; needs the zoom
+// above to have slack to give.
+export const WALL_OFFSET_Y = 7;
+
+// Mobile crops to brick only and the frame is drawn in code, because the baked
+// panel is a short wide strip that can't hold the rows at a readable size. The
+// drawn panel takes its height from the boards rather than a fixed aspect.
+
+// Two separate boards, stacked with a gap, rather than one grid. A single grid
+// forces every row to the same cell size, so the title could only ever be as
+// big as the name. Splitting them lets the title run on a finer grid — more
+// columns across the same width means smaller tiles, so "JUNIOR STRATEGIST"
+// fits on one line AND reads as a subtitle.
+export const BOARD_NAME = {
   cols: 11,
-  rows: ["KIERAN     ", "JOHNSON    ", "JUNIOR     ", "STRATEGIST "],
+  rows: ["KIERAN     ", "JOHNSON    "],
 } as const;
+
+// 17 characters + 1 for the smile tile, which keeps it bottom-right.
+export const BOARD_TITLE = {
+  cols: 18,
+  rows: ["JUNIOR STRATEGIST "],
+} as const;
+
+// Phones get their own, coarser grids. 18 columns across a 300px-wide panel is
+// a 17px tile — unreadable. Breaking the title onto two rows lets both boards
+// use few enough columns to stay legible while keeping the name clearly the
+// larger of the two (7 columns vs 11).
+export const BOARD_NAME_STACKED = {
+  cols: 7,
+  rows: ["KIERAN ", "JOHNSON"],
+} as const;
+
+export const BOARD_TITLE_STACKED = {
+  cols: 11,
+  rows: ["JUNIOR     ", "STRATEGIST "],
+} as const;
+
+// Width/height of a single flap tile. Each board derives its own height from
+// this and its column count, rather than stretching to fill the panel — two
+// rows stretched over a tall panel gives tiles far taller than the letters
+// need, which reads as dead space. Below 1 = tiles taller than wide, like a
+// real split-flap.
+export const TILE_RATIO = 0.8;
+
+// Vertical gap between the name board and the title board, as a share of the
+// panel's height.
+export const BOARD_GAP = 0.035;
 
 // Viewport width at which the layout swaps from stacked to wide.
 export const WIDE_FROM_PX = 820;
