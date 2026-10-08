@@ -23,8 +23,12 @@ const MAX_SCRAMBLE_STEPS = 5;
 // Sized from the tile's own width (container query), not the viewport, so the
 // letters stay proportional at every board size. ~1em per tile width fills the
 // face the way a real split-flap does; the widest caps (M/W) still clear it.
+// Sized from the tile itself (container query), not the viewport, so letters
+// stay proportional at any board size. Constrained on BOTH axes: the glyph is
+// centred across the cell's two halves, so it has to clear the cell's height
+// as well as its width, whatever aspect the grid gives the cell.
 const CELL_TEXT_STYLE: React.CSSProperties = {
-  fontSize: "100cqw",
+  fontSize: "min(95cqw, 80cqh)",
   lineHeight: 1,
 };
 
@@ -120,8 +124,11 @@ const FlapCell = React.memo(function FlapCell({
 
   return (
     <div
-      className="relative flex aspect-3/6 overflow-hidden border border-black/10 perspective-dramatic transform-3d"
-      style={{ containerType: "inline-size" }}
+      /* No fixed aspect: the grid's rows size the cell, so the board always
+         fills the panel exactly. A hard-coded aspect only lines up at one
+         column count and overflows at every other. */
+      className="relative flex h-full w-full overflow-hidden border border-black/10 perspective-dramatic transform-3d"
+      style={{ containerType: "size" }}
     >
       <div className="absolute inset-0 z-40 hidden flex-row items-center justify-center md:flex">
         <div className="h-1/2 w-px bg-black/20" />
@@ -254,7 +261,10 @@ export function FlipBoard({
     <div
       aria-hidden="true"
       className="grid h-full w-full gap-px bg-black"
-      style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
+      style={{
+        gridTemplateColumns: `repeat(${cols}, 1fr)`,
+        gridTemplateRows: `repeat(${rowCount}, 1fr)`,
+      }}
     >
       {rows.flatMap((row, r) =>
         Array.from({ length: cols }, (_, c) => {

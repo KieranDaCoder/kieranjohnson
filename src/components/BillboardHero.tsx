@@ -4,8 +4,7 @@ import { useEffect, useState, type CSSProperties } from "react";
 import { FlipBoard } from "@/components/FlipBoard";
 import { SmileTile } from "@/components/SmileTile";
 import {
-  BOARD_STACKED,
-  BOARD_WIDE,
+  BOARD,
   FLIP_DURATION_S,
   PANEL_STACKED_ASPECT,
   PANEL_WIDE,
@@ -26,7 +25,7 @@ const MOBILE_H = 1600;
 // no-wall fallback at wide widths), so derive one with the same tile-ratio
 // formula hero.config uses for PANEL_STACKED_ASPECT (its comment: tileRatio =
 // panelAspect * rows / cols, tuned to ~0.5 so tiles stay near 1:2).
-const WIDE_DRAWN_PANEL_ASPECT = (0.5 * BOARD_WIDE.cols) / BOARD_WIDE.rows.length;
+const WIDE_DRAWN_PANEL_ASPECT = (0.5 * BOARD.cols) / BOARD.rows.length;
 
 // The 2px overlap that hides the seam between the baked panel and the real
 // board, per brief: "overlap the panel edge by ~2px... background:
@@ -79,16 +78,16 @@ export function BillboardHero({
 
   const wideBoard = isWide === true && (
     <FlipBoard
-      rows={BOARD_WIDE.rows}
-      cols={BOARD_WIDE.cols}
+      rows={BOARD.rows}
+      cols={BOARD.cols}
       duration={FLIP_DURATION_S}
       cornerSlot={<SmileTile />}
     />
   );
   const stackedBoard = isWide === false && (
     <FlipBoard
-      rows={BOARD_STACKED.rows}
-      cols={BOARD_STACKED.cols}
+      rows={BOARD.rows}
+      cols={BOARD.cols}
       duration={FLIP_DURATION_S}
       cornerSlot={<SmileTile />}
     />

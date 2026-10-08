@@ -25,21 +25,17 @@ export const WALL_ASPECT = 5888 / 3296;
 // tileRatio = panelAspect * rows / cols.
 export const PANEL_STACKED_ASPECT = 1.1;
 
-// Board grids. Trailing blank column on the last row is where the smile tile
-// goes, so it always lands in the bottom-right corner.
-export const BOARD_WIDE = {
-  cols: 18,
-  rows: [
-    "                  ",
-    "KIERAN JOHNSON    ",
-    "                  ",
-    "JUNIOR STRATEGIST ",
-  ],
-} as const;
-
-export const BOARD_STACKED = {
+// One grid for both layouts. 11 columns, not 18: "JUNIOR STRATEGIST" is 17
+// characters on one line, which was forcing the column count up and the tiles
+// (and so the letters) down. Breaking it over its own row makes "STRATEGIST"
+// the longest line at 10, +1 for the smile tile = 11 columns, so every letter
+// renders ~60% larger on the same panel.
+//
+// Trailing blank on the last row is the smile tile's cell, keeping it in the
+// bottom-right corner.
+export const BOARD = {
   cols: 11,
-  rows: ["KIERAN     ", "JOHNSON    ", "           ", "JUNIOR     ", "STRATEGIST "],
+  rows: ["KIERAN     ", "JOHNSON    ", "JUNIOR     ", "STRATEGIST "],
 } as const;
 
 // Viewport width at which the layout swaps from stacked to wide.
