@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Hero wall source + generated derivatives (Adobe Stock, licence pending)
+/hero-src
+/public/hero
