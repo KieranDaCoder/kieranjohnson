@@ -71,8 +71,8 @@ export default function Home() {
       </Section>
 
       {/* Work */}
-      <Section tone="black" id="work" className="py-20 md:py-40">
-        <div className="gutter mb-14 md:mb-20">
+      <Section tone="black" id="work" className="pb-20 pt-24 md:pb-32 md:pt-28">
+        <div className="gutter border-b border-line pb-6 md:pb-8">
           <HeadingRow cta={{ label: "See all work", href: "/work" }}>
             <h2 className="t-h2">My <span className="t-em">work</span></h2>
           </HeadingRow>

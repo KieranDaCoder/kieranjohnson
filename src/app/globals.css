@@ -6,7 +6,7 @@
   --white: #ffffff;
   --grey: #8a8a8a; /* small labels only, never body text */
 
-  --tile-ratio: 4 / 5;
+  --tile-ratio: 3 / 4;
   --image-ratio: 3 / 2;
 
   /* Tone defaults (white). <Section tone> overrides these. */
@@ -109,7 +109,7 @@ body {
   letter-spacing: -0.025em;
 }
 .t-tile-title {
-  font-size: clamp(1.125rem, 1.4vw, 1.375rem);
+  font-size: clamp(1.25rem, 1.6vw, 1.625rem);
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -168,9 +168,11 @@ body {
     background-color 200ms ease,
     color 200ms ease;
 }
-.btn:hover {
-  background: transparent;
-  color: var(--fg);
+@media (hover: hover) {
+  .btn:hover {
+    background: transparent;
+    color: var(--fg);
+  }
 }
 
 /* Round icon button (carousel arrows). */
@@ -189,9 +191,14 @@ body {
     color 200ms ease,
     opacity 200ms ease;
 }
-.btn-round:hover:not(:disabled) {
-  background: transparent;
-  color: var(--fg);
+@media (hover: hover) {
+  .btn-round:hover:not(:disabled) {
+    background: transparent;
+    color: var(--fg);
+  }
+}
+.arrow-overlay {
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.25);
 }
 .btn-round:disabled {
   opacity: 0.25;

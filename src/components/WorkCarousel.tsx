@@ -7,7 +7,6 @@ import type { Project } from "@/lib/content";
 
 type Tile = Pick<Project, "slug" | "title" | "category" | "year" | "tile" | "alt">;
 
-const SPEED = 28; // px per second, sliding left
 const DRAG_THRESHOLD = 6;
 const FRICTION = 0.92; // per 60fps frame
 
@@ -50,9 +49,6 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
   const [viewW, setViewW] = useState(0);
 
   const setWRef = useRef(0);
-  const hover = useRef(false);
-  const focused = useRef(false);
-  const visible = useRef(true);
   const dragging = useRef(false);
   const moved = useRef(false);
   const velocity = useRef(0); // px per 60fps frame
@@ -94,17 +90,6 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
     return () => ro.disconnect();
   }, [x]);
 
-  // Offscreen pausing.
-  useEffect(() => {
-    const wrap = wrapperRef.current;
-    if (!wrap) return;
-    const io = new IntersectionObserver(([entry]) => {
-      visible.current = entry.isIntersecting;
-    });
-    io.observe(wrap);
-    return () => io.disconnect();
-  }, []);
-
   // Horizontal wheel / trackpad.
   useEffect(() => {
     const wrap = wrapperRef.current;
@@ -130,9 +115,6 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
       return;
     }
     velocity.current = 0;
-    if (reduce || hover.current || focused.current || !visible.current || document.hidden) return;
-    if (arrowAnim.current) return;
-    move((-SPEED * d) / 1000);
   });
 
   // Pointer drag.
@@ -211,7 +193,6 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
     const wrap = wrapperRef.current;
     const target = e.target as HTMLElement;
     if (!wrap) return;
-    if (target.matches(":focus-visible")) focused.current = true;
     stopArrow();
     velocity.current = 0;
     const r = target.getBoundingClientRect();
@@ -219,27 +200,17 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
     if (r.left < w.left) move(w.left - r.left);
     else if (r.right > w.right) move(w.right - r.right);
   };
-  const onBlurCapture = (e: React.FocusEvent) => {
-    if (!wrapperRef.current?.contains(e.relatedTarget as Node | null)) focused.current = false;
-  };
-
   const copies = setW > 0 ? Math.max(2, Math.ceil(viewW / setW) + 1) : 1;
 
   return (
-    <div>
+    <div className="relative [--tw:78vw] md:[--tw:clamp(260px,31.6vw,520px)]">
       <div
         ref={wrapperRef}
-        className="cursor-grab touch-pan-y select-none overflow-clip border-y border-line active:cursor-grabbing"
+        className="cursor-grab touch-pan-y select-none overflow-clip border-b border-line active:cursor-grabbing"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
-        onPointerEnter={(e) => {
-          if (e.pointerType === "mouse") hover.current = true;
-        }}
-        onPointerLeave={(e) => {
-          if (e.pointerType === "mouse") hover.current = false;
-        }}
         onClickCapture={(e) => {
           if (moved.current) {
             e.preventDefault();
@@ -249,7 +220,6 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
         }}
         onDragStart={(e) => e.preventDefault()}
         onFocusCapture={onFocusCapture}
-        onBlurCapture={onBlurCapture}
       >
         <motion.div className="flex w-max will-change-transform" style={{ x }}>
           {Array.from({ length: copies }, (_, c) => (
@@ -262,13 +232,13 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
               {projects.map((project) => (
                 <li
                   key={project.slug}
-                  className="w-[62vw] flex-none border-r border-line md:w-[clamp(220px,20vw,320px)]"
+                  className="w-[var(--tw)] flex-none border-r border-line"
                 >
                   <ProjectTile
                     project={project}
                     compact
                     tabIndex={c > 0 ? -1 : undefined}
-                    sizes="(max-width: 768px) 62vw, 320px"
+                    sizes="(max-width: 768px) 78vw, 520px"
                   />
                 </li>
               ))}
@@ -277,14 +247,22 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
         </motion.div>
       </div>
 
-      <div className="gutter mt-10 flex gap-3">
-        <button type="button" className="btn-round" aria-label="Previous project" onClick={() => step(-1)}>
-          <Arrow flip />
-        </button>
-        <button type="button" className="btn-round" aria-label="Next project" onClick={() => step(1)}>
-          <Arrow />
-        </button>
-      </div>
+      <button
+        type="button"
+        className="btn-round arrow-overlay absolute left-4 top-[calc(var(--tw)*2/3-32px)] z-10 md:left-6"
+        aria-label="Previous project"
+        onClick={() => step(-1)}
+      >
+        <Arrow flip />
+      </button>
+      <button
+        type="button"
+        className="btn-round arrow-overlay absolute right-4 top-[calc(var(--tw)*2/3-32px)] z-10 md:right-6"
+        aria-label="Next project"
+        onClick={() => step(1)}
+      >
+        <Arrow />
+      </button>
     </div>
   );
 }

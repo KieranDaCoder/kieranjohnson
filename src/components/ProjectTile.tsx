@@ -8,7 +8,7 @@ type Props = {
   // Full-width tile in the /work grid keeps the row height of a normal tile.
   wide?: boolean;
   heading?: "h2" | "h3";
-  // Carousel variant: padded text block and smaller title.
+  // Carousel variant: padded title block.
   compact?: boolean;
   tabIndex?: number;
 };
@@ -32,7 +32,7 @@ export function ProjectTile({
       <div
         className={`tile-frame relative overflow-hidden bg-[var(--mat)] ${wide ? "tile-wide" : ""}`}
       >
-        <div className="absolute inset-[9%]">
+        <div className="absolute inset-[6%]">
           <Image
             src={project.tile}
             alt={project.alt}
@@ -44,14 +44,12 @@ export function ProjectTile({
           />
         </div>
       </div>
-      <div className={compact ? "px-5 py-4" : "mt-5"}>
-        <p className="t-label">{project.category}</p>
+      <div className={compact ? "px-6 py-5" : "mt-5"}>
         <Heading
-          className={`${compact ? "t-tile-title" : "t-title"} mt-2 underline decoration-transparent decoration-1 underline-offset-[0.2em] transition-[text-decoration-color] duration-200 group-hover:decoration-current`}
+          className={`${compact ? "t-tile-title" : "t-title"} underline decoration-transparent decoration-1 underline-offset-[0.2em] transition-[text-decoration-color] duration-200 group-hover:decoration-current`}
         >
           {project.title}
         </Heading>
-        <p className="t-meta mt-2">{project.year}</p>
       </div>
     </Link>
   );
