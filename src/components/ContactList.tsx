@@ -53,8 +53,10 @@ export function ContactList({ links }: { links: ContactLink[] }) {
               className="group flex items-center gap-4 py-6 md:gap-8 md:py-8"
             >
               <Icon platform={platform} />
-              <span className="t-title w-28 shrink-0 md:w-56">{platform}</span>
-              <span className="t-body min-w-0 flex-1 truncate">{handle}</span>
+              <span className="flex min-w-0 flex-1 flex-col md:flex-row md:items-baseline">
+                <span className="t-title shrink-0 md:w-72">{platform}</span>
+                <span className="t-body min-w-0 break-words font-light italic md:truncate">{handle}</span>
+              </span>
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"

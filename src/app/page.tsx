@@ -46,26 +46,20 @@ export default function Home() {
       >
         <h1 className="t-hero">
           <span className="rise block">KIERAN</span>
-          <span className="rise block [animation-delay:80ms]">JOHNSON</span>
+          <span className="t-hero-alt rise block [animation-delay:80ms]">JOHNSON</span>
         </h1>
-        <p className="t-label rise mt-6 [animation-delay:200ms] md:mt-8">Junior Strategist</p>
-        <a
-          href="#about"
-          className="t-label absolute bottom-16 right-4 hidden md:bottom-24 md:right-12 md:block xl:right-16"
-        >
-          Scroll
-        </a>
+        <p className="t-sub rise mt-6 [animation-delay:200ms] md:mt-8">Junior Strategist</p>
       </Section>
 
       {/* About */}
-      <Section tone="white" id="about" className="gutter py-16 md:py-32">
+      <Section tone="white" id="about" className="gutter py-20 md:py-40">
         <HeadingRow cta={{ label: "More about me", href: "/about" }}>
           <h2 className="t-label">About me</h2>
         </HeadingRow>
-        <div className="mt-12 grid gap-12 border-t border-line pt-12 md:mt-16 md:grid-cols-[1fr_auto] md:gap-24 md:pt-16">
-          <div className="max-w-[820px]">
-            <p className="t-h2">{home.usp}</p>
-            <p className="t-body mt-8 max-w-[640px]">{home.coreInfo}</p>
+        <div className="mt-14 grid gap-12 border-t border-line pt-14 md:mt-20 md:grid-cols-[1fr_auto] md:gap-24 md:pt-20">
+          <div>
+            <p className="t-statement">{home.usp}</p>
+            <p className="t-body mt-8 max-w-[34em]">{home.coreInfo}</p>
           </div>
           <div className="relative size-40 md:size-60">
             <Image
@@ -80,20 +74,20 @@ export default function Home() {
       </Section>
 
       {/* Work */}
-      <Section tone="black" id="work" className="py-16 md:py-32">
-        <div className="gutter mb-12 md:mb-16">
+      <Section tone="black" id="work" className="py-20 md:py-40">
+        <div className="gutter mb-14 md:mb-20">
           <HeadingRow cta={{ label: "See all work", href: "/work" }}>
-            <h2 className="t-h2">My work</h2>
+            <h2 className="t-h2">My <span className="t-em">work</span></h2>
           </HeadingRow>
         </div>
         <WorkCarousel projects={projects} />
       </Section>
 
       {/* Contact */}
-      <Section tone="white" id="contact" className="gutter py-16 md:py-32">
+      <Section tone="white" id="contact" className="gutter py-20 md:py-40">
         <h2 className="t-h2">Contact</h2>
-        <p className="t-body mt-6 max-w-[640px]">{home.contactLine}</p>
-        <div className="mt-12 md:mt-16">
+        <p className="t-body mt-6 max-w-[34em]">{home.contactLine}</p>
+        <div className="mt-14 md:mt-20">
           <ContactList links={contacts} />
         </div>
       </Section>

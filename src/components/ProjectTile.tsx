@@ -28,7 +28,7 @@ export function ProjectTile({ project, sizes, wide = false, heading: Heading = "
       <Heading className="t-title mt-2 underline decoration-transparent decoration-1 underline-offset-[0.2em] transition-[text-decoration-color] duration-200 group-hover:decoration-current">
         {project.title}
       </Heading>
-      <p className="t-label mt-2 font-normal">{project.year}</p>
+      <p className="t-meta mt-2">{project.year}</p>
     </Link>
   );
 }

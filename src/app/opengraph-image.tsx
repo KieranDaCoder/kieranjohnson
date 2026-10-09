@@ -19,7 +19,7 @@ export default function OpengraphImage() {
           background: "#0a0a0a",
           color: "#ffffff",
           fontSize: 148,
-          fontWeight: 700,
+          fontWeight: 800,
           lineHeight: 0.9,
           letterSpacing: "-0.03em",
         }}
