@@ -52,7 +52,7 @@ export default async function ProjectPage({ params }: Params) {
       <Section tone="white">
         <Figure src={project.hero} alt={project.alt} ratio="16 / 9" priority />
 
-        <div className="gutter py-20 md:py-40">
+        <div className="gutter pb-20 pt-10 md:pb-40 md:pt-14">
           <div className="mx-auto max-w-[34em] space-y-16 md:space-y-24">
             {project.sections.map((section, i) => {
               const image = project.images[i];

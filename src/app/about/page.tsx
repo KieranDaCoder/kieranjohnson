@@ -15,7 +15,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader title="About" />
-      <Section tone="white" className="gutter py-20 md:py-40">
+      <Section tone="white" className="gutter pb-20 pt-10 md:pb-40 md:pt-14">
         <div className="grid gap-12 md:grid-cols-[minmax(0,720px)_minmax(0,1fr)] md:gap-24">
           {/* Portrait above the text on phone, sticky beside it on desktop. */}
           <div className="md:order-2">

@@ -16,7 +16,7 @@ export default function WorkPage() {
   return (
     <>
       <PageHeader title="Work" />
-      <Section tone="white" className="gutter py-20 md:py-40">
+      <Section tone="white" className="gutter pb-20 pt-10 md:pb-40 md:pt-14">
         <ul className="grid gap-x-6 gap-y-16 md:grid-cols-2 md:gap-y-24">
           {projects.map((project, i) => {
             // An odd last tile spans the full row, at the same height.
