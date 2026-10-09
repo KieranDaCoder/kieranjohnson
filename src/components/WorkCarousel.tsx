@@ -1,65 +1,94 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ProjectTile } from "@/components/ProjectTile";
-import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
-import type { Project } from "@/lib/projects";
+import type { Project } from "@/lib/content";
 
-type Props = { projects: Project[] };
+type Tile = Pick<Project, "slug" | "title" | "category" | "year" | "tile" | "alt">;
 
-export function WorkCarousel({ projects }: Props) {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [atEnd, setAtEnd] = useState(false);
-  const reduce = useReducedMotionSafe();
+function Arrow({ flip = false }: { flip?: boolean }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      width="22"
+      height="22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.75}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={flip ? { transform: "scaleX(-1)" } : undefined}
+    >
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  );
+}
 
-  const sorted = [...projects].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+// Full-bleed strip on native scroll snap. ~2.5 tiles on desktop, ~1.15 on
+// phone so the next one peeks. Trackpad and touch swipe work natively.
+export function WorkCarousel({ projects }: { projects: Tile[] }) {
+  const trackRef = useRef<HTMLUListElement>(null);
+  const [edges, setEdges] = useState({ start: true, end: false });
 
-  function handleNext() {
+  const update = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
-    const tileWidth = track.firstElementChild?.getBoundingClientRect().width ?? track.clientWidth;
-    track.scrollBy({ left: tileWidth, behavior: reduce ? "auto" : "smooth" });
-  }
+    setEdges({
+      start: track.scrollLeft <= 1,
+      end: track.scrollLeft + track.clientWidth >= track.scrollWidth - 1,
+    });
+  }, []);
 
-  function handleScroll() {
+  useEffect(() => {
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [update]);
+
+  function step(dir: 1 | -1) {
     const track = trackRef.current;
-    if (!track) return;
-    setAtEnd(track.scrollLeft + track.clientWidth >= track.scrollWidth - 1);
+    const first = track?.firstElementChild as HTMLElement | null;
+    if (!track || !first) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    track.scrollBy({ left: dir * (first.offsetWidth + gap), behavior: reduce ? "auto" : "smooth" });
   }
 
   return (
-    <div className="relative w-full">
-      <div
+    <div>
+      <ul
         ref={trackRef}
-        onScroll={handleScroll}
-        className="flex w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        style={{ scrollSnapType: "x mandatory", scrollBehavior: reduce ? "auto" : "smooth" }}
+        onScroll={update}
+        className="snap-track gutter flex gap-4 overflow-x-auto scroll-px-4 md:gap-6 md:scroll-px-12 xl:scroll-px-16"
       >
-        {sorted.map((project, i) => (
-          <div
-            key={project.slug}
-            className="w-[85vw] flex-none md:w-[30vw]"
-            style={{
-              scrollSnapAlign: "start",
-              borderRight: i < sorted.length - 1 ? "1px solid #fff" : undefined,
-            }}
-          >
-            <ProjectTile project={project} />
-          </div>
+        {projects.map((project) => (
+          <li key={project.slug} className="w-[87%] flex-none snap-start md:w-[40%]">
+            <ProjectTile project={project} sizes="(max-width: 768px) 87vw, 40vw" />
+          </li>
         ))}
-      </div>
+      </ul>
 
-      <button
-        type="button"
-        aria-label="Next project"
-        onClick={handleNext}
-        disabled={atEnd}
-        className="absolute right-4 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-black text-white transition-opacity disabled:opacity-30"
-      >
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 6l6 6-6 6" />
-        </svg>
-      </button>
+      <div className="gutter mt-10 flex gap-3">
+        <button
+          type="button"
+          className="btn-round"
+          aria-label="Previous project"
+          onClick={() => step(-1)}
+          disabled={edges.start}
+        >
+          <Arrow flip />
+        </button>
+        <button
+          type="button"
+          className="btn-round"
+          aria-label="Next project"
+          onClick={() => step(1)}
+          disabled={edges.end}
+        >
+          <Arrow />
+        </button>
+      </div>
     </div>
   );
 }

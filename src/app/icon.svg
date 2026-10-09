@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect x="3" y="3" width="94" height="94" rx="24" fill="#1d1d1f"/>
-  <text x="50" y="52" text-anchor="middle" dominant-baseline="central"
-        font-family="-apple-system, 'Geist', 'Helvetica Neue', Arial, sans-serif" font-weight="650"
-        font-size="46" letter-spacing="-2" fill="#ffffff">KJ</text>
+  <rect width="100" height="100" fill="#0a0a0a"/>
+  <text x="50" y="54" text-anchor="middle" dominant-baseline="central"
+        font-family="Newsreader, Georgia, serif" font-weight="600"
+        font-size="52" letter-spacing="-2" fill="#ffffff">KJ</text>
 </svg>

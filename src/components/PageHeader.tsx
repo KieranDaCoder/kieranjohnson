@@ -1,35 +1,17 @@
-import { Reveal, RevealText } from "@/components/Reveal";
+import { Section } from "@/components/Section";
 
-// Sidefolio page opener: a pixel-art icon, a big Geist display title, optional intro.
-export function PageHeader({
-  icon,
-  title,
-  children,
-}: {
-  icon: string;
-  title: string;
-  children?: React.ReactNode;
-}) {
+// Black header block that opens every inner page.
+export function PageHeader({ title, meta }: { title: string; meta?: string[] }) {
   return (
-    <header>
-      <Reveal>
-        <img
-          src={icon}
-          alt=""
-          aria-hidden="true"
-          className="h-10 w-10 [image-rendering:pixelated] md:h-12 md:w-12"
-        />
-      </Reveal>
-      <RevealText
-        text={title}
-        delay={0.05}
-        className="display mt-3 text-4xl text-charcoal md:text-5xl"
-      />
-      {children ? (
-        <Reveal delay={0.15} className="mt-4 max-w-xl text-base leading-relaxed text-muted">
-          {children}
-        </Reveal>
-      ) : null}
-    </header>
+    <Section tone="black" as="header" className="gutter pb-16 pt-40 md:pb-24 md:pt-56">
+      {meta && meta.length > 0 && (
+        <p className="t-label mb-6 flex flex-wrap gap-x-6 gap-y-2">
+          {meta.map((m) => (
+            <span key={m}>{m}</span>
+          ))}
+        </p>
+      )}
+      <h1 className="t-page-title rise max-w-[16ch]">{title}</h1>
+    </Section>
   );
 }

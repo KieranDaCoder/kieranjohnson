@@ -1,10 +1,17 @@
+import { Section } from "@/components/Section";
+import { getHome } from "@/lib/content";
+
 export function Footer() {
+  const { usp } = getHome();
   return (
-    <footer className="mt-24 border-t border-hairline pt-8 text-center text-sm text-muted">
-      <p>
-        <span className="font-medium text-charcoal">{new Date().getFullYear()}</span> — Built by
-        Kieran Johnson
-      </p>
-    </footer>
+    <Section tone="black" as="footer" className="gutter py-16 md:py-20">
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="t-title">Kieran Johnson</p>
+          <p className="mt-2 max-w-[640px] text-base leading-normal">{usp}</p>
+        </div>
+        <p className="t-label font-normal">© {new Date().getFullYear()}</p>
+      </div>
+    </Section>
   );
 }
