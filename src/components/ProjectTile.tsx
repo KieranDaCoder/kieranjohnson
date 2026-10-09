@@ -13,7 +13,8 @@ type Props = {
   tabIndex?: number;
 };
 
-// Poster sits in a mat like a print: never cropped, text below in the tone colour.
+// Image fills a fixed 3:4 frame edge to edge; title below in the tone colour.
+// Tile images should be exported at 3:4 so nothing important is cropped.
 export function ProjectTile({
   project,
   sizes,
@@ -29,20 +30,18 @@ export function ProjectTile({
       tabIndex={tabIndex}
       draggable={false}
     >
-      <div
-        className={`tile-frame relative overflow-hidden bg-[var(--mat)] ${wide ? "tile-wide" : ""}`}
-      >
-        <div className="absolute inset-[6%]">
-          <Image
-            src={project.tile}
-            alt={project.alt}
-            fill
-            sizes={sizes}
-            draggable={false}
-            unoptimized={project.tile.endsWith(".svg")}
-            className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-          />
-        </div>
+      <div className={`tile-frame relative overflow-hidden ${wide ? "tile-wide" : ""}`}>
+        <Image
+          src={project.tile}
+          alt={project.alt}
+          fill
+          sizes={sizes}
+          draggable={false}
+          // The carousel loops copies in and out of view: load them up front so nothing pops in.
+          loading={compact ? "eager" : undefined}
+          unoptimized={project.tile.endsWith(".svg")}
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+        />
       </div>
       <div className={compact ? "px-6 py-5" : "mt-5"}>
         <Heading

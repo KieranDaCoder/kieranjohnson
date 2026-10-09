@@ -42,7 +42,6 @@ function wrapRange(v: number, size: number) {
 export function WorkCarousel({ projects }: { projects: Tile[] }) {
   const reduce = useReducedMotion();
   const x = useMotionValue(0);
-  const offset = useMotionValue(0); // arrow animation progress, applied as deltas
   const wrapperRef = useRef<HTMLDivElement>(null);
   const setRef = useRef<HTMLUListElement>(null);
   const [setW, setSetW] = useState(0);
@@ -55,7 +54,6 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
   const arrowAnim = useRef<ReturnType<typeof animate> | null>(null);
   const arrowTarget = useRef(0);
   const arrowPrev = useRef(0);
-  const arrowUnsub = useRef<(() => void) | null>(null);
 
   const move = useCallback(
     (dx: number) => {
@@ -67,8 +65,6 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
   const stopArrow = useCallback(() => {
     arrowAnim.current?.stop();
     arrowAnim.current = null;
-    arrowUnsub.current?.();
-    arrowUnsub.current = null;
   }, []);
 
   // Measure one copy and the viewport.
@@ -156,36 +152,36 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
     d.id = -1;
   };
 
+  // Glide to the next tile edge. Animates a plain number (no inherited velocity,
+  // no spring overshoot) and feeds the deltas through the wrap, so the reel keeps
+  // running 1, 2, 3, 4, 5, 1, 2... in either direction.
   function step(dir: 1 | -1) {
     const tileW = projects.length ? setWRef.current / projects.length : 0;
     if (!tileW) return;
     velocity.current = 0;
+    // Where an in-flight glide was heading, so quick clicks add up.
+    const pending = arrowAnim.current ? arrowTarget.current - arrowPrev.current : 0;
+    stopArrow();
+    const k = (x.get() + pending) / tileW;
+    const landing = (dir === 1 ? Math.ceil(k - 0.001) - 1 : Math.floor(k + 0.001) + 1) * tileW;
+    const delta = landing - x.get();
     if (reduce) {
-      move(-dir * tileW);
+      move(delta);
       return;
     }
-    // Remaining distance of an in-flight animation carries over, so quick clicks add up.
-    const remaining = arrowAnim.current ? arrowTarget.current - offset.get() : 0;
-    stopArrow();
-    arrowTarget.current = remaining - dir * tileW;
-    offset.set(0);
+    arrowTarget.current = delta;
     arrowPrev.current = 0;
-    arrowUnsub.current = offset.on("change", (v) => {
-      move(v - arrowPrev.current);
-      arrowPrev.current = v;
-    });
-    const controls = animate(offset, arrowTarget.current, {
-      type: "spring",
-      stiffness: 260,
-      damping: 32,
+    const controls = animate(0, delta, {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => {
+        move(v - arrowPrev.current);
+        arrowPrev.current = v;
+      },
     });
     arrowAnim.current = controls;
     controls.finished.then(() => {
-      if (arrowAnim.current === controls) {
-        arrowAnim.current = null;
-        arrowUnsub.current?.();
-        arrowUnsub.current = null;
-      }
+      if (arrowAnim.current === controls) arrowAnim.current = null;
     });
   }
 
@@ -206,7 +202,7 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
     <div className="relative [--tw:78vw] md:[--tw:clamp(260px,31.6vw,520px)]">
       <div
         ref={wrapperRef}
-        className="cursor-grab touch-pan-y select-none overflow-clip border-b border-line active:cursor-grabbing"
+        className="cursor-grab touch-pan-y select-none overflow-clip active:cursor-grabbing"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
@@ -232,7 +228,7 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
               {projects.map((project) => (
                 <li
                   key={project.slug}
-                  className="w-[var(--tw)] flex-none border-r border-line"
+                  className="w-[var(--tw)] flex-none"
                 >
                   <ProjectTile
                     project={project}
