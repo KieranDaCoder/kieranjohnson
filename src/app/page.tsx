@@ -57,10 +57,11 @@ export default function Home() {
       </Section>
 
       {/* About */}
-      <Section tone="white" id="about" className="gutter anchor-section pb-20 md:pb-28">
+      <Section tone="white" id="about" className="gutter anchor-section screen-section pb-20 md:pb-28">
         <HeadingRow cta={{ label: "More about me", href: "/about" }}>
           <h2 className="t-h2">About me</h2>
         </HeadingRow>
+        <div className="screen-fill">
         <div className="grid gap-12 pt-10 md:grid-cols-[1fr_auto] md:gap-24 md:pt-14">
           <div>
             <p className="t-statement">{home.usp}</p>
@@ -76,24 +77,29 @@ export default function Home() {
             />
           </div>
         </div>
+        </div>
       </Section>
 
       {/* Work */}
-      <Section tone="black" id="work" className="anchor-section pb-20 md:pb-28">
+      <Section tone="black" id="work" className="anchor-section screen-section pb-20 md:pb-28">
         <HeadingRow cta={{ label: "See all work", href: "/work" }} className="gutter">
           <h2 className="t-h2">My work</h2>
         </HeadingRow>
-        <WorkCarousel projects={projects} />
+        <div className="screen-fill">
+          <WorkCarousel projects={projects} />
+        </div>
       </Section>
 
       {/* Contact */}
-      <Section tone="white" id="contact" className="gutter anchor-section pb-20 md:pb-28">
+      <Section tone="white" id="contact" className="gutter anchor-section screen-section pb-20 md:pb-28">
         <HeadingRow line={false} className="pb-0 md:pb-0">
           <h2 className="t-h2">Contact</h2>
         </HeadingRow>
-        <p className="t-body mt-8 max-w-[34em] md:mt-10">{home.contactLine}</p>
-        <div className="mt-10 md:mt-12">
-          <ContactList links={contacts} />
+        <div className="screen-fill">
+          <p className="t-body mt-8 max-w-[34em] md:mt-10">{home.contactLine}</p>
+          <div className="mt-10 md:mt-12">
+            <ContactList links={contacts} />
+          </div>
         </div>
       </Section>
     </>

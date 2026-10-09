@@ -396,3 +396,25 @@ body {
     scroll-margin-top: 72px;
   }
 }
+
+/* Home sections read as one screen each on roomy windows. min-height only, so
+   taller content just grows the section. Phones and short windows stay natural. */
+@media (min-width: 768px) and (min-height: 600px) {
+  .screen-section {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3.5rem;
+  }
+  .screen-fill {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* Tiles shrink so frame + title fit under the heading band. */
+  .work-carousel {
+    --work-reserve: 310px;
+    --tw: min(clamp(260px, 31.6vw, 520px), calc((100svh - var(--work-reserve)) * 3 / 4));
+  }
+}

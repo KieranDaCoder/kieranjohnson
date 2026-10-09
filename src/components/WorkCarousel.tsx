@@ -199,7 +199,7 @@ export function WorkCarousel({ projects }: { projects: Tile[] }) {
   const copies = setW > 0 ? Math.max(2, Math.ceil(viewW / setW) + 1) : 1;
 
   return (
-    <div className="relative [--tw:78vw] md:[--tw:clamp(260px,31.6vw,520px)]">
+    <div className="work-carousel relative [--tw:78vw] md:[--tw:clamp(260px,31.6vw,520px)]">
       <div
         ref={wrapperRef}
         className="cursor-grab touch-pan-y select-none overflow-clip active:cursor-grabbing"
