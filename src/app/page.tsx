@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/Section";
+import { HeroName } from "@/components/HeroName";
 import { WorkCarousel } from "@/components/WorkCarousel";
 import { ContactList } from "@/components/ContactList";
 import { getContacts, getHome, getProjects } from "@/lib/content";
@@ -44,11 +45,7 @@ export default function Home() {
         id="home"
         className="gutter relative flex min-h-svh flex-col justify-end pb-16 pt-32 md:pb-24"
       >
-        <h1 className="t-hero">
-          <span className="rise block">KIERAN</span>
-          <span className="t-hero-alt rise block [animation-delay:80ms]">JOHNSON</span>
-        </h1>
-        <p className="t-sub rise mt-6 [animation-delay:200ms] md:mt-8">Junior Strategist</p>
+        <HeroName />
       </Section>
 
       {/* About */}
