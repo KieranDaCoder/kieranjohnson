@@ -70,8 +70,8 @@ export function StackScroll({ children }: { children: React.ReactNode }) {
               snap: {
                 snapTo: (progress: number, self?: ScrollTrigger) =>
                   self && self.isActive ? (progress < 0.5 ? 0 : 1) : progress,
-                duration: { min: 0.25, max: 0.6 },
-                delay: 0.08,
+                duration: { min: 0.18, max: 0.44 },
+                delay: 0.06,
                 ease: "power2.inOut",
                 directional: false,
                 inertia: false,
