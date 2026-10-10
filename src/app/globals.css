@@ -83,10 +83,11 @@ body {
   letter-spacing: -0.045em;
 }
 .t-h2 {
-  font-size: clamp(2.5rem, 7vw, 7rem);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  font-size: clamp(3.5rem, 11vw, 12rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
   /* Trim the box to cap height and baseline so padding centres the letters. */
   text-box: trim-both cap alphabetic;
 }
@@ -414,24 +415,7 @@ body {
   }
   /* Tiles shrink so frame + title fit under the heading band. */
   .work-carousel {
-    --work-reserve: 310px;
+    --work-reserve: calc(272px + 8vw);
     --tw: min(clamp(260px, 31.6vw, 520px), calc((100svh - var(--work-reserve)) * 3 / 4));
-  }
-}
-
-/* Page lock on the home page (same screens as .screen-section): a small
-   scroll springs back to the current section, a firmer one settles on the
-   next. Browsers still scroll freely inside a section taller than the screen,
-   so long content never traps. */
-@media (min-width: 768px) and (min-height: 600px) {
-  html:has(.screen-section) {
-    scroll-snap-type: y mandatory;
-  }
-  #home,
-  .screen-section {
-    scroll-snap-align: start;
-  }
-  html:has(.screen-section) footer {
-    scroll-snap-align: end;
   }
 }

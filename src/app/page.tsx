@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/Section";
 import { HeroName } from "@/components/HeroName";
+import { StackScroll } from "@/components/StackScroll";
 import { WorkCarousel } from "@/components/WorkCarousel";
 import { ContactList } from "@/components/ContactList";
 import { getContacts, getHome, getProjects } from "@/lib/content";
@@ -21,7 +22,7 @@ function HeadingRow({
 }) {
   return (
     <div
-      className={`flex items-center justify-between gap-4 py-10 md:gap-6 md:py-14 ${line ? "border-b border-line" : ""} ${className}`}
+      className={`flex flex-col items-start gap-6 py-10 md:flex-row md:items-center md:justify-between md:gap-6 md:py-14 ${line ? "border-b border-line" : ""} ${className}`}
     >
       {children}
       {cta && (
@@ -46,9 +47,10 @@ export default function Home() {
   const contacts = getContacts();
 
   return (
-    <>
+    <StackScroll>
       {/* Hero: text only, name at the bottom left. */}
       <Section
+        stack
         tone="black"
         id="home"
         className="gutter relative flex min-h-svh flex-col justify-end pb-16 pt-32 md:pb-24"
@@ -57,7 +59,7 @@ export default function Home() {
       </Section>
 
       {/* About */}
-      <Section tone="white" id="about" className="gutter anchor-section screen-section pb-20 md:pb-28">
+      <Section stack tone="white" id="about" outerClassName="anchor-section" className="gutter screen-section pb-20 md:pb-28">
         <HeadingRow cta={{ label: "More about me", href: "/about" }}>
           <h2 className="t-h2">About me</h2>
         </HeadingRow>
@@ -81,7 +83,7 @@ export default function Home() {
       </Section>
 
       {/* Work */}
-      <Section tone="black" id="work" className="anchor-section screen-section pb-20 md:pb-28">
+      <Section stack tone="black" id="work" outerClassName="anchor-section" className="screen-section pb-20 md:pb-28">
         <HeadingRow cta={{ label: "See all work", href: "/work" }} className="gutter">
           <h2 className="t-h2">My work</h2>
         </HeadingRow>
@@ -91,7 +93,7 @@ export default function Home() {
       </Section>
 
       {/* Contact */}
-      <Section tone="white" id="contact" className="gutter anchor-section screen-section pb-20 md:pb-28">
+      <Section stack tone="white" id="contact" outerClassName="anchor-section" className="gutter screen-section pb-20 md:pb-28">
         <HeadingRow line={false} className="pb-0 md:pb-0">
           <h2 className="t-h2">Contact</h2>
         </HeadingRow>
@@ -102,6 +104,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-    </>
+    </StackScroll>
   );
 }

@@ -13,25 +13,46 @@ const items = [
   { id: "contact", label: "Contact", href: "/#contact" },
 ];
 
-// Which Home section is crossing the middle of the viewport.
+// Pinned sections move out of flow, so positions come from the element that
+// holds their place (GSAP's pin-spacer) when there is one.
+function anchorEl(el: HTMLElement) {
+  const parent = el.parentElement;
+  return parent?.classList.contains("pin-spacer") ? parent : el;
+}
+
+function docTop(el: HTMLElement) {
+  return anchorEl(el).getBoundingClientRect().top + window.scrollY;
+}
+
+// Which Home section is crossing the middle of the viewport, from layout
+// positions (not intersection), so pinned and overlapping sections are fine.
 function useHomeSection(enabled: boolean) {
   const [current, setCurrent] = useState("home");
 
   useEffect(() => {
     if (!enabled) return;
-    const els = items
-      .map((item) => document.getElementById(item.id))
-      .filter((el): el is HTMLElement => el !== null);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setCurrent(entry.target.id);
-        }
-      },
-      { rootMargin: "-50% 0px -50% 0px" },
-    );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const mid = window.scrollY + window.innerHeight / 2;
+      let active = items[0].id;
+      for (const item of items) {
+        const el = document.getElementById(item.id);
+        if (el && docTop(el) <= mid) active = item.id;
+      }
+      setCurrent(active);
+    };
+    const queue = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", queue);
+      window.removeEventListener("resize", queue);
+    };
   }, [enabled]);
 
   return current;
@@ -66,6 +87,16 @@ export function SiteNav() {
               href={item.href}
               aria-current={item.id === current ? (onHome ? "location" : "page") : undefined}
               // Mouse only: on touch the bubble just marks the current section.
+              onClick={(e) => {
+                if (!onHome || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+                const el = document.getElementById(item.id);
+                if (!el) return;
+                // Native hash scrolling reads a pinned section's fixed position.
+                e.preventDefault();
+                const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+                window.history.replaceState(null, "", `#${item.id}`);
+                window.scrollTo({ top: Math.max(0, docTop(el) - margin), behavior: "smooth" });
+              }}
               onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(item.id)}
               onFocus={() => setHovered(item.id)}
               onBlur={() => setHovered(null)}
