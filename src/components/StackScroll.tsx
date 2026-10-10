@@ -23,8 +23,7 @@ export function StackScroll({ children }: { children: React.ReactNode }) {
 
       mm.add(DESKTOP, () => {
         const sections = gsap.utils.toArray<HTMLElement>(wrap.querySelectorAll(":scope > [data-stack]"));
-        const footer = document.querySelector<HTMLElement>("main + footer");
-        const layers = footer ? [...sections, footer] : sections;
+        const layers = sections;
 
         layers.forEach((el, i) => {
           gsap.set(el, { position: "relative", zIndex: i + 1, boxShadow: SHADOW });
@@ -79,20 +78,19 @@ export function StackScroll({ children }: { children: React.ReactNode }) {
             0,
           ).fromTo(shade, { opacity: 0 }, { opacity: 0.55 }, 0);
 
-          // Only the page directly behind should show: once the layer after
-          // next starts rising, this one (now two back) fades out.
+          // Only the page directly behind should show. Once the layer after
+          // next starts rising this one is two back, so hide it. Toggle
+          // instantly at that point: the layer in front is still full size
+          // and covers it completely, so the switch is never seen (a fade
+          // here flickered when scrolling back up).
           const afterNext = layers[i + 2];
           if (afterNext) {
-            gsap.to(section, {
-              autoAlpha: 0,
-              duration: 0.25,
-              ease: "power1.out",
-              scrollTrigger: {
-                trigger: afterNext,
-                start: "top bottom",
-                toggleActions: "play none none reverse",
-                invalidateOnRefresh: true,
-              },
+            ScrollTrigger.create({
+              trigger: afterNext,
+              start: "top bottom",
+              invalidateOnRefresh: true,
+              onEnter: () => gsap.set(section, { visibility: "hidden" }),
+              onLeaveBack: () => gsap.set(section, { visibility: "visible" }),
             });
           }
         });

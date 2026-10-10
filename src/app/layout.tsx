@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
 import { SiteNav } from "@/components/SiteNav";
-import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 // One family. Variable weight, upright and italic.
@@ -40,7 +39,6 @@ export default function RootLayout({
         </a>
         <SiteNav />
         <main id="main">{children}</main>
-        <Footer />
       </body>
     </html>
   );

@@ -7,7 +7,8 @@ import { WorkCarousel } from "@/components/WorkCarousel";
 import { ContactList } from "@/components/ContactList";
 import { getContacts, getHome, getProjects } from "@/lib/content";
 
-// Section heading band: equal space above and below the (trimmed) heading,
+// Section heading band: the (trimmed) heading sits evenly between the fixed nav
+// (extra top padding on desktop clears it) and the hairline below,
 // button centred on it, optional hairline underneath.
 function HeadingRow({
   children,
@@ -22,7 +23,7 @@ function HeadingRow({
 }) {
   return (
     <div
-      className={`flex flex-col items-start gap-6 py-10 md:flex-row md:items-center md:justify-between md:gap-6 md:py-14 ${line ? "border-b border-line" : ""} ${className}`}
+      className={`flex flex-col items-start gap-6 py-10 md:flex-row md:items-center md:justify-between md:gap-6 md:pb-10 md:pt-24 ${line ? "border-b border-line" : ""} ${className}`}
     >
       {children}
       {cta && (

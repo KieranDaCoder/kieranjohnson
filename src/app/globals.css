@@ -415,7 +415,7 @@ body {
   }
   /* Tiles shrink so frame + title fit under the heading band. */
   .work-carousel {
-    --work-reserve: calc(272px + 8vw);
+    --work-reserve: calc(222px + 8vw);
     --tw: min(clamp(260px, 31.6vw, 520px), calc((100svh - var(--work-reserve)) * 3 / 4));
   }
 }
