@@ -12,7 +12,7 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kieranjohnson.vercel.app"),
+  metadataBase: new URL("https://www.kieranjohnson.me"),
   title: {
     default: "Kieran Johnson",
     template: "%s | Kieran Johnson",
