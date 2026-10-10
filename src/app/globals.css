@@ -418,3 +418,23 @@ body {
     --tw: min(clamp(260px, 31.6vw, 520px), calc((100svh - var(--work-reserve)) * 3 / 4));
   }
 }
+
+/* Contact QR: fixed whole-number sizes, never fluid. Fluid scaling resamples the
+   500px source and blurs the dots; these steps stay crisp (1:1 at 500px on a
+   1080p projector) and all decode reliably. */
+.qr-code {
+  width: 250px;
+  height: 250px;
+}
+@media (min-width: 768px) {
+  .qr-code { width: 300px; height: 300px; }
+}
+@media (min-width: 1280px) {
+  .qr-code { width: 350px; height: 350px; }
+}
+@media (min-width: 1536px) {
+  .qr-code { width: 400px; height: 400px; }
+}
+@media (min-width: 1800px) and (min-height: 960px) {
+  .qr-code { width: 500px; height: 500px; }
+}

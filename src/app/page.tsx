@@ -46,6 +46,7 @@ export default function Home() {
     alt,
   }));
   const contacts = getContacts();
+  const linkedin = contacts.find((c) => c.platform === "LinkedIn");
 
   return (
     <StackScroll>
@@ -99,9 +100,31 @@ export default function Home() {
           <h2 className="t-h2">Contact</h2>
         </HeadingRow>
         <div className="screen-fill">
-          <p className="t-body mt-8 max-w-[34em] md:mt-10">{home.contactLine}</p>
-          <div className="mt-10 md:mt-12">
-            <ContactList links={contacts} />
+          <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16 lg:gap-24">
+            <div>
+              <p className="t-body mt-8 max-w-[34em] md:mt-10">{home.contactLine}</p>
+              <div className="mt-10 md:mt-12">
+                <ContactList links={contacts} />
+              </div>
+            </div>
+            {linkedin && (
+              <a
+                href={linkedin.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="qr-code block shrink-0"
+              >
+                <Image
+                  src="/images/linkedin-qr.png"
+                  alt="QR code for LinkedIn"
+                  width={500}
+                  height={500}
+                  // Serve the original file: lossy resizing softens the dots and hurts scanning.
+                  unoptimized
+                  className="size-full"
+                />
+              </a>
+            )}
           </div>
         </div>
       </Section>
