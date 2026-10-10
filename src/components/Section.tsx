@@ -5,7 +5,7 @@ type Props = {
   className?: string;
   /** Home stack only: classes for the outer (id-bearing) element. */
   outerClassName?: string;
-  /** Home stack: outer element is pinned, inner receives the fall-away transforms. */
+  /** Home stack: outer element is sticky, inner receives the fall-away transforms. */
   stack?: boolean;
   children: React.ReactNode;
 };

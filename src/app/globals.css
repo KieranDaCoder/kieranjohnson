@@ -293,12 +293,12 @@ body {
 @keyframes hero-in {
   from {
     opacity: 0;
-    filter: blur(14px) drop-shadow(0 0 0.35em rgba(255, 255, 255, 0.08));
+    filter: blur(14px);
     transform: translateY(0.08em);
   }
   to {
     opacity: 1;
-    filter: blur(0) drop-shadow(0 0 0.35em rgba(255, 255, 255, 0.08));
+    filter: blur(0);
     transform: none;
   }
 }
@@ -344,7 +344,6 @@ body {
   background-repeat: no-repeat, repeat-x, no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
-  filter: drop-shadow(0 0 0.35em rgba(255, 255, 255, 0.08));
   transition:
     --gx 250ms ease-out,
     --gy 250ms ease-out,

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import { layoutTop } from "@/lib/stackLayout";
 
 // On Home these scroll to sections; on inner pages they return to them.
 const items = [
@@ -13,19 +14,10 @@ const items = [
   { id: "contact", label: "Contact", href: "/#contact" },
 ];
 
-// Pinned sections move out of flow, so positions come from the element that
-// holds their place (GSAP's pin-spacer) when there is one.
-function anchorEl(el: HTMLElement) {
-  const parent = el.parentElement;
-  return parent?.classList.contains("pin-spacer") ? parent : el;
-}
 
-function docTop(el: HTMLElement) {
-  return anchorEl(el).getBoundingClientRect().top + window.scrollY;
-}
 
 // Which Home section is crossing the middle of the viewport, from layout
-// positions (not intersection), so pinned and overlapping sections are fine.
+// positions (not intersection), so sticky and overlapping sections are fine.
 function useHomeSection(enabled: boolean) {
   const [current, setCurrent] = useState("home");
 
@@ -38,7 +30,7 @@ function useHomeSection(enabled: boolean) {
       let active = items[0].id;
       for (const item of items) {
         const el = document.getElementById(item.id);
-        if (el && docTop(el) <= mid) active = item.id;
+        if (el && layoutTop(el) <= mid) active = item.id;
       }
       setCurrent(active);
     };
@@ -91,11 +83,11 @@ export function SiteNav() {
                 if (!onHome || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
                 const el = document.getElementById(item.id);
                 if (!el) return;
-                // Native hash scrolling reads a pinned section's fixed position.
+                // Land on the layout top: sticky layers move while stuck.
                 e.preventDefault();
                 const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
                 window.history.replaceState(null, "", `#${item.id}`);
-                window.scrollTo({ top: Math.max(0, docTop(el) - margin), behavior: "smooth" });
+                window.scrollTo({ top: Math.max(0, layoutTop(el) - margin), behavior: reduceMotion ? "instant" : "smooth" });
               }}
               onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(item.id)}
               onFocus={() => setHovered(item.id)}
