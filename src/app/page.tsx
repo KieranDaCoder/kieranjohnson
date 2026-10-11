@@ -73,12 +73,12 @@ export default function Home() {
               {home.coreInfo}
             </p>
           </div>
-          <div className="relative size-40 md:size-60" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+          <div className="about-portrait relative" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
             <Image
               src="/images/kieran-portrait-square.jpg"
               alt="Kieran Johnson"
               fill
-              sizes="(max-width: 768px) 160px, 240px"
+              sizes="(max-width: 768px) 320px, 480px"
               className="object-cover"
             />
           </div>

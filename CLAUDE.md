@@ -119,6 +119,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-11: home About portrait doubled (`.about-portrait`: 320px phone, up to 480px desktop, capped by viewport height so About still fits one screen).
 - 2026-10-11: new portrait (square crop for home About, 3:4 crop for /about), old photo removed; files renamed to bust image caches.
 - 2026-10-11: `cardo-usp` pushed to `main` (Inter Tight, editorial hero with USP, soft snap + idle auto-settle, arrival animations, no footer/lines, kieranjohnson.me metadata, this file).
 - 2026-10-11: idle auto-settle (`SnapSettle.tsx`): on desktop home, if the page sits still for 1.5s off a page top, it glides to the nearest one (not while a mouse button is held, not inside a page taller than the screen, not under reduced motion). Complements the proximity CSS snap.

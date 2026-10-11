@@ -603,3 +603,17 @@ body {
 @media (min-width: 1800px) and (min-height: 960px) {
   .qr-code { width: 500px; height: 500px; }
 }
+
+/* Home About portrait: 320px on phones, up to 480px on desktop (twice the old
+   size), capped by viewport height so About still fits one screen. */
+.about-portrait {
+  width: 320px;
+  height: 320px;
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  .about-portrait {
+    width: clamp(240px, calc(100svh - 380px), 480px);
+    height: clamp(240px, calc(100svh - 380px), 480px);
+  }
+}
