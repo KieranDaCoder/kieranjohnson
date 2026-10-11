@@ -23,10 +23,10 @@ Claude's own memory is not shared between computers, so anything worth keeping g
 _Update this block each session._
 
 - Last updated: 2026-10-11.
-- **Live design** (on `main`): black and white, Inter Tight, stacked-folder home scroll, LinkedIn QR on Contact.
-- **Branch `cardo-usp`** (preview, not merged): Inter Tight only (back to main's fonts); editorial-stagger hero with USP; plain scroll with soft CSS page snap (proximity, desktop only); page-arrival animation (titles slide in word by word, body fades up, replays on each arrival); GSAP removed; folder stack removed. `serif-reveal` (PT Serif) is the previous experiment.
+- **Live design** (on `main`, https://www.kieranjohnson.me): black and white, Inter Tight only. Hero = editorial stagger (KIERAN left, JOHNSON right) with metallic fill, soft white shimmer and a faint drifting light; subline "JUNIOR STRATEGIST" + USP on one line on desktop. Home is plain scroll with a soft CSS page snap (proximity) plus an idle auto-settle glide after 1.5s (desktop only). Each page's title slides in word by word and its body fades up on arrival. LinkedIn QR on Contact. No footer, no heading lines. GSAP removed.
+- **Rollback points:** tag `v-bw-snap` (scroll-snap version), the `redesign-stack` branch (stacked-folder version that was live before this), tag `v-navy-old` (original navy site). Experiments `serif-reveal` (PT Serif) and the Cardo/DM Sans commits on `cardo-usp` were rejected.
 - **Placeholders still live:** About text, home About lines, Contact intro, every project page, project `alt`/`summary`. They show as `[PLACEHOLDER: Kieran to write]` until Kieran writes the copy. `npm run check:content` fails until they are gone.
-- **Branches:** `main` = production. `redesign-stack` and `contact-qr` are already merged into it. `redesign-oct` = older scroll-snap version (tag `v-bw-snap`). `rebrand-navy-hero` / `redesign/lounge` = abandoned experiments. Tag `v-navy-old` = the original navy site, for rollback.
+- **Branches:** `main` = production. `cardo-usp` (which includes `docs-claude-md` and `serif-reveal`), `redesign-stack` and `contact-qr` are merged into it. `redesign-oct` = older scroll-snap version (tag `v-bw-snap`). `rebrand-navy-hero` / `redesign/lounge` = abandoned experiments. Tag `v-navy-old` = the original navy site, for rollback.
 - **Previews:** every branch gets `https://kieranjohnson-git-<branch>-kieranssuperproject.vercel.app` (behind Vercel login).
 
 ## Open items
@@ -119,6 +119,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-11: `cardo-usp` pushed to `main` (Inter Tight, editorial hero with USP, soft snap + idle auto-settle, arrival animations, no footer/lines, kieranjohnson.me metadata, this file).
 - 2026-10-11: idle auto-settle (`SnapSettle.tsx`): on desktop home, if the page sits still for 1.5s off a page top, it glides to the nearest one (not while a mouse button is held, not inside a page taller than the screen, not under reduced motion). Complements the proximity CSS snap.
 - 2026-10-11: removed the hero hover colour effect entirely (Kieran prefers just the soft white shimmer); hero back to fill + shimmer + living light.
 
