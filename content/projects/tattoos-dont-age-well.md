@@ -6,6 +6,10 @@ year: 2026
 order: 2
 type: creative
 tile: /images/projects/tattoos-dont-age-well/execution-1.png
+tiles:
+  - /images/projects/tattoos-dont-age-well/execution-1.png
+  - /images/projects/tattoos-dont-age-well/execution-2.png
+  - /images/projects/tattoos-dont-age-well/execution-3.png
 hero: /images/projects/tattoos-dont-age-well/execution-1.png
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"

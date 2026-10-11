@@ -5,7 +5,7 @@ import { animate, motion, useAnimationFrame, useMotionValue, useReducedMotion } 
 import { ProjectTile } from "@/components/ProjectTile";
 import type { Project } from "@/lib/content";
 
-type Tile = Pick<Project, "slug" | "title" | "category" | "year" | "tile" | "alt">;
+type Tile = Pick<Project, "slug" | "title" | "category" | "year" | "tile" | "tiles" | "alt">;
 
 const DRAG_THRESHOLD = 6;
 const FRICTION = 0.92; // per 60fps frame

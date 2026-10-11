@@ -37,12 +37,13 @@ function HeadingRow({
 
 export default function Home() {
   const home = getHome();
-  const projects = getProjects().map(({ slug, title, category, year, tile, alt }) => ({
+  const projects = getProjects().map(({ slug, title, category, year, tile, tiles, alt }) => ({
     slug,
     title,
     category,
     year,
     tile,
+    tiles,
     alt,
   }));
   const contacts = getContacts();

@@ -46,6 +46,8 @@ export type Project = {
   order: number;
   type: "strategy" | "creative";
   tile: string;
+  // Rotating tile images; tiles[0] should equal tile. Falls back to [tile].
+  tiles: string[];
   hero: string;
   alt: string;
   summary: string;
@@ -83,6 +85,10 @@ export function getProjects(): Project[] {
         order: Number(data.order ?? 0),
         type: data.type === "creative" ? "creative" : "strategy",
         tile: String(data.tile),
+        tiles:
+          Array.isArray(data.tiles) && data.tiles.length > 0
+            ? data.tiles.map(String)
+            : [String(data.tile)],
         hero: String(data.hero ?? data.tile),
         alt: String(data.alt ?? ""),
         summary: String(data.summary ?? ""),

@@ -84,7 +84,7 @@ src/components/     Section, RevealTitle, Reveal, HeroName, SiteNav, WorkCarouse
 scripts/check-content.mjs   fails while "[PLACEHOLDER" exists in content/
 ```
 
-Project frontmatter: `title, slug, category, year, order, type (strategy|creative), tile, hero, alt, summary, images[]`. Body sections: strategy = Challenge, Insight, Solution; creative = Insight, Big idea, Execution. The tile shows the **title only** (no category or year).
+Project frontmatter: `title, slug, category, year, order, type (strategy|creative), tile, tiles[] (optional), hero, alt, summary, images[]`. Body sections: strategy = Challenge, Insight, Solution; creative = Insight, Big idea, Execution. The tile shows the **title only** (no category or year). `tiles:` is an optional list of image paths from the same campaign (keep `tiles[0]` equal to `tile`); with more than one, the tile stays one tile and `TileImages.tsx` rotates through them: 3s per image, 1s opacity crossfade, driven by a shared wall clock plus a per-slug offset so carousel copies always show the same image. It pauses offscreen and when the tab is hidden (then re-syncs with one crossfade), only advances to images that have loaded, and is off under reduced motion (first image only). Without JS the first image shows.
 
 ## Things that were learned the hard way (do not repeat)
 
@@ -119,6 +119,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-11: branch `tile-rotate`: optional `tiles:` frontmatter; project tiles crossfade through several campaign images (`TileImages.tsx`), synced across carousel copies. Tattoos Don't Age Well uses execution-1 to 3.
 - 2026-10-11: `cardo-usp` pushed to `main` (Inter Tight, editorial hero with USP, soft snap + idle auto-settle, arrival animations, no footer/lines, kieranjohnson.me metadata, this file).
 - 2026-10-11: idle auto-settle (`SnapSettle.tsx`): on desktop home, if the page sits still for 1.5s off a page top, it glides to the nearest one (not while a mouse button is held, not inside a page taller than the screen, not under reduced motion). Complements the proximity CSS snap.
 - 2026-10-11: removed the hero hover colour effect entirely (Kieran prefers just the soft white shimmer); hero back to fill + shimmer + living light.

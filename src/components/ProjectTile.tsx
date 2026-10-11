@@ -1,9 +1,16 @@
 import Link from "next/link";
-import Image from "next/image";
+import { TileImages } from "@/components/TileImages";
 import type { Project } from "@/lib/content";
 
+// Stable 0 to 1500ms offset per project so tiles do not switch in unison.
+function staggerOffset(slug: string) {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) % 1500;
+  return h;
+}
+
 type Props = {
-  project: Pick<Project, "slug" | "title" | "category" | "year" | "tile" | "alt">;
+  project: Pick<Project, "slug" | "title" | "category" | "year" | "tile" | "tiles" | "alt">;
   sizes: string;
   // Full-width tile in the /work grid keeps the row height of a normal tile.
   wide?: boolean;
@@ -31,16 +38,13 @@ export function ProjectTile({
       draggable={false}
     >
       <div className={`tile-frame relative overflow-hidden ${wide ? "tile-wide" : ""}`}>
-        <Image
-          src={project.tile}
+        <TileImages
+          images={project.tiles?.length ? project.tiles : [project.tile]}
           alt={project.alt}
-          fill
           sizes={sizes}
-          draggable={false}
           // The carousel loops copies in and out of view: load them up front so nothing pops in.
-          loading={compact ? "eager" : undefined}
-          unoptimized={project.tile.endsWith(".svg")}
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+          eager={compact}
+          offset={staggerOffset(project.slug)}
         />
       </div>
       <div className={compact ? "px-6 py-5" : "mt-5"}>
