@@ -54,7 +54,7 @@ export function HeroName({ usp }: { usp: string }) {
         <span className="t-hero-alt hero-line hero-line-2">JOHNSON</span>
       </h1>
       <p className="t-sub hero-sub mt-6 md:mt-8">
-        <span className="font-display">Junior Strategist</span> <span>{usp}</span>
+        <span className="sub-role">Junior Strategist</span> <span>{usp}</span>
       </p>
     </>
   );

@@ -46,7 +46,7 @@ _Update this block each session._
 1. **Copy rule.** This is graded work. Claude must not write, rewrite, improve or invent any visible copy, numbers, claims or testimonials. Visible text comes from Kieran's files in `content/`. Until he supplies it, use `[PLACEHOLDER: Kieran to write]`. The only text Claude may author is UI labels: Home, About, Work, Contact, About me, More about me, My work, See all work, Previous project, Next project, Back to all work, Junior Strategist, skip link and screen-reader-only labels, page titles and meta descriptions limited to Kieran's name and the section name. If unsure, ask.
 2. **No em dashes or en dashes** in any visible text.
 3. **Black and white only.** Project images are the only colour on the site.
-4. **Two families:** Cardo (display: name, titles, "Junior Strategist") and DM Sans (text, UI), loaded in `src/app/layout.tsx`. Do not add a third. (`main` still has Inter Tight until this branch merges.)
+4. **Two families:** Cardo (display: section titles and other display text; the hero name and subline are DM Sans) and DM Sans (text, UI), loaded in `src/app/layout.tsx`. Do not add a third. (`main` still has Inter Tight until this branch merges.)
 5. **Body text** is pure black on white or pure white on black. No grey body text, no text over images. `--grey` is for small labels only (currently unused).
 6. **No decoration for its own sake:** no gradients as backgrounds, particles, glows, 3D, custom cursors, eyebrow numbers like "01", "Scroll" cues, or stock-looking filler.
 7. **Never push or merge to `main` without Kieran saying so for that change.** Work on a branch, push it, give him the preview link, then ask. He will say "push to main".
@@ -65,7 +65,7 @@ _Update this block each session._
 
 - Tokens in `src/app/globals.css`: `--black #0a0a0a`, `--white #fff`, `--grey #8a8a8a`, `--tile-ratio 3/4`, `--image-ratio 3/2`, `--mat`.
 - **Tone system.** `<Section tone="black|white">` sets `--fg`, `--bg`, `--line`; everything inside reads from them (`.btn`, `.btn-round`, hairlines, focus rings). Never hard-code colours per section. Home order: Hero black, About white, Work black, Contact white.
-- **Type classes** (`@layer components`): Cardo (`.font-display`): `.t-hero` (700), `.t-hero-alt` (JOHNSON, 400 italic), `.t-h2` (700 uppercase, `text-box: trim-both cap alphabetic`), `.t-page-title`, `.t-statement`, `.t-title`, `.t-tile-title` (700), and "Junior Strategist" in `.t-sub`. DM Sans: `.t-sub` remainder (the USP), `.t-body` and `.t-lead` (400), `.t-label` (600 uppercase), `.t-meta` (400 italic), `.btn` (600), nav (500). Tracking: Cardo display 0 to +0.01em (never negative), DM Sans -0.005em, labels +0.06em.
+- **Type classes** (`@layer components`): Cardo (`.font-display`): `.t-h2` (700 uppercase, `text-box: trim-both cap alphabetic`), `.t-page-title`, `.t-statement`, `.t-title`, `.t-tile-title` (700). DM Sans: the hero (`.t-hero` KIERAN 800 upright, `.t-hero-alt` JOHNSON 300 italic, tracking -0.045em / -0.05em, metallic grey-to-white gradient fill with a moving white shimmer band), `.t-sub` (JUNIOR STRATEGIST uppercase 700 via CSS `text-transform` on `.sub-role`, then the USP 400; one line with `nowrap` from 1024px, wraps below), `.t-body` and `.t-lead` (400), `.t-label` (600 uppercase), `.t-meta` (400 italic), `.btn` (600), nav (500). Tracking: Cardo display 0 to +0.01em (never negative), DM Sans -0.005em, labels +0.06em.
 - **Buttons:** round pills. Hover inverts to outline, but only inside `@media (hover: hover)` so tapped buttons do not stick.
 - **Motion:** respect `prefers-reduced-motion` everywhere. Hero has a blur-in entrance and a continuous shimmer (CSS only). Home uses plain scroll; on desktop (min-width 768px and min-height 600px) CSS `scroll-snap-type: y mandatory`. `Reveal` adds `is-in` to `[data-reveal-section]` sections at 45% visible and removes it only when fully off screen; CSS (under `.js-reveal`) slides `RevealTitle` words in from the left and fades `[data-reveal]` blocks up. Static under reduced motion and without JS.
 - Nav: fixed glass pill, one style on every background, a white bubble slides between items (`motion`'s `layoutId`).
@@ -87,6 +87,8 @@ Project frontmatter: `title, slug, category, year, order, type (strategy|creativ
 ## Things that were learned the hard way (do not repeat)
 
 - **Home scroll is plain scroll plus CSS snap plus time-based arrival animation.** History: the earlier folder stack used GSAP `pin`, which re-parents elements and restarted the hero CSS animations (flicker); never use GSAP pin on the hero. GSAP is no longer a dependency.
+- **`background-clip: text` clips descenders and italic overhang to the line box:** pad and negatively margin the hero lines (`.hero-line` has padding-bottom/right and an equal negative margin-bottom).
+- **The white shimmer needs a grey-graded base fill or it becomes invisible** (base is `#f4f4f4` to `#8c8c8c`; a near-white base kills the glow).
 - **Serif capitals need normal tracking:** tight negative tracking made PT Serif letters collide and look bad.
 - **Scroll-scrubbed reveals finish during the snap glide and go unnoticed;** use time-based arrival animations.
 - IntersectionObserver needs a tiny threshold (0.001) to fire when a section leaves exactly at its edge.
@@ -115,6 +117,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-11: branch `cardo-usp`: hero name now DM Sans (800 / 300 italic) with restored metallic gradient and shimmer, J clipping fixed, subline DM Sans with uppercase JUNIOR STRATEGIST on one line on desktop.
 - 2026-10-11: branch `cardo-usp`: Cardo + DM Sans replace PT Serif, USP moved into the hero, GSAP ScrollReveal replaced by page-arrival title slide and body fade, gsap removed.
 - 2026-10-11: branch `serif-reveal`: PT Serif replaces Inter Tight, folder stack removed for plain scroll with CSS page snap, ScrollReveal titles and USP, fade-and-rise content.
 - 2026-10-11: custom domain `kieranjohnson.me` (apex redirects to `www`). `metadataBase` set to `https://www.kieranjohnson.me` so share previews no longer point at the old vercel.app. Added this file.
