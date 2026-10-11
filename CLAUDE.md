@@ -40,6 +40,7 @@ _Update this block each session._
 - [ ] Per-project images between sections (`images:` frontmatter) once the images exist.
 - [ ] Confirm which address is the primary: `www.kieranjohnson.me` is set as canonical in `src/app/layout.tsx` (`metadataBase`) because the apex redirects to it.
 - [ ] Check the unit's AI-use policy for portfolio copy.
+- [ ] Later: a client-side dashboard so Kieran can update the site himself (content, project order, which projects rotate their tile images).
 
 ## Rules (non-negotiable)
 
@@ -51,6 +52,7 @@ _Update this block each session._
 6. **No decoration for its own sake:** no gradients as backgrounds, particles, glows, 3D, custom cursors, eyebrow numbers like "01", "Scroll" cues, or stock-looking filler.
 7. **Never push or merge to `main` without Kieran saying so for that change.** Work on a branch, push it, give him the preview link, then ask. He will say "push to main".
 8. Do not delete or overwrite tags `v-navy-old` and `v-bw-snap`.
+9. **Rotating tiles are opt-in per project.** Only add a `tiles:` list to a project Kieran names (currently only Tattoos Don't Age Well). Never add it just because a project has several images.
 
 ## How Kieran likes to work
 
@@ -119,6 +121,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-11: rotating tiles stay opt-in: only projects Kieran names get `tiles:`; a future dashboard will manage this.
 - 2026-10-11: branch `tile-rotate`: optional `tiles:` frontmatter; project tiles crossfade through several campaign images (`TileImages.tsx`), synced across carousel copies. Tattoos Don't Age Well uses execution-1 to 3.
 - 2026-10-11: `cardo-usp` pushed to `main` (Inter Tight, editorial hero with USP, soft snap + idle auto-settle, arrival animations, no footer/lines, kieranjohnson.me metadata, this file).
 - 2026-10-11: idle auto-settle (`SnapSettle.tsx`): on desktop home, if the page sits still for 1.5s off a page top, it glides to the nearest one (not while a mouse button is held, not inside a page taller than the screen, not under reduced motion). Complements the proximity CSS snap.
