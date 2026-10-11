@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/Section";
 import { HeroName } from "@/components/HeroName";
-import { StackScroll } from "@/components/StackScroll";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { Reveal } from "@/components/Reveal";
 import { WorkCarousel } from "@/components/WorkCarousel";
 import { ContactList } from "@/components/ContactList";
 import { getContacts, getHome, getProjects } from "@/lib/content";
@@ -49,10 +50,10 @@ export default function Home() {
   const linkedin = contacts.find((c) => c.platform === "LinkedIn");
 
   return (
-    <StackScroll>
+    <>
+      <Reveal />
       {/* Hero: text only, name at the bottom left. */}
       <Section
-        stack
         tone="black"
         id="home"
         className="gutter relative flex min-h-svh flex-col justify-end pb-16 pt-32 md:pb-24"
@@ -61,17 +62,19 @@ export default function Home() {
       </Section>
 
       {/* About */}
-      <Section stack tone="white" id="about" outerClassName="anchor-section" className="gutter screen-section pb-20 md:pb-28">
+      <Section tone="white" id="about" className="anchor-section gutter screen-section pb-20 md:pb-28">
         <HeadingRow cta={{ label: "More about me", href: "/about" }}>
-          <h2 className="t-h2">About me</h2>
+          <ScrollReveal as="h2" className="t-h2">About me</ScrollReveal>
         </HeadingRow>
         <div className="screen-fill">
         <div className="grid gap-12 pt-10 md:grid-cols-[1fr_auto] md:gap-24 md:pt-14">
           <div>
-            <p className="t-statement">{home.usp}</p>
-            <p className="t-body mt-8 max-w-[34em]">{home.coreInfo}</p>
+            <ScrollReveal as="p" className="t-statement" end="top 60%">{home.usp}</ScrollReveal>
+            <p className="t-body mt-8 max-w-[34em]" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+              {home.coreInfo}
+            </p>
           </div>
-          <div className="relative size-40 md:size-60">
+          <div className="relative size-40 md:size-60" data-reveal style={{ "--i": 2 } as React.CSSProperties}>
             <Image
               src="/images/portrait-small.jpg"
               alt="Kieran Johnson"
@@ -85,25 +88,29 @@ export default function Home() {
       </Section>
 
       {/* Work */}
-      <Section stack tone="black" id="work" outerClassName="anchor-section" className="screen-section pb-20 md:pb-28">
+      <Section tone="black" id="work" className="anchor-section screen-section pb-20 md:pb-28">
         <HeadingRow cta={{ label: "See all work", href: "/work" }} className="gutter">
-          <h2 className="t-h2">My work</h2>
+          <ScrollReveal as="h2" className="t-h2">My work</ScrollReveal>
         </HeadingRow>
         <div className="screen-fill">
-          <WorkCarousel projects={projects} />
+          <div data-reveal>
+            <WorkCarousel projects={projects} />
+          </div>
         </div>
       </Section>
 
       {/* Contact */}
-      <Section stack tone="white" id="contact" outerClassName="anchor-section" className="gutter screen-section pb-20 md:pb-28">
+      <Section tone="white" id="contact" className="anchor-section gutter screen-section pb-20 md:pb-28">
         <HeadingRow line={false} className="pb-0 md:pb-0">
-          <h2 className="t-h2">Contact</h2>
+          <ScrollReveal as="h2" className="t-h2">Contact</ScrollReveal>
         </HeadingRow>
         <div className="screen-fill">
           <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16 lg:gap-24">
             <div>
-              <p className="t-body mt-8 max-w-[34em] md:mt-10">{home.contactLine}</p>
-              <div className="mt-10 md:mt-12">
+              <p className="t-body mt-8 max-w-[34em] md:mt-10" data-reveal>
+                {home.contactLine}
+              </p>
+              <div className="mt-10 md:mt-12" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
                 <ContactList links={contacts} />
               </div>
             </div>
@@ -113,6 +120,8 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="qr-code block shrink-0"
+                data-reveal
+                style={{ "--i": 2 } as React.CSSProperties}
               >
                 <Image
                   src="/images/linkedin-qr.png"
@@ -128,6 +137,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-    </StackScroll>
+    </>
   );
 }

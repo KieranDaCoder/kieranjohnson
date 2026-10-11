@@ -55,7 +55,7 @@ export function ContactList({ links }: { links: ContactLink[] }) {
               <Icon platform={platform} />
               <span className="flex min-w-0 flex-1 flex-col md:flex-row md:items-baseline">
                 <span className="t-title shrink-0 md:w-44 lg:w-64">{platform}</span>
-                <span className="t-body min-w-0 break-words font-light italic md:break-all">{handle}</span>
+                <span className="t-body min-w-0 break-words italic md:break-all">{handle}</span>
               </span>
               <svg
                 aria-hidden="true"

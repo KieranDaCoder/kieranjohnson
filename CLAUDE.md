@@ -23,7 +23,8 @@ Claude's own memory is not shared between computers, so anything worth keeping g
 _Update this block each session._
 
 - Last updated: 2026-10-11.
-- **Live design** (on `main`): black and white, Inter Tight only. Home is a "stacked folder" scroll: Hero, About me, My work, Contact. Each page holds in place while the next slides up over it and the one behind recedes. Contact page has a LinkedIn QR code (for presenting).
+- **Live design** (on `main`): black and white, Inter Tight, stacked-folder home scroll, LinkedIn QR on Contact.
+- **Branch `serif-reveal`** (preview, not merged): PT Serif only (400/700 plus italics); plain scroll with CSS page snap (desktop only); ScrollReveal on the About me, My work and Contact titles and the USP (the USP opens About, bold); other content fades and rises once as it enters; folder stack removed.
 - **Placeholders still live:** About text, home About lines, Contact intro, every project page, project `alt`/`summary`. They show as `[PLACEHOLDER: Kieran to write]` until Kieran writes the copy. `npm run check:content` fails until they are gone.
 - **Branches:** `main` = production. `redesign-stack` and `contact-qr` are already merged into it. `redesign-oct` = older scroll-snap version (tag `v-bw-snap`). `rebrand-navy-hero` / `redesign/lounge` = abandoned experiments. Tag `v-navy-old` = the original navy site, for rollback.
 - **Previews:** every branch gets `https://kieranjohnson-git-<branch>-kieranssuperproject.vercel.app` (behind Vercel login).
@@ -45,7 +46,7 @@ _Update this block each session._
 1. **Copy rule.** This is graded work. Claude must not write, rewrite, improve or invent any visible copy, numbers, claims or testimonials. Visible text comes from Kieran's files in `content/`. Until he supplies it, use `[PLACEHOLDER: Kieran to write]`. The only text Claude may author is UI labels: Home, About, Work, Contact, About me, More about me, My work, See all work, Previous project, Next project, Back to all work, Junior Strategist, skip link and screen-reader-only labels, page titles and meta descriptions limited to Kieran's name and the section name. If unsure, ask.
 2. **No em dashes or en dashes** in any visible text.
 3. **Black and white only.** Project images are the only colour on the site.
-4. **One font: Inter Tight** (variable, upright and italic), loaded in `src/app/layout.tsx`. Mix weights and italics for contrast; do not add a second family.
+4. **One font: PT Serif** (400 and 700, upright and italic), loaded in `src/app/layout.tsx`. Mix bold, regular and italics for contrast; do not add a second family. (`main` still has Inter Tight until this branch merges.)
 5. **Body text** is pure black on white or pure white on black. No grey body text, no text over images. `--grey` is for small labels only (currently unused).
 6. **No decoration for its own sake:** no gradients as backgrounds, particles, glows, 3D, custom cursors, eyebrow numbers like "01", "Scroll" cues, or stock-looking filler.
 7. **Never push or merge to `main` without Kieran saying so for that change.** Work on a branch, push it, give him the preview link, then ask. He will say "push to main".
@@ -64,9 +65,9 @@ _Update this block each session._
 
 - Tokens in `src/app/globals.css`: `--black #0a0a0a`, `--white #fff`, `--grey #8a8a8a`, `--tile-ratio 3/4`, `--image-ratio 3/2`, `--mat`.
 - **Tone system.** `<Section tone="black|white">` sets `--fg`, `--bg`, `--line`; everything inside reads from them (`.btn`, `.btn-round`, hairlines, focus rings). Never hard-code colours per section. Home order: Hero black, About white, Work black, Contact white.
-- **Type classes** (`@layer components`): `.t-hero` (name), `.t-hero-alt` (JOHNSON, weight 400 italic), `.t-sub` ("Junior Strategist"), `.t-h2` (huge uppercase 800 section titles, uses `text-box: trim-both cap alphabetic` so padding centres the letters), `.t-statement`, `.t-title`, `.t-tile-title`, `.t-body`, `.t-label`, `.t-meta`, `.t-page-title`.
+- **Type classes** (`@layer components`): `.t-hero` (name), `.t-hero-alt` (JOHNSON, weight 400 italic; `.t-hero` is 700), `.t-sub` ("Junior Strategist"), `.t-h2` (huge uppercase 700 section titles, uses `text-box: trim-both cap alphabetic` so padding centres the letters), `.t-statement` (USP, 700), `.t-title`, `.t-tile-title`, `.t-label` (all 700), `.t-body` and `.t-meta` (400), `.t-page-title`. PT Serif only has 400 and 700: map heavy to 700, light to 400. Tracking is about -0.02em on display sizes, -0.01em mid, +0.08em on uppercase labels.
 - **Buttons:** round pills. Hover inverts to outline, but only inside `@media (hover: hover)` so tapped buttons do not stick.
-- **Motion:** respect `prefers-reduced-motion` everywhere. Hero has a blur-in entrance and a continuous shimmer (CSS only). Pages stack only on desktop (see below).
+- **Motion:** respect `prefers-reduced-motion` everywhere. Hero has a blur-in entrance and a continuous shimmer (CSS only). Home uses plain scroll; on desktop (min-width 768px and min-height 600px) CSS `scroll-snap-type: y mandatory` snaps each section. `ScrollReveal` (GSAP ScrollTrigger, scrubbed) handles the titles and USP; `Reveal` fades and rises `[data-reveal]` content once. Both are static under reduced motion and without JS.
 - Nav: fixed glass pill, one style on every background, a white bubble slides between items (`motion`'s `layoutId`).
 
 ## Architecture
@@ -75,10 +76,9 @@ _Update this block each session._
 content/            all copy. home.json, about.md, contact.json, projects/<slug>.md (frontmatter + "## Heading" sections)
 public/images/      portrait-*.jpg, linkedin-qr.png, projects/<slug>/...
 src/lib/content.ts  server-only loader (gray-matter). Never invents text.
-src/lib/stackLayout.ts  layoutTop(el): document top ignoring sticky
-src/app/page.tsx    home: <StackScroll> with four <Section stack> blocks, HeadingRow helper, QR block
+src/app/page.tsx    home: four plain <Section> blocks, HeadingRow helper, QR block, <Reveal />
 src/app/about, work, work/[slug]   inner pages: black PageHeader + white body
-src/components/     Section, StackScroll, HeroName, SiteNav, WorkCarousel, ProjectTile, ContactList, PageHeader
+src/components/     Section, ScrollReveal, Reveal, HeroName, SiteNav, WorkCarousel, ProjectTile, ContactList, PageHeader
 scripts/check-content.mjs   fails while "[PLACEHOLDER" exists in content/
 ```
 
@@ -86,8 +86,7 @@ Project frontmatter: `title, slug, category, year, order, type (strategy|creativ
 
 ## Things that were learned the hard way (do not repeat)
 
-- **Stacked home scroll uses `position: sticky`, not GSAP `pin`.** GSAP pinning re-parents elements into a `.pin-spacer` on every refresh, which restarts CSS animations and made the hero flicker. GSAP (`StackScroll.tsx`) now only scrubs the fall-away (scale, tilt, shade), the snap (settle to open or closed, 0.18 to 0.44s) and hides the page two layers back. Sticky `top = min(0, viewportHeight - sectionHeight)`. Only active at min-width 768px and min-height 600px with motion allowed; phones and reduced motion scroll normally.
-- Because sticky layers move while stuck, the nav and hash links use `layoutTop()` (sum of earlier sibling heights), not `getBoundingClientRect`.
+- **Home scroll is plain scroll plus CSS snap plus ScrollReveal.** History: the earlier folder stack used GSAP `pin`, which re-parents elements into a `.pin-spacer` and restarted the hero CSS animations (flicker), so never use GSAP pin on the hero. ScrollReveal cleans up only its own triggers via `useGSAP` scope; never call `ScrollTrigger.getAll().kill()`. Its start state is set in the effect so SSR text is fully visible. The USP uses `end="top 60%"` so it finishes when About is snapped.
 - Do not animate CSS `filter` on the hero or tiles. Animate transform and opacity only. Hide the page two back instantly, never with a fade (it flickered).
 - **Work carousel** (`WorkCarousel.tsx`): infinite loop both ways via a wrapped motion value, drag with inertia, wheel, arrows that glide on a plain-number animation (a spring on a reset motion value lurched backwards). No autoplay (Kieran orders projects best first). Tiles are edge to edge, 3:4, image fills the frame (`object-cover`), no borders or mat, eager images so wrapped copies never pop in. Tile width is capped by viewport height (`--work-reserve` in `globals.css`) so heading, frames and titles fit one screen.
 - **QR code** uses the original PNG at fixed sizes (`.qr-code` in `globals.css`: 250/300/350/400/500px). Fluid sizing blurs the dots and some sizes fail to scan; `next/image` is `unoptimized` for it. It decodes to `https://www.linkedin.com/in/kieran-johnson262`.
@@ -113,6 +112,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-11: branch `serif-reveal`: PT Serif replaces Inter Tight, folder stack removed for plain scroll with CSS page snap, ScrollReveal titles and USP, fade-and-rise content.
 - 2026-10-11: custom domain `kieranjohnson.me` (apex redirects to `www`). `metadataBase` set to `https://www.kieranjohnson.me` so share previews no longer point at the old vercel.app. Added this file.
 - 2026-10-11: LinkedIn handle changed to `www.linkedin.com/in/kieran-johnson262`; QR added to Contact; pushed to `main`.
 - 2026-10-10: stacked-folder scroll with huge titles; footer removed; hero flicker fixed by replacing GSAP pins with sticky; snap about 20% quicker; work tiles larger. Pushed to `main`.

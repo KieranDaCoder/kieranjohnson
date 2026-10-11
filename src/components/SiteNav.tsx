@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { layoutTop } from "@/lib/stackLayout";
 
 // On Home these scroll to sections; on inner pages they return to them.
 const items = [
@@ -16,8 +15,8 @@ const items = [
 
 
 
-// Which Home section is crossing the middle of the viewport, from layout
-// positions (not intersection), so sticky and overlapping sections are fine.
+// Which Home section is crossing the middle of the viewport, from document
+// positions.
 function useHomeSection(enabled: boolean) {
   const [current, setCurrent] = useState("home");
 
@@ -30,7 +29,7 @@ function useHomeSection(enabled: boolean) {
       let active = items[0].id;
       for (const item of items) {
         const el = document.getElementById(item.id);
-        if (el && layoutTop(el) <= mid) active = item.id;
+        if (el && el.getBoundingClientRect().top + window.scrollY <= mid) active = item.id;
       }
       setCurrent(active);
     };
@@ -79,20 +78,10 @@ export function SiteNav() {
               href={item.href}
               aria-current={item.id === current ? (onHome ? "location" : "page") : undefined}
               // Mouse only: on touch the bubble just marks the current section.
-              onClick={(e) => {
-                if (!onHome || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-                const el = document.getElementById(item.id);
-                if (!el) return;
-                // Land on the layout top: sticky layers move while stuck.
-                e.preventDefault();
-                const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
-                window.history.replaceState(null, "", `#${item.id}`);
-                window.scrollTo({ top: Math.max(0, layoutTop(el) - margin), behavior: reduceMotion ? "instant" : "smooth" });
-              }}
               onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(item.id)}
               onFocus={() => setHovered(item.id)}
               onBlur={() => setHovered(null)}
-              className="relative block rounded-full px-3 py-2.5 text-base font-medium leading-none text-white sm:px-4"
+              className="relative block rounded-full px-3 py-2.5 text-base font-normal leading-none text-white sm:px-4"
             >
               {highlighted === item.id && (
                 <motion.span

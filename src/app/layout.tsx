@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
+import { PT_Serif } from "next/font/google";
 import { SiteNav } from "@/components/SiteNav";
 import "./globals.css";
 
-// One family. Variable weight, upright and italic.
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
+// One family. Regular and bold, upright and italic.
+const ptSerif = PT_Serif({
+  variable: "--font-pt-serif",
   subsets: ["latin"],
+  weight: ["400", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -30,10 +31,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${interTight.variable} antialiased`}>
+      <body className={`${ptSerif.variable} antialiased`}>
         <a
           href="#main"
-          className="sr-only z-[60] rounded-full bg-white px-5 py-3 font-semibold text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+          className="sr-only z-[60] rounded-full bg-white px-5 py-3 font-bold text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
         >
           Skip to content
         </a>
