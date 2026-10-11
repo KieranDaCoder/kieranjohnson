@@ -33,7 +33,7 @@ _Update this block each session._
 
 - [ ] Kieran writes all copy into `content/` (see Content below). Claude does not write it.
 - [ ] Real project tile images at **3:4** (`tile:` in each project file) and a landscape hero (`hero:`). Summit Signal, Hidden Bites and Coolness Tax still use coloured SVG placeholders in `public/placeholders/`.
-- [ ] Real portrait: replace `public/images/portrait-small.jpg` (square-ish crop) and `portrait-large.jpg`. Both are currently the same old photo.
+- [x] New portrait is in (`public/images/kieran-portrait-square.jpg` for home About, `kieran-portrait-3x4.jpg` for /about). To change it again, use NEW file names: Next.js and browsers cache images by URL, so overwriting the same name can keep showing the old photo.
 - [ ] Final project list and order (4 to 6) via `order:` in each project file.
 - [ ] Test on a real iPhone, an Android phone, desktop Chrome and Safari (touch drag, trackpad feel of the page lock, QR scan).
 - [ ] Lighthouse pass (targets: performance 90+, accessibility 95+, LCP under about 2s on mobile).
@@ -76,7 +76,7 @@ _Update this block each session._
 
 ```
 content/            all copy. home.json, about.md, contact.json, projects/<slug>.md (frontmatter + "## Heading" sections)
-public/images/      portrait-*.jpg, linkedin-qr.png, projects/<slug>/...
+public/images/      kieran-portrait-*.jpg, linkedin-qr.png, projects/<slug>/...
 src/lib/content.ts  server-only loader (gray-matter). Never invents text.
 src/app/page.tsx    home: four plain <Section> blocks, HeadingRow helper, QR block, <Reveal />
 src/app/about, work, work/[slug]   inner pages: black PageHeader + white body
@@ -119,6 +119,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-11: new portrait (square crop for home About, 3:4 crop for /about), old photo removed; files renamed to bust image caches.
 - 2026-10-11: `cardo-usp` pushed to `main` (Inter Tight, editorial hero with USP, soft snap + idle auto-settle, arrival animations, no footer/lines, kieranjohnson.me metadata, this file).
 - 2026-10-11: idle auto-settle (`SnapSettle.tsx`): on desktop home, if the page sits still for 1.5s off a page top, it glides to the nearest one (not while a mouse button is held, not inside a page taller than the screen, not under reduced motion). Complements the proximity CSS snap.
 - 2026-10-11: removed the hero hover colour effect entirely (Kieran prefers just the soft white shimmer); hero back to fill + shimmer + living light.

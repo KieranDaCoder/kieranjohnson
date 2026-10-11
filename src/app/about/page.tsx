@@ -21,7 +21,7 @@ export default function AboutPage() {
           <div className="md:order-2">
             <div className="relative aspect-[3/4] w-full max-w-[320px] md:sticky md:top-28 md:max-w-[420px]">
               <Image
-                src="/images/portrait-large.jpg"
+                src="/images/kieran-portrait-3x4.jpg"
                 alt="Kieran Johnson"
                 fill
                 sizes="(max-width: 768px) 320px, 420px"

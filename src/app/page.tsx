@@ -75,7 +75,7 @@ export default function Home() {
           </div>
           <div className="relative size-40 md:size-60" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
             <Image
-              src="/images/portrait-small.jpg"
+              src="/images/kieran-portrait-square.jpg"
               alt="Kieran Johnson"
               fill
               sizes="(max-width: 768px) 160px, 240px"
