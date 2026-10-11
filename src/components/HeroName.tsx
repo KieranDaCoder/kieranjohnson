@@ -87,11 +87,10 @@ export function HeroName({ usp }: { usp: string }) {
       </div>
       <div className="hero-depth">
         <h1 ref={h1} className="t-hero">
-          <span className="hero-line">KIERAN</span>
-          <span className="t-hero-alt hero-line hero-line-2">JOHNSON</span>
+          <span className="hero-line" data-text="KIERAN">KIERAN</span>
+          <span className="t-hero-alt hero-line hero-line-2" data-text="JOHNSON">JOHNSON</span>
         </h1>
         <div className="hero-end hero-sub">
-          <span className="hero-rule" aria-hidden="true" />
           <p className="t-sub">
             <span className="sub-role">Junior Strategist</span> <span>{usp}</span>
           </p>

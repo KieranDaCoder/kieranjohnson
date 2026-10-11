@@ -9,22 +9,20 @@ import { ContactList } from "@/components/ContactList";
 import { getContacts, getHome, getProjects } from "@/lib/content";
 
 // Section heading band: the (trimmed) heading sits evenly between the fixed nav
-// (extra top padding on desktop clears it) and the hairline below,
-// button centred on it, optional hairline underneath.
+// (extra top padding on desktop clears it) and the content below,
+// button centred on it. No lines on the home page.
 function HeadingRow({
   children,
   cta,
-  line = true,
   className = "",
 }: {
   children: React.ReactNode;
   cta?: { label: string; href: string };
-  line?: boolean;
   className?: string;
 }) {
   return (
     <div
-      className={`flex flex-col items-start gap-6 py-10 md:flex-row md:items-center md:justify-between md:gap-6 md:pb-10 md:pt-24 ${line ? "border-b border-line" : ""} ${className}`}
+      className={`flex flex-col items-start gap-6 py-10 md:flex-row md:items-center md:justify-between md:gap-6 md:pb-10 md:pt-24 ${className}`}
     >
       {children}
       {cta && (
@@ -100,7 +98,7 @@ export default function Home() {
 
       {/* Contact */}
       <Section tone="white" id="contact" reveal className="anchor-section gutter screen-section pb-20 md:pb-28">
-        <HeadingRow line={false} className="pb-0 md:pb-0">
+        <HeadingRow className="pb-0 md:pb-0">
           <RevealTitle as="h2" className="t-h2">Contact</RevealTitle>
         </HeadingRow>
         <div className="screen-fill">
