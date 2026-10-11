@@ -48,80 +48,101 @@ html {
 body {
   background: var(--black);
   color: var(--black);
-  font-family: var(--font-pt-serif), Georgia, serif;
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
 }
 
 @layer components {
-/* Type scale (fluid). One family (PT Serif 400/700), with italics. */
+/* Type scale (fluid). Cardo for display, DM Sans for text and UI. */
+.font-display {
+  font-family: var(--font-cardo), Georgia, serif;
+}
 .t-hero {
   /* Fills the width, but capped by height so it fits above the fold. */
-  font-size: min(20.6vw, 40svh);
+  font-family: var(--font-cardo), Georgia, serif;
+  font-size: min(18vw, 36svh);
   font-weight: 700;
-  line-height: 0.86;
-  letter-spacing: -0.02em;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
 }
 .t-hero-alt {
   font-weight: 400;
   font-style: italic;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
   padding-right: 0.04em;
 }
 .t-sub {
-  font-size: clamp(1.875rem, 3.4vw, 3.25rem);
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.375rem, 2.3vw, 2.25rem);
   font-weight: 400;
-  font-style: italic;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  max-width: 26em;
+}
+.t-sub .font-display {
+  font-weight: 700;
 }
 .t-page-title {
+  font-family: var(--font-cardo), Georgia, serif;
   font-size: clamp(4rem, 12vw, 11rem);
   font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
+  line-height: 0.95;
+  letter-spacing: 0;
 }
 .t-h2 {
+  font-family: var(--font-cardo), Georgia, serif;
   font-size: clamp(3.5rem, 11vw, 12rem);
   font-weight: 700;
-  line-height: 0.85;
-  letter-spacing: -0.02em;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   /* Trim the box to cap height and baseline so padding centres the letters. */
   text-box: trim-both cap alphabetic;
 }
 .t-statement {
+  font-family: var(--font-cardo), Georgia, serif;
   font-size: clamp(1.75rem, 3vw, 3rem);
   font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   text-wrap: balance;
   max-width: 26ch;
 }
 .t-title {
+  font-family: var(--font-cardo), Georgia, serif;
   font-size: clamp(1.625rem, 2.6vw, 2.5rem);
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .t-tile-title {
+  font-family: var(--font-cardo), Georgia, serif;
   font-size: clamp(1.25rem, 1.6vw, 1.625rem);
   font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .t-body {
   font-size: clamp(1.25rem, 1.65vw, 1.5rem);
   font-weight: 400;
   line-height: 1.55;
-  letter-spacing: 0;
+  letter-spacing: -0.005em;
+}
+.t-lead {
+  font-size: clamp(1.375rem, 2vw, 1.875rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  max-width: 30em;
 }
 .t-label {
   font-size: clamp(0.9375rem, 1vw, 1.0625rem);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.3;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 }
 .t-meta {
   font-size: clamp(1rem, 1.1vw, 1.125rem);
@@ -156,7 +177,7 @@ body {
   background: var(--fg);
   color: var(--bg);
   font-size: 1.0625rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0;
   line-height: 1;
   white-space: nowrap;
@@ -336,8 +357,8 @@ body {
       rgba(255, 255, 255, calc(0.85 * var(--glare))),
       transparent 22%
     ),
-    linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.35) 42%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.35) 58%, transparent 70%),
-    linear-gradient(180deg, #f4f4f4 0%, #d6d6d6 48%, #8c8c8c 100%);
+    linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.3) 42%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.3) 58%, transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #f3f3f3 55%, #cfcfcf 100%);
   background-size: 100% 100%, 200% 100%, 100% 100%;
   background-position: 0 0, 0% 0, 0 0;
   background-repeat: no-repeat, repeat-x, no-repeat;
@@ -369,7 +390,7 @@ body {
   .hero-line {
     animation: none;
     transition: none;
-    background-image: linear-gradient(180deg, #f4f4f4 0%, #d6d6d6 48%, #8c8c8c 100%);
+    background-image: linear-gradient(180deg, #ffffff 0%, #f3f3f3 55%, #cfcfcf 100%);
     background-size: 100% 100%;
     background-position: 0 0;
     background-repeat: no-repeat;
@@ -429,18 +450,33 @@ body {
   }
 }
 
-/* Fade and rise once per load. Hidden only when JS has set js-reveal. */
-.js-reveal [data-reveal] {
+/* Page arrival. Titles slide in word by word from the left, then the body
+   fades up. Only when JS has set js-reveal; the not-in state resets instantly
+   so the animation is ready to replay on the next arrival. */
+.js-reveal .reveal-word {
+  display: inline-block;
   opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: calc(var(--i, 0) * 80ms);
+  transform: translateX(-0.35em);
 }
-.js-reveal [data-reveal].is-in {
+.js-reveal .is-in .reveal-word {
   opacity: 1;
   transform: none;
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--w, 0) * 90ms);
+}
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.js-reveal .is-in [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(250ms + var(--i, 0) * 120ms);
 }
 
 /* Contact QR: fixed whole-number sizes, never fluid. Fluid scaling resamples the

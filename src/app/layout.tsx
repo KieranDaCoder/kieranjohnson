@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { PT_Serif } from "next/font/google";
+import { Cardo, DM_Sans } from "next/font/google";
 import { SiteNav } from "@/components/SiteNav";
 import "./globals.css";
 
-// One family. Regular and bold, upright and italic.
-const ptSerif = PT_Serif({
-  variable: "--font-pt-serif",
+// Two families: Cardo for display, DM Sans for text and UI.
+const cardo = Cardo({
+  variable: "--font-cardo",
   subsets: ["latin"],
   weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -31,10 +38,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${ptSerif.variable} antialiased`}>
+      <body className={`${cardo.variable} ${dmSans.variable} antialiased`}>
         <a
           href="#main"
-          className="sr-only z-[60] rounded-full bg-white px-5 py-3 font-bold text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+          className="sr-only z-[60] rounded-full bg-white px-5 py-3 font-sans font-semibold text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
         >
           Skip to content
         </a>

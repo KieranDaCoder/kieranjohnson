@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/Section";
 import { HeroName } from "@/components/HeroName";
-import { ScrollReveal } from "@/components/ScrollReveal";
+import { RevealTitle } from "@/components/RevealTitle";
 import { Reveal } from "@/components/Reveal";
 import { WorkCarousel } from "@/components/WorkCarousel";
 import { ContactList } from "@/components/ContactList";
@@ -58,23 +58,22 @@ export default function Home() {
         id="home"
         className="gutter relative flex min-h-svh flex-col justify-end pb-16 pt-32 md:pb-24"
       >
-        <HeroName />
+        <HeroName usp={home.usp} />
       </Section>
 
       {/* About */}
-      <Section tone="white" id="about" className="anchor-section gutter screen-section pb-20 md:pb-28">
+      <Section tone="white" id="about" reveal className="anchor-section gutter screen-section pb-20 md:pb-28">
         <HeadingRow cta={{ label: "More about me", href: "/about" }}>
-          <ScrollReveal as="h2" className="t-h2">About me</ScrollReveal>
+          <RevealTitle as="h2" className="t-h2">About me</RevealTitle>
         </HeadingRow>
         <div className="screen-fill">
         <div className="grid gap-12 pt-10 md:grid-cols-[1fr_auto] md:gap-24 md:pt-14">
           <div>
-            <ScrollReveal as="p" className="t-statement" end="top 60%">{home.usp}</ScrollReveal>
-            <p className="t-body mt-8 max-w-[34em]" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+            <p className="t-lead" data-reveal>
               {home.coreInfo}
             </p>
           </div>
-          <div className="relative size-40 md:size-60" data-reveal style={{ "--i": 2 } as React.CSSProperties}>
+          <div className="relative size-40 md:size-60" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
             <Image
               src="/images/portrait-small.jpg"
               alt="Kieran Johnson"
@@ -88,9 +87,9 @@ export default function Home() {
       </Section>
 
       {/* Work */}
-      <Section tone="black" id="work" className="anchor-section screen-section pb-20 md:pb-28">
+      <Section tone="black" id="work" reveal className="anchor-section screen-section pb-20 md:pb-28">
         <HeadingRow cta={{ label: "See all work", href: "/work" }} className="gutter">
-          <ScrollReveal as="h2" className="t-h2">My work</ScrollReveal>
+          <RevealTitle as="h2" className="t-h2">My work</RevealTitle>
         </HeadingRow>
         <div className="screen-fill">
           <div data-reveal>
@@ -100,12 +99,12 @@ export default function Home() {
       </Section>
 
       {/* Contact */}
-      <Section tone="white" id="contact" className="anchor-section gutter screen-section pb-20 md:pb-28">
+      <Section tone="white" id="contact" reveal className="anchor-section gutter screen-section pb-20 md:pb-28">
         <HeadingRow line={false} className="pb-0 md:pb-0">
-          <ScrollReveal as="h2" className="t-h2">Contact</ScrollReveal>
+          <RevealTitle as="h2" className="t-h2">Contact</RevealTitle>
         </HeadingRow>
         <div className="screen-fill">
-          <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16 lg:gap-24">
+          <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-12 md:grid-cols-[minmax(0,1fr)_auto] md:gap-16 lg:gap-24">
             <div>
               <p className="t-body mt-8 max-w-[34em] md:mt-10" data-reveal>
                 {home.contactLine}

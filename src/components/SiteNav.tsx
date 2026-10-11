@@ -81,7 +81,7 @@ export function SiteNav() {
               onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(item.id)}
               onFocus={() => setHovered(item.id)}
               onBlur={() => setHovered(null)}
-              className="relative block rounded-full px-3 py-2.5 text-base font-normal leading-none text-white sm:px-4"
+              className="relative block rounded-full px-3 py-2.5 text-base font-medium leading-none text-white sm:px-4"
             >
               {highlighted === item.id && (
                 <motion.span

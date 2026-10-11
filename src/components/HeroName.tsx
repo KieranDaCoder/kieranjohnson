@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 // Real, selectable text. The pointer effect only sets CSS vars; all motion is CSS.
-export function HeroName() {
+export function HeroName({ usp }: { usp: string }) {
   const h1 = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -53,7 +53,9 @@ export function HeroName() {
         <span className="hero-line">KIERAN</span>
         <span className="t-hero-alt hero-line hero-line-2">JOHNSON</span>
       </h1>
-      <p className="t-sub hero-sub mt-6 md:mt-8">Junior Strategist</p>
+      <p className="t-sub hero-sub mt-6 md:mt-8">
+        <span className="font-display">Junior Strategist</span> <span>{usp}</span>
+      </p>
     </>
   );
 }
