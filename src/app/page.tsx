@@ -4,6 +4,7 @@ import { Section } from "@/components/Section";
 import { HeroName } from "@/components/HeroName";
 import { RevealTitle } from "@/components/RevealTitle";
 import { Reveal } from "@/components/Reveal";
+import { SnapSettle } from "@/components/SnapSettle";
 import { WorkCarousel } from "@/components/WorkCarousel";
 import { ContactList } from "@/components/ContactList";
 import { getContacts, getHome, getProjects } from "@/lib/content";
@@ -50,6 +51,7 @@ export default function Home() {
   return (
     <>
       <Reveal />
+      <SnapSettle />
       {/* Hero: text only, name at the bottom left. */}
       <Section
         tone="black"

@@ -281,24 +281,7 @@ body {
   animation: rise 400ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-/* Hero name: metallic fill, shimmer, blur reveal, pointer glare.
-   Registered so the glare position and strength can transition. */
-@property --gx {
-  syntax: "<percentage>";
-  inherits: true;
-  initial-value: 50%;
-}
-@property --gy {
-  syntax: "<percentage>";
-  inherits: true;
-  initial-value: 50%;
-}
-@property --glare {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
+/* Hero name: metallic fill, shimmer and blur reveal. */
 @keyframes hero-in {
   from {
     opacity: 0;
@@ -335,7 +318,6 @@ body {
 
 .hero-line {
   position: relative;
-  isolation: isolate;
   display: block;
   width: fit-content;
   padding-top: 0.04em;
@@ -345,14 +327,10 @@ body {
   margin-bottom: -0.18em;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  transition:
-    --gx 250ms ease-out,
-    --gy 250ms ease-out,
-    --glare 400ms ease-out;
   animation: hero-in 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-/* Metallic fill and shimmer live on ::before so the colour ring (::after) can
-   sit underneath it; the real text above is transparent but stays selectable. */
+/* Metallic fill and shimmer are painted by ::before (a copy of the text kept
+   out of the accessibility tree); the real text is transparent but selectable. */
 .hero-line::before {
   content: attr(data-text) / "";
   position: absolute;
@@ -373,31 +351,6 @@ body {
 }
 .hero-line-2::before {
   animation-delay: -0.6s;
-}
-/* Hover colour: edges only. The same text again, stroked 0.024em (half hidden
-   under the opaque metallic ::before, leaving a ~0.012em ring outside the
-   letters) and painted with the gradient, revealed through a radial mask under
-   the cursor. Same padding and font as the line so the glyphs align; opacity
-   comes from the line. */
-.hero-line::after {
-  content: attr(data-text);
-  /* Empty alt text keeps the duplicate out of the accessibility tree. */
-  content: attr(data-text) / "";
-  position: absolute;
-  inset: 0;
-  padding: inherit;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 0.024em transparent;
-  z-index: -1;
-  background: linear-gradient(90deg, #eab308 0%, #ef4444 25%, #3b82f6 50%, #06b6d4 75%, #8b5cf6 100%);
-  background-size: 100% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-mask-image: radial-gradient(circle at var(--gx) var(--gy), #000 0%, transparent 26%);
-  mask-image: radial-gradient(circle at var(--gx) var(--gy), #000 0%, transparent 26%);
-  opacity: var(--glare);
-  pointer-events: none;
 }
 .hero-line-2 {
   animation-delay: 120ms;
@@ -518,8 +471,7 @@ body {
     color: #fff;
     -webkit-text-fill-color: #fff;
   }
-  .hero-line::before,
-  .hero-line::after {
+  .hero-line::before {
     display: none;
   }
 }
@@ -527,7 +479,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .hero-line {
     animation: none;
-    transition: none;
   }
   .hero-line::before {
     animation: none;
@@ -535,9 +486,6 @@ body {
     background-size: 100% 100%;
     background-position: 0 0;
     background-repeat: no-repeat;
-  }
-  .hero-line::after {
-    opacity: 0;
   }
   .hero-sub {
     animation: none;
