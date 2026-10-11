@@ -48,112 +48,82 @@ html {
 body {
   background: var(--black);
   color: var(--black);
-  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: -0.005em;
+  font-family: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01" off;
   -webkit-font-smoothing: antialiased;
 }
 
 @layer components {
-/* Type scale (fluid). Cardo for display, DM Sans for text and UI. */
-.font-display {
-  font-family: var(--font-cardo), Georgia, serif;
-}
+/* Type scale (fluid). One family, mixed weights and italics. */
 .t-hero {
-  --hero-gutters: 32px;
-  /* Fills the width, but capped by height so it fits above the fold. */
-  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  font-size: min(calc((100vw - var(--hero-gutters)) / 4.4), calc((100svh - 320px) / 1.76));
+  font-size: var(--hs);
   font-weight: 800;
   line-height: 0.88;
-  letter-spacing: -0.045em;
+  letter-spacing: 0.01em; /* tighter made the R leg run into the A */
   text-transform: uppercase;
-}
-@media (min-width: 768px) {
-  .t-hero {
-    --hero-gutters: 96px;
-  }
-}
-@media (min-width: 1280px) {
-  .t-hero {
-    --hero-gutters: 128px;
-  }
 }
 .t-hero-alt {
   font-weight: 300;
   font-style: italic;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.06em;
 }
 .t-sub {
-  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(1.125rem, 4.5vw, 1.5rem);
   font-weight: 400;
   line-height: 1.25;
   letter-spacing: -0.005em;
-  max-width: 26em;
 }
 .t-sub .sub-role {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-@media (min-width: 1024px) {
-  .t-sub {
-    font-size: min(1.9vw, 2rem);
-    white-space: nowrap;
-    max-width: none;
-  }
-}
 .t-page-title {
-  font-family: var(--font-cardo), Georgia, serif;
   font-size: clamp(4rem, 12vw, 11rem);
   font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: 0;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
 }
 .t-h2 {
-  font-family: var(--font-cardo), Georgia, serif;
   font-size: clamp(3.5rem, 11vw, 12rem);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: 0.01em;
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
   /* Trim the box to cap height and baseline so padding centres the letters. */
   text-box: trim-both cap alphabetic;
 }
 .t-statement {
-  font-family: var(--font-cardo), Georgia, serif;
   font-size: clamp(1.75rem, 3vw, 3rem);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.15;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
   text-wrap: balance;
   max-width: 26ch;
 }
 .t-title {
-  font-family: var(--font-cardo), Georgia, serif;
   font-size: clamp(1.625rem, 2.6vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.1;
-  letter-spacing: 0;
+  letter-spacing: -0.025em;
 }
 .t-tile-title {
-  font-family: var(--font-cardo), Georgia, serif;
   font-size: clamp(1.25rem, 1.6vw, 1.625rem);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.15;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
 }
 .t-body {
   font-size: clamp(1.25rem, 1.65vw, 1.5rem);
   font-weight: 400;
-  line-height: 1.55;
-  letter-spacing: -0.005em;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 .t-lead {
   font-size: clamp(1.375rem, 2vw, 1.875rem);
   font-weight: 400;
   line-height: 1.4;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
   max-width: 30em;
 }
 .t-label {
@@ -197,7 +167,7 @@ body {
   color: var(--bg);
   font-size: 1.0625rem;
   font-weight: 600;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
   line-height: 1;
   white-space: nowrap;
   transition:
@@ -400,6 +370,122 @@ body {
 .hero-sub {
   animation: hero-in-sub 900ms cubic-bezier(0.16, 1, 0.3, 1) 350ms both;
 }
+
+/* Hero composition: editorial stagger. KIERAN flush left, JOHNSON right-aligned
+   on the content edge; rule and subline hang from JOHNSON's left edge. The h1 is
+   a subgrid so JOHNSON's width sets column 2, which the rule then fills. */
+.hero-depth {
+  --hero-gutters: 32px;
+  /* Hero type size. 15% smaller than the old full-width name; capped by height
+     so name, rule and subline all fit above the fold. */
+  --hs: min(calc((100vw - var(--hero-gutters)) / 5.18), calc((100svh - 300px) / 1.9));
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  transform-origin: 50% 70%;
+  transform: scale(calc(1 - 0.06 * var(--depth, 0)));
+  opacity: calc(1 - 0.45 * var(--depth, 0));
+  will-change: transform, opacity;
+}
+@media (max-width: 767.98px) {
+  /* Phones: slightly larger so the stagger is about 12% of the width. */
+  .hero-depth {
+    --hs: min(calc((100vw - var(--hero-gutters)) / 4.85), calc((100svh - 300px) / 1.9));
+  }
+}
+@media (min-width: 768px) {
+  .hero-depth {
+    --hero-gutters: 96px;
+  }
+}
+@media (min-width: 1280px) {
+  .hero-depth {
+    --hero-gutters: 128px;
+  }
+}
+.hero-depth > h1 {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 2;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}
+.hero-depth .hero-line:first-child {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+.hero-depth .hero-line-2 {
+  grid-column: 2;
+  justify-self: end;
+  /* Keep the text, not its padding, on the content edge. */
+  margin-right: -0.08em;
+}
+.hero-end {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin-top: clamp(16px, calc(var(--hs, 80px) * 0.12), 36px);
+}
+.hero-rule {
+  display: block;
+  height: 1px;
+  background: rgb(255 255 255 / 0.25);
+}
+.hero-end .t-sub {
+  margin-top: clamp(12px, calc(var(--hs, 80px) * 0.09), 26px);
+}
+@media (min-width: 1024px) {
+  .hero-end {
+    grid-column: 2;
+    /* Width comes from JOHNSON; the subline never widens the column. */
+    contain: inline-size;
+  }
+  .hero-end .t-sub {
+    white-space: nowrap;
+    font-size: calc(var(--hs) * 0.1125);
+  }
+}
+
+/* Living light: one very faint pool of white behind the name. */
+.hero-light {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-lean {
+  position: absolute;
+  inset: 0;
+  transform: translate3d(var(--lx, 0px), var(--ly, 0px), 0);
+  transition: transform 1.2s ease-out;
+}
+.hero-pool {
+  position: absolute;
+  left: 40%;
+  top: 62%;
+  width: 70vmax;
+  height: 70vmax;
+  margin: -35vmax 0 0 -35vmax;
+  background: radial-gradient(
+    closest-side,
+    rgb(255 255 255 / 0.06) 0%,
+    rgb(255 255 255 / 0.045) 25%,
+    rgb(255 255 255 / 0.022) 55%,
+    rgb(255 255 255 / 0.007) 80%,
+    transparent 100%
+  );
+  animation: hero-drift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes hero-drift {
+  from {
+    transform: translate3d(-4vw, 2vw, 0);
+  }
+  to {
+    transform: translate3d(4vw, -2vw, 0);
+  }
+}
 @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
   .hero-line {
     color: #fff;
@@ -419,6 +505,18 @@ body {
   }
   .hero-sub {
     animation: none;
+  }
+  .hero-pool {
+    animation: none;
+  }
+  .hero-lean {
+    transition: none;
+    transform: none;
+  }
+  .hero-depth {
+    transform: none;
+    opacity: 1;
+    will-change: auto;
   }
 }
 
