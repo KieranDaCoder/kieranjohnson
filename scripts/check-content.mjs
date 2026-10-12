@@ -1,4 +1,5 @@
 // Pre-launch gate: fails while any "[PLACEHOLDER" marker remains in content/.
+// content/archive/ (projects taken off the site) is ignored.
 // Expected to exit 1 until Kieran's copy replaces them.
 import { readdirSync, statSync, readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -8,6 +9,7 @@ const NEEDLE = "[PLACEHOLDER";
 function* walk(dir) {
   for (const name of readdirSync(dir)) {
     const full = join(dir, name);
+    if (full.split("\\").join("/").startsWith("content/archive")) continue;
     if (statSync(full).isDirectory()) yield* walk(full);
     else yield full;
   }

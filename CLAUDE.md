@@ -25,14 +25,16 @@ _Update this block each session._
 - Last updated: 2026-10-11.
 - **Live design** (on `main`, https://www.kieranjohnson.me): black and white, Inter Tight only. Hero = editorial stagger (KIERAN left, JOHNSON right) with metallic fill, soft white shimmer and a faint drifting light; subline "JUNIOR STRATEGIST" + USP on one line on desktop. Home is plain scroll with a soft CSS page snap (proximity) plus an idle auto-settle glide after 1.5s (desktop only). Each page's title slides in word by word and its body fades up on arrival. LinkedIn QR on Contact. No footer, no heading lines. GSAP removed.
 - **Rollback points:** tag `v-bw-snap` (scroll-snap version), the `redesign-stack` branch (stacked-folder version that was live before this), tag `v-navy-old` (original navy site). Experiments `serif-reveal` (PT Serif) and the Cardo/DM Sans commits on `cardo-usp` were rejected.
-- **Placeholders still live:** About text, home About lines, Contact intro, every project page, project `alt`/`summary`. They show as `[PLACEHOLDER: Kieran to write]` until Kieran writes the copy. `npm run check:content` fails until they are gone.
+- **Projects on the site** (carousel and /work, by `order`): Tattoos Don't Age Well (2, rotating tile), End Gambling Ads (3), StrangeLove Premium Mixers (4), Pie Face - Pie Time (5), Hipcamp - Off the Beaten Track (6). **Archived** (off the site, kept in `content/archive/projects/`, ignored by `check:content`): Hidden Bites and Secret Sips, Summit Signal, The Coolness Tax. To restore, move the file back to `content/projects/`. About: `content/about.md` holds all five paragraphs (shown on /about); the home About shows only the first as `coreInfo` in `content/home.json`.
+- **Placeholders still live:** Contact intro and every project page (write-ups, alt, summary; the three new projects also category and year). They show as `[PLACEHOLDER: Kieran to write]` until Kieran writes the copy. `npm run check:content` fails until they are gone.
 - **Branches:** `main` = production. `cardo-usp` (which includes `docs-claude-md` and `serif-reveal`), `redesign-stack` and `contact-qr` are merged into it. `redesign-oct` = older scroll-snap version (tag `v-bw-snap`). `rebrand-navy-hero` / `redesign/lounge` = abandoned experiments. Tag `v-navy-old` = the original navy site, for rollback.
 - **Previews:** every branch gets `https://kieranjohnson-git-<branch>-kieranssuperproject.vercel.app` (behind Vercel login).
 
 ## Open items
 
-- [ ] Kieran writes all copy into `content/` (see Content below). Claude does not write it.
-- [ ] Real project tile images at **3:4** (`tile:` in each project file) and a landscape hero (`hero:`). Summit Signal, Hidden Bites and Coolness Tax still use coloured SVG placeholders in `public/placeholders/`.
+- [ ] Kieran writes the remaining copy into `content/` (Contact intro, project write-ups, alt/summary). Claude does not write it. **Done:** About copy (2026-10-12).
+- [ ] **Images for the three new projects** (Kieran will send them): StrangeLove Premium Mixers, Pie Face - Pie Time, Hipcamp - Off the Beaten Track. Put them in `public/images/projects/<slug>/`, then set each project's `tile:` (3:4 export) and `hero:` (landscape) and optionally `images:`; they currently use the grey `/placeholders/tile-empty.svg`. Tattoos and End Gambling Ads tiles should also be 3:4 exports.
+- [ ] **Details for the three new projects:** category, year, `type` (strategy or creative, currently `strategy`), alt, summary, and the write-up sections. All are `[PLACEHOLDER: Kieran to write]`. Also confirm their `order:` (currently 4, 5, 6 after Tattoos 2 and End Gambling Ads 3; lower number shows first, best work first).
 - [x] New portrait is in (`public/images/kieran-portrait-square.jpg` for home About, `kieran-portrait-3x4.jpg` for /about). To change it again, use NEW file names: Next.js and browsers cache images by URL, so overwriting the same name can keep showing the old photo.
 - [ ] Final project list and order (4 to 6) via `order:` in each project file.
 - [ ] Test on a real iPhone, an Android phone, desktop Chrome and Safari (touch drag, trackpad feel of the page lock, QR scan).
@@ -119,6 +121,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-12: About copy added (verbatim). Archived Hidden Bites, Summit Signal, Coolness Tax to `content/archive/`. Added StrangeLove Premium Mixers, Pie Face - Pie Time, Hipcamp - Off the Beaten Track with placeholder details and a grey placeholder tile until images arrive. `check:content` ignores `content/archive/`.
 - 2026-10-11: home About portrait doubled (`.about-portrait`: 320px phone, up to 480px desktop, capped by viewport height so About still fits one screen).
 - 2026-10-11: new portrait (square crop for home About, 3:4 crop for /about), old photo removed; files renamed to bust image caches.
 - 2026-10-11: `cardo-usp` pushed to `main` (Inter Tight, editorial hero with USP, soft snap + idle auto-settle, arrival animations, no footer/lines, kieranjohnson.me metadata, this file).
