@@ -1,4 +1,4 @@
-I figure out what motivates people, even when they don’t know it yet, then build ideas that make them say, “Oh yeah, that’s true. Whoever thought of that is really smart.”
+I figure out what motivates people, even when they don’t know it yet, then build ideas that make them say, “Oh yeah, that’s true. Whoever thought of that is really smart and funny.”
 
 My brain runs at 100 km an hour, so fast moving environments are where I thrive.
 
