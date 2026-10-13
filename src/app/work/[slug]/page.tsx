@@ -69,6 +69,13 @@ export default async function ProjectPage({ params }: Params) {
 
         <div className="gutter pb-20 pt-10 md:pb-40 md:pt-14">
           <div className="mx-auto max-w-[34em] space-y-16 md:space-y-24">
+            {project.intro.length > 0 && (
+              <div className="t-body space-y-6">
+                {project.intro.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            )}
             {project.sections.map((section, i) => {
               const image = project.images[i];
               return (

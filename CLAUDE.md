@@ -121,6 +121,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-13: Ode to typography filled in (Kieran's copy, images from Desktop `Portfolio folder/Ode to typograpghy`; tile = Metrolite crop). Projects can have an `intro` (text before the first `##`, shown under the hero). Flavours renamed to Flavour comes first (slug `flavour-comes-first`). /about text column widened to 880px, portrait pushed right.
 - 2026-10-13: renamed Pie Face to Second Day, Second Breakfast, Hipcamp to A place worth listening to, StrangeLove to Flavours comes first (slugs and image folders renamed too); added Ode to typography placeholder tile (order 7); project-page body images now show whole with a hairline border (`Plate` in `work/[slug]/page.tsx`); Tattoos tile is a 3:4 extension of execution-1.
 - 2026-10-13: images in for Entry Level Expert, StrangeLove, Pie Face, Hipcamp (from Desktop `Portfolio folder`; resized/whitened with sharp, tiles 3:4, heroes 16:9, sketches letterboxed on white). Order: Tattoos 2, Entry Level Expert 3, then the three Hungry Talks briefs together 4 to 6. Proper X logo on Contact.
 - 2026-10-13: branch `review-overlay`: dev-only review tool (Review button on localhost, notes in git-ignored `.review/comments.json`; Claude reads them and fixes in one pass). Hero USP removed (subline right-aligned under JOHNSON), home About quote + new bio, new /about copy with **bold** project names auto-linked, End Gambling Ads archived, Entry Level Expert added (placeholder details, order 3), X account added to Contact.

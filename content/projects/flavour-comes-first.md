@@ -1,12 +1,12 @@
 ---
-title: "Flavours comes first"
-slug: flavours-comes-first
+title: "Flavour comes first"
+slug: flavour-comes-first
 category: "[PLACEHOLDER: Kieran to write]"
 year: "[PLACEHOLDER: Kieran to write]"
 order: 4
 type: strategy
-tile: /images/projects/flavours-comes-first/tile.jpg
-hero: /images/projects/flavours-comes-first/hero.jpg
+tile: /images/projects/flavour-comes-first/tile.jpg
+hero: /images/projects/flavour-comes-first/hero.jpg
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"
 images: []

@@ -51,6 +51,8 @@ export type Project = {
   summary: string;
   // Optional images shown between body sections, in order.
   images: ProjectImage[];
+  // Text before the first "##" heading, shown under the hero image.
+  intro: string[];
   // Body split on "## " headings: Challenge / Insight / Solution (strategy)
   // or Insight / Big idea / Execution (creative).
   sections: { heading: string; body: string[] }[];
@@ -87,6 +89,7 @@ export function getProjects(): Project[] {
         alt: String(data.alt ?? ""),
         summary: String(data.summary ?? ""),
         images: Array.isArray(data.images) ? data.images : [],
+        intro: paragraphs(content.split(/^##\s+/m)[0]),
         sections: parseSections(content),
       } satisfies Project;
     })

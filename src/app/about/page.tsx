@@ -33,9 +33,9 @@ export default function AboutPage() {
     <>
       <PageHeader title="About" />
       <Section tone="white" className="gutter pb-20 pt-10 md:pb-40 md:pt-14">
-        <div className="grid gap-12 md:grid-cols-[minmax(0,720px)_minmax(0,1fr)] md:gap-24">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,880px)_minmax(0,1fr)] md:gap-16">
           {/* Portrait above the text on phone, sticky beside it on desktop. */}
-          <div className="md:order-2">
+          <div className="md:order-2 md:w-full md:max-w-[420px] md:justify-self-end">
             <div className="relative aspect-[3/4] w-full max-w-[320px] md:sticky md:top-28 md:max-w-[420px]">
               <Image
                 src="/images/kieran-portrait-3x4.jpg"
