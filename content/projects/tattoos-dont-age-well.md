@@ -9,7 +9,11 @@ tile: /images/projects/tattoos-dont-age-well/execution-1.png
 hero: /images/projects/tattoos-dont-age-well/execution-1.png
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"
-images: []
+images:
+  - src: /images/projects/tattoos-dont-age-well/execution-2.png
+    alt: "[PLACEHOLDER: Kieran to write]"
+  - src: /images/projects/tattoos-dont-age-well/execution-3.png
+    alt: "[PLACEHOLDER: Kieran to write]"
 ---
 
 ## Insight
