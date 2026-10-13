@@ -1,4 +1,4 @@
-I’m pretty sure my first word as a baby was “Why”. I don’t remember that age too well, but it would make a lot of sense. I grew up in Canberra, surrounded by politicians, which leaves you with a lot of questions, and I’m still asking why.
+I’m certain my first word as a baby was “Why”. It sounded more like waaah, but I was actually trying to ask a question. I don’t remember that age too well, but it would make a lot of sense. I grew up in Canberra, surrounded by politicians, which leaves you with a lot of questions, and I’m still asking why.
 
 Asking why is fun, but what really scratches that special part of my brain is understanding why. Strategy is the one job where that’s the whole point.
 
