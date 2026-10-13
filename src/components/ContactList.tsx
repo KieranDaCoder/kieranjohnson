@@ -9,6 +9,7 @@ const icons: Record<string, React.ReactNode> = {
       <path d="M8 10v7M8 7v.01M12 17v-7M12 13.5c0-2 1.2-3.5 3-3.5s2.5 1.2 2.5 3V17" />
     </>
   ),
+  x: <path d="M4 4l16 16M20 4L4 20" />,
   instagram: (
     <>
       <rect x="3" y="3" width="18" height="18" rx="5" />

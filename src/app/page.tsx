@@ -72,7 +72,7 @@ export default function Home() {
             <p className="t-statement font-semibold italic" data-reveal>
               {home.quote}
             </p>
-            <div className="t-body mt-6 space-y-4" data-reveal>
+            <div className="t-body mt-10 space-y-4 md:mt-12" data-reveal>
               {home.coreInfo.split(/\n\s*\n/).map((p, i) => (
                 <p key={i}>{p}</p>
               ))}

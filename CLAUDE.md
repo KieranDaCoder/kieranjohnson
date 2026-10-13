@@ -121,6 +121,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-13: branch `review-overlay`: dev-only review tool (Review button on localhost, notes in git-ignored `.review/comments.json`; Claude reads them and fixes in one pass). Hero USP removed (subline right-aligned under JOHNSON), home About quote + new bio, new /about copy with **bold** project names auto-linked, End Gambling Ads archived, Entry Level Expert added (placeholder details, order 3), X account added to Contact.
 - 2026-10-12: About copy added (verbatim). Archived Hidden Bites, Summit Signal, Coolness Tax to `content/archive/`. Added StrangeLove Premium Mixers, Pie Face - Pie Time, Hipcamp - Off the Beaten Track with placeholder details and a grey placeholder tile until images arrive. `check:content` ignores `content/archive/`.
 - 2026-10-11: home About portrait doubled (`.about-portrait`: 320px phone, up to 480px desktop, capped by viewport height so About still fits one screen).
 - 2026-10-11: new portrait (square crop for home About, 3:4 crop for /about), old photo removed; files renamed to bust image caches.
