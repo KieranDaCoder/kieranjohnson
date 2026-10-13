@@ -20,7 +20,7 @@ function paragraphs(text: string): string[] {
     .filter(Boolean);
 }
 
-export type Home = { usp: string; coreInfo: string; contactLine: string };
+export type Home = { quote: string; coreInfo: string; contactLine: string };
 
 export function getHome(): Home {
   return JSON.parse(read("home.json"));

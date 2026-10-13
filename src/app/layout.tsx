@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
 import { SiteNav } from "@/components/SiteNav";
+import { ReviewOverlay } from "@/components/ReviewOverlay";
 import "./globals.css";
 
 // One family. Variable weight, upright and italic.
@@ -39,6 +40,7 @@ export default function RootLayout({
         </a>
         <SiteNav />
         <main id="main">{children}</main>
+        {process.env.NODE_ENV === "development" && <ReviewOverlay />}
       </body>
     </html>
   );

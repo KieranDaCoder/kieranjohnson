@@ -44,3 +44,6 @@ next-env.d.ts
 # derivatives under public/hero ARE committed so deploys render the hero;
 # regenerate them with `npm run hero:images`.
 /hero-src
+
+# Dev-only review comments (see src/components/ReviewOverlay.tsx)
+/.review

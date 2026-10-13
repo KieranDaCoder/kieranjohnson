@@ -58,7 +58,7 @@ export default function Home() {
         id="home"
         className="gutter relative flex min-h-svh flex-col justify-end pb-16 pt-32 md:pb-24"
       >
-        <HeroName usp={home.usp} />
+        <HeroName />
       </Section>
 
       {/* About */}
@@ -69,9 +69,14 @@ export default function Home() {
         <div className="screen-fill">
         <div className="grid gap-12 pt-10 md:grid-cols-[1fr_auto] md:gap-24 md:pt-14">
           <div>
-            <p className="t-lead" data-reveal>
-              {home.coreInfo}
+            <p className="t-statement font-semibold italic" data-reveal>
+              {home.quote}
             </p>
+            <div className="t-body mt-6 space-y-4" data-reveal>
+              {home.coreInfo.split(/\n\s*\n/).map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
           </div>
           <div className="about-portrait relative" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
             <Image

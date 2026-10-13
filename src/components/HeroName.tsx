@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 // Real, selectable text. JS only sets CSS vars (scroll depth, light lean); all motion is CSS.
-export function HeroName({ usp }: { usp: string }) {
+export function HeroName() {
   const h1 = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export function HeroName({ usp }: { usp: string }) {
         </h1>
         <div className="hero-end hero-sub">
           <p className="t-sub">
-            <span className="sub-role">Junior Strategist</span> <span>{usp}</span>
+            <span className="sub-role">Junior Strategist</span>
           </p>
         </div>
       </div>

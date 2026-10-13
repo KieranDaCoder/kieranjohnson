@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHeader } from "@/components/PageHeader";
 import { Section } from "@/components/Section";
-import { getAbout } from "@/lib/content";
+import Link from "next/link";
+import { getAbout, getProjects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,6 +12,22 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   const paragraphs = getAbout();
+  const norm = (t: string) => t.replace(/[’']/g, "'").toLowerCase();
+  const slugs = new Map(getProjects().map((p) => [norm(p.title), p.slug]));
+
+  // **Bold** names in about.md become links to the matching project, if there is one.
+  const render = (text: string) =>
+    text.split(/\*\*(.+?)\*\*/).map((part, i) => {
+      if (i % 2 === 0) return part;
+      const slug = slugs.get(norm(part));
+      return slug ? (
+        <Link key={i} href={`/work/${slug}`} className="font-semibold underline underline-offset-4">
+          {part}
+        </Link>
+      ) : (
+        <strong key={i}>{part}</strong>
+      );
+    });
 
   return (
     <>
@@ -31,7 +48,7 @@ export default function AboutPage() {
           </div>
           <div className="t-body space-y-6 md:order-1">
             {paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{render(p)}</p>
             ))}
           </div>
         </div>
