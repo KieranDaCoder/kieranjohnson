@@ -5,11 +5,19 @@ category: "[PLACEHOLDER: Kieran to write]"
 year: "[PLACEHOLDER: Kieran to write]"
 order: 3
 type: strategy
-tile: /placeholders/tile-empty.svg
-hero: /placeholders/tile-empty.svg
+tile: /images/projects/entry-level-expert/tile.jpg
+hero: /images/projects/entry-level-expert/hero.jpg
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"
-images: []
+images:
+  - src: /images/projects/entry-level-expert/mural.jpg
+    alt: "[PLACEHOLDER: Kieran to write]"
+  - src: /images/projects/entry-level-expert/billboard-jess.jpg
+    alt: "[PLACEHOLDER: Kieran to write]"
+  - src: /images/projects/entry-level-expert/metrolite-jess.jpg
+    alt: "[PLACEHOLDER: Kieran to write]"
+  - src: /images/projects/entry-level-expert/metrolite-kj.jpg
+    alt: "[PLACEHOLDER: Kieran to write]"
 ---
 
 ## Challenge

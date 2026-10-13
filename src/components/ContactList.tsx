@@ -9,7 +9,8 @@ const icons: Record<string, React.ReactNode> = {
       <path d="M8 10v7M8 7v.01M12 17v-7M12 13.5c0-2 1.2-3.5 3-3.5s2.5 1.2 2.5 3V17" />
     </>
   ),
-  x: <path d="M4 4l16 16M20 4L4 20" />,
+  // Official X mark (filled, not stroked); see FILLED below.
+  x: <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />,
   instagram: (
     <>
       <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -18,17 +19,19 @@ const icons: Record<string, React.ReactNode> = {
     </>
   ),
 };
+const FILLED = new Set(["x"]);
 const fallback = <path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1" />;
 
 function Icon({ platform }: { platform: string }) {
+  const filled = FILLED.has(platform.toLowerCase());
   return (
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
       width="24"
       height="24"
-      fill="none"
-      stroke="currentColor"
+      fill={filled ? "currentColor" : "none"}
+      stroke={filled ? "none" : "currentColor"}
       strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"

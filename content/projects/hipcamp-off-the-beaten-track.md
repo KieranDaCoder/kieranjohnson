@@ -5,11 +5,13 @@ category: "[PLACEHOLDER: Kieran to write]"
 year: "[PLACEHOLDER: Kieran to write]"
 order: 6
 type: strategy
-tile: /placeholders/tile-empty.svg
-hero: /placeholders/tile-empty.svg
+tile: /images/projects/hipcamp-off-the-beaten-track/tile.jpg
+hero: /images/projects/hipcamp-off-the-beaten-track/hero.jpg
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"
-images: []
+images:
+  - src: /images/projects/hipcamp-off-the-beaten-track/script.jpg
+    alt: "[PLACEHOLDER: Kieran to write]"
 ---
 
 ## Challenge

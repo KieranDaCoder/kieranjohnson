@@ -5,8 +5,8 @@ category: "[PLACEHOLDER: Kieran to write]"
 year: "[PLACEHOLDER: Kieran to write]"
 order: 5
 type: strategy
-tile: /placeholders/tile-empty.svg
-hero: /placeholders/tile-empty.svg
+tile: /images/projects/pie-face-pie-time/tile.jpg
+hero: /images/projects/pie-face-pie-time/hero.jpg
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"
 images: []

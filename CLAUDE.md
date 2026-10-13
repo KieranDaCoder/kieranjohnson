@@ -33,7 +33,7 @@ _Update this block each session._
 ## Open items
 
 - [ ] Kieran writes the remaining copy into `content/` (Contact intro, project write-ups, alt/summary). Claude does not write it. **Done:** About copy (2026-10-12).
-- [ ] **Images for the three new projects** (Kieran will send them): StrangeLove Premium Mixers, Pie Face - Pie Time, Hipcamp - Off the Beaten Track. Put them in `public/images/projects/<slug>/`, then set each project's `tile:` (3:4 export) and `hero:` (landscape) and optionally `images:`; they currently use the grey `/placeholders/tile-empty.svg`. Tattoos and End Gambling Ads tiles should also be 3:4 exports.
+- [x] (done 2026-10-13, see changelog; remaining placeholder work is write-ups only) **Images for the three new projects** (Kieran will send them): StrangeLove Premium Mixers, Pie Face - Pie Time, Hipcamp - Off the Beaten Track. Put them in `public/images/projects/<slug>/`, then set each project's `tile:` (3:4 export) and `hero:` (landscape) and optionally `images:`; they currently use the grey `/placeholders/tile-empty.svg`. Tattoos and End Gambling Ads tiles should also be 3:4 exports.
 - [ ] **Details for the three new projects:** category, year, `type` (strategy or creative, currently `strategy`), alt, summary, and the write-up sections. All are `[PLACEHOLDER: Kieran to write]`. Also confirm their `order:` (currently 4, 5, 6 after Tattoos 2 and End Gambling Ads 3; lower number shows first, best work first).
 - [x] New portrait is in (`public/images/kieran-portrait-square.jpg` for home About, `kieran-portrait-3x4.jpg` for /about). To change it again, use NEW file names: Next.js and browsers cache images by URL, so overwriting the same name can keep showing the old photo.
 - [ ] Final project list and order (4 to 6) via `order:` in each project file.
@@ -121,6 +121,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-13: images in for Entry Level Expert, StrangeLove, Pie Face, Hipcamp (from Desktop `Portfolio folder`; resized/whitened with sharp, tiles 3:4, heroes 16:9, sketches letterboxed on white). Order: Tattoos 2, Entry Level Expert 3, then the three Hungry Talks briefs together 4 to 6. Proper X logo on Contact.
 - 2026-10-13: branch `review-overlay`: dev-only review tool (Review button on localhost, notes in git-ignored `.review/comments.json`; Claude reads them and fixes in one pass). Hero USP removed (subline right-aligned under JOHNSON), home About quote + new bio, new /about copy with **bold** project names auto-linked, End Gambling Ads archived, Entry Level Expert added (placeholder details, order 3), X account added to Contact.
 - 2026-10-12: About copy added (verbatim). Archived Hidden Bites, Summit Signal, Coolness Tax to `content/archive/`. Added StrangeLove Premium Mixers, Pie Face - Pie Time, Hipcamp - Off the Beaten Track with placeholder details and a grey placeholder tile until images arrive. `check:content` ignores `content/archive/`.
 - 2026-10-11: home About portrait doubled (`.about-portrait`: 320px phone, up to 480px desktop, capped by viewport height so About still fits one screen).
