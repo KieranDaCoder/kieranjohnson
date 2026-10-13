@@ -36,7 +36,26 @@ export function getContacts(): ContactLink[] {
   return JSON.parse(read("contact.json"));
 }
 
-export type ProjectImage = { src: string; alt: string };
+export type ProjectImage = { src: string; alt: string; width: number; height: number };
+
+// Pixel size of a PNG or JPEG in /public, read from the file header, so pages can
+// reserve the right box before the image loads (next/image needs real dimensions).
+function imageSize(src: string): { width: number; height: number } {
+  const buf = readFileSync(path.join(process.cwd(), "public", src));
+  if (buf.readUInt32BE(0) === 0x89504e47) {
+    return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+  }
+  let i = 2;
+  while (i < buf.length) {
+    if (buf[i] !== 0xff) { i++; continue; }
+    const marker = buf[i + 1];
+    if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+      return { width: buf.readUInt16BE(i + 7), height: buf.readUInt16BE(i + 5) };
+    }
+    i += 2 + buf.readUInt16BE(i + 2);
+  }
+  throw new Error(`Cannot read image size: ${src}`);
+}
 
 export type Project = {
   title: string;
@@ -49,6 +68,7 @@ export type Project = {
   hero: string;
   // "whole": show the hero at its own proportions (never cropped or stretched), centred, instead of a full-width 16:9 frame.
   heroFit: "cover" | "whole";
+  heroSize: { width: number; height: number } | null;
   alt: string;
   summary: string;
   // Optional images shown between body sections, in order.
@@ -89,12 +109,15 @@ export function getProjects(): Project[] {
         tile: String(data.tile),
         hero: String(data.hero ?? data.tile),
         heroFit: data.heroFit === "whole" ? "whole" : "cover",
+        heroSize:
+          data.heroFit === "whole" && !String(data.hero).endsWith(".svg") ? imageSize(String(data.hero)) : null,
         // Empty alt falls back to the project title so images are never unlabelled.
         alt: String(data.alt || data.title),
         summary: String(data.summary ?? ""),
-        images: (Array.isArray(data.images) ? data.images : []).map((i: ProjectImage) => ({
+        images: (Array.isArray(data.images) ? data.images : []).map((i: { src: string; alt?: string }) => ({
           ...i,
           alt: i.alt || String(data.title),
+          ...imageSize(i.src),
         })),
         intro: paragraphs(content.split(/^##\s+/m)[0]),
         sections: parseSections(content),

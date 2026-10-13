@@ -20,13 +20,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 // Body image: shown whole at its own proportions, with a hairline so the edge is visible on white.
-function Plate({ src, alt }: { src: string; alt: string }) {
+function Plate({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) {
   return (
     <Image
       src={src}
       alt={alt}
-      width={0}
-      height={0}
+      width={width}
+      height={height}
       sizes="(max-width: 768px) 100vw, 34em"
       unoptimized={src.endsWith(".svg")}
       className="h-auto w-full border border-fg"
@@ -70,11 +70,15 @@ export default async function ProjectPage({ params }: Params) {
             <Image
               src={project.hero}
               alt={project.alt}
-              width={0}
-              height={0}
+              width={project.heroSize?.width ?? 1200}
+              height={project.heroSize?.height ?? 800}
               sizes="(max-width: 768px) 100vw, 800px"
               priority
-              className="mx-auto h-auto max-h-[85svh] w-auto max-w-full border border-fg"
+              style={{
+                width: `min(100%, calc(85svh * ${project.heroSize?.width ?? 3} / ${project.heroSize?.height ?? 2}))`,
+                height: "auto",
+              }}
+              className="mx-auto border border-fg"
             />
           </div>
         ) : (
@@ -103,7 +107,7 @@ export default async function ProjectPage({ params }: Params) {
                     </div>
                   </section>
                   {image && i < project.sections.length - 1 && (
-                    <Plate src={image.src} alt={image.alt} />
+                    <Plate src={image.src} alt={image.alt} width={image.width} height={image.height} />
                   )}
                 </div>
               );
