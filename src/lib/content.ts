@@ -47,6 +47,8 @@ export type Project = {
   type: "strategy" | "creative";
   tile: string;
   hero: string;
+  // "whole": show the hero at its own proportions (never cropped or stretched), centred, instead of a full-width 16:9 frame.
+  heroFit: "cover" | "whole";
   alt: string;
   summary: string;
   // Optional images shown between body sections, in order.
@@ -86,6 +88,7 @@ export function getProjects(): Project[] {
         type: data.type === "creative" ? "creative" : "strategy",
         tile: String(data.tile),
         hero: String(data.hero ?? data.tile),
+        heroFit: data.heroFit === "whole" ? "whole" : "cover",
         // Empty alt falls back to the project title so images are never unlabelled.
         alt: String(data.alt || data.title),
         summary: String(data.summary ?? ""),

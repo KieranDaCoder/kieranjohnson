@@ -6,7 +6,8 @@ year: 2026
 order: 2
 type: creative
 tile: /images/projects/tattoos-dont-age-well/tile.jpg
-hero: /images/projects/tattoos-dont-age-well/hero.jpg
+hero: /images/projects/tattoos-dont-age-well/execution-1.png
+heroFit: whole
 alt: ""
 summary: ""
 images:

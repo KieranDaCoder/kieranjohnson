@@ -65,7 +65,21 @@ export default async function ProjectPage({ params }: Params) {
       <PageHeader title={project.title} meta={[project.category, project.year].filter(Boolean)} />
 
       <Section tone="white">
-        <Figure src={project.hero} alt={project.alt} ratio="16 / 9" priority />
+        {project.heroFit === "whole" ? (
+          <div className="gutter pt-10 md:pt-14">
+            <Image
+              src={project.hero}
+              alt={project.alt}
+              width={0}
+              height={0}
+              sizes="(max-width: 768px) 100vw, 800px"
+              priority
+              className="mx-auto h-auto max-h-[85svh] w-auto max-w-full border border-fg"
+            />
+          </div>
+        ) : (
+          <Figure src={project.hero} alt={project.alt} ratio="16 / 9" priority />
+        )}
 
         <div className="gutter pb-20 pt-10 md:pb-40 md:pt-14">
           <div className="mx-auto max-w-[34em] space-y-16 md:space-y-24">
