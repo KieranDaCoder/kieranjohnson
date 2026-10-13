@@ -23,7 +23,8 @@ const FILLED = new Set(["x"]);
 const fallback = <path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1" />;
 
 function Icon({ platform }: { platform: string }) {
-  const filled = FILLED.has(platform.toLowerCase());
+  const key = platform.split(" ")[0].toLowerCase(); // "X (formally twitter)" uses the X icon
+  const filled = FILLED.has(key);
   return (
     <svg
       aria-hidden="true"
@@ -37,7 +38,7 @@ function Icon({ platform }: { platform: string }) {
       strokeLinejoin="round"
       className="shrink-0"
     >
-      {icons[platform.toLowerCase()] ?? fallback}
+      {icons[key] ?? fallback}
     </svg>
   );
 }
@@ -58,7 +59,7 @@ export function ContactList({ links }: { links: ContactLink[] }) {
             >
               <Icon platform={platform} />
               <span className="flex min-w-0 flex-1 flex-col md:flex-row md:items-baseline">
-                <span className="t-title shrink-0 md:w-44 lg:w-64">{platform}</span>
+                <span className="t-title shrink-0 md:w-44 lg:w-80">{platform}</span>
                 <span className="t-body min-w-0 break-words font-light italic md:break-all">{handle}</span>
               </span>
               <svg
