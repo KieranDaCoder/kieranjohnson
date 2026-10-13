@@ -26,7 +26,7 @@ SEEK wanted to be a career partner to Gen Z jobseekers, but the main platform is
 
 ## Insight
 
-Entry level listings routinely ask for 3 or more years of experience. And there are fewer roles to go around.
+Entry level roles are 7x more likely to ask for later-career skills. Entry level listings routinely ask for 3 or more years of experience. And there are fewer roles to go around.
 
 ## Idea
 
