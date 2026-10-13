@@ -19,7 +19,11 @@ images:
 
 ## Challenge
 
-Removery wanted to get young adults to consider tattoo removal, at a time when getting tattooed is growing and seen as cool. Young people get tattoos for who they are now, and regret them later in life. Many believe the tattoos they get now won’t align with their views later in life. Nearly a quarter openly say they think their tattoos won’t age well.
+Removery wanted to get young adults to consider tattoo removal, at a time when getting tattooed is growing and seen as cool.
+
+## Insight
+
+Young people get tattoos for who they are now, and regret them later in life. Many believe the tattoos they get now won’t align with their views later in life. Nearly a quarter openly say they think their tattoos won’t age well.
 
 ## Idea
 
