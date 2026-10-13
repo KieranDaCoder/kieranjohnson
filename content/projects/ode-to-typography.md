@@ -3,7 +3,7 @@ title: "Ode to typography"
 slug: ode-to-typography
 category: "[PLACEHOLDER: Kieran to write]"
 year: "[PLACEHOLDER: Kieran to write]"
-order: 7
+order: 3
 type: strategy
 tile: /images/projects/ode-to-typography/tile.jpg
 hero: /images/projects/ode-to-typography/hero.jpg

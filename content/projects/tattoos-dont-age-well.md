@@ -6,7 +6,7 @@ year: 2026
 order: 2
 type: creative
 tile: /images/projects/tattoos-dont-age-well/tile.jpg
-hero: /images/projects/tattoos-dont-age-well/execution-1.png
+hero: /images/projects/tattoos-dont-age-well/hero.jpg
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"
 images:
@@ -16,14 +16,14 @@ images:
     alt: "[PLACEHOLDER: Kieran to write]"
 ---
 
-## Insight
+## Challenge
 
-[PLACEHOLDER: Kieran to write]
+Removery wanted to get young adults to consider tattoo removal, at a time when getting tattooed is growing and seen as cool. Young people get tattoos for who they are now, and regret them later in life. Many believe the tattoos they get now won’t align with their views later in life. Nearly a quarter openly say they think their tattoos won’t age well.
 
-## Big idea
+## Idea
 
-[PLACEHOLDER: Kieran to write]
+Tattoos Don’t Age Well. Instead of telling young people to think about the future, we show them the future, with their tattoo on an older body.
 
-## Execution
+## Solution
 
-[PLACEHOLDER: Kieran to write]
+A series of posters that place older people with tattoos in settings that clash with the message. A man on a mobility scooter with “Live fast, die young”. A man on the toilet with “Young, wild and free”. Each one shows the tattoo outliving the attitude.

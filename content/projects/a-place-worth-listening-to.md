@@ -10,20 +10,24 @@ hero: /images/projects/a-place-worth-listening-to/hero.jpg
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"
 images:
-  - src: /images/projects/a-place-worth-listening-to/sketch.jpg
+  - src: /images/projects/a-place-worth-listening-to/instagram.jpg
     alt: "[PLACEHOLDER: Kieran to write]"
   - src: /images/projects/a-place-worth-listening-to/script.jpg
     alt: "[PLACEHOLDER: Kieran to write]"
 ---
 
-## Challenge
+## Problem
 
-[PLACEHOLDER: Kieran to write]
+People who love camping want to get away from it all, but the popular spots are overcrowded and predictable, so it’s hard to find somewhere different.
 
 ## Insight
 
-[PLACEHOLDER: Kieran to write]
+One of the things people value most about camping is the quiet and being able to hear nature. They value it enough to stream recordings of it at home.
+
+## Idea
+
+Hipcamp has sites so isolated you can hear the relaxing sounds of nature, you are in a place worth listening to.
 
 ## Solution
 
-[PLACEHOLDER: Kieran to write]
+We borrow the online genre of nature-sound videos, with its over-the-top titles and sound, and use it across a billboard, Instagram and Spotify. Each one paints a vivid picture of isolation, through titles in the visuals and a natural soundscape in the audio.
