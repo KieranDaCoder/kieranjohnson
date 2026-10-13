@@ -121,6 +121,7 @@ powershell -c "Get-NetTCPConnection -LocalPort 3007 -State Listen -EA 0 | % { St
 
 ## Changelog
 
+- 2026-10-13: renamed Pie Face to Second Day, Second Breakfast, Hipcamp to A place worth listening to, StrangeLove to Flavours comes first (slugs and image folders renamed too); added Ode to typography placeholder tile (order 7); project-page body images now show whole with a hairline border (`Plate` in `work/[slug]/page.tsx`); Tattoos tile is a 3:4 extension of execution-1.
 - 2026-10-13: images in for Entry Level Expert, StrangeLove, Pie Face, Hipcamp (from Desktop `Portfolio folder`; resized/whitened with sharp, tiles 3:4, heroes 16:9, sketches letterboxed on white). Order: Tattoos 2, Entry Level Expert 3, then the three Hungry Talks briefs together 4 to 6. Proper X logo on Contact.
 - 2026-10-13: branch `review-overlay`: dev-only review tool (Review button on localhost, notes in git-ignored `.review/comments.json`; Claude reads them and fixes in one pass). Hero USP removed (subline right-aligned under JOHNSON), home About quote + new bio, new /about copy with **bold** project names auto-linked, End Gambling Ads archived, Entry Level Expert added (placeholder details, order 3), X account added to Contact.
 - 2026-10-12: About copy added (verbatim). Archived Hidden Bites, Summit Signal, Coolness Tax to `content/archive/`. Added StrangeLove Premium Mixers, Pie Face - Pie Time, Hipcamp - Off the Beaten Track with placeholder details and a grey placeholder tile until images arrive. `check:content` ignores `content/archive/`.

@@ -1,16 +1,18 @@
 ---
-title: "Hipcamp - Off the Beaten Track"
-slug: hipcamp-off-the-beaten-track
+title: "A place worth listening to"
+slug: a-place-worth-listening-to
 category: "[PLACEHOLDER: Kieran to write]"
 year: "[PLACEHOLDER: Kieran to write]"
 order: 6
 type: strategy
-tile: /images/projects/hipcamp-off-the-beaten-track/tile.jpg
-hero: /images/projects/hipcamp-off-the-beaten-track/hero.jpg
+tile: /images/projects/a-place-worth-listening-to/tile.jpg
+hero: /images/projects/a-place-worth-listening-to/hero.jpg
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"
 images:
-  - src: /images/projects/hipcamp-off-the-beaten-track/script.jpg
+  - src: /images/projects/a-place-worth-listening-to/sketch.jpg
+    alt: "[PLACEHOLDER: Kieran to write]"
+  - src: /images/projects/a-place-worth-listening-to/script.jpg
     alt: "[PLACEHOLDER: Kieran to write]"
 ---
 

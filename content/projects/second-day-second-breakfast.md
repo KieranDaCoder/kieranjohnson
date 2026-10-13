@@ -1,12 +1,12 @@
 ---
-title: "StrangeLove Premium Mixers"
-slug: strangelove-premium-mixers
+title: "Second Day, Second Breakfast"
+slug: second-day-second-breakfast
 category: "[PLACEHOLDER: Kieran to write]"
 year: "[PLACEHOLDER: Kieran to write]"
-order: 4
+order: 5
 type: strategy
-tile: /images/projects/strangelove-premium-mixers/tile.jpg
-hero: /images/projects/strangelove-premium-mixers/hero.jpg
+tile: /images/projects/second-day-second-breakfast/tile.jpg
+hero: /images/projects/second-day-second-breakfast/hero.jpg
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"
 images: []

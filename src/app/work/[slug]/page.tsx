@@ -19,6 +19,21 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return project ? { title: project.title, description: project.summary } : {};
 }
 
+// Body image: shown whole at its own proportions, with a hairline so the edge is visible on white.
+function Plate({ src, alt }: { src: string; alt: string }) {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      width={0}
+      height={0}
+      sizes="(max-width: 768px) 100vw, 34em"
+      unoptimized={src.endsWith(".svg")}
+      className="h-auto w-full border border-fg"
+    />
+  );
+}
+
 function Figure({ src, alt, ratio, priority = false }: { src: string; alt: string; ratio: string; priority?: boolean }) {
   return (
     <div className="relative w-full overflow-hidden bg-line" style={{ aspectRatio: ratio }}>
@@ -67,7 +82,7 @@ export default async function ProjectPage({ params }: Params) {
                     </div>
                   </section>
                   {image && i < project.sections.length - 1 && (
-                    <Figure src={image.src} alt={image.alt} ratio="var(--image-ratio)" />
+                    <Plate src={image.src} alt={image.alt} />
                   )}
                 </div>
               );

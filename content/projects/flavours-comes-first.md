@@ -1,12 +1,12 @@
 ---
-title: "Pie Face - Pie Time"
-slug: pie-face-pie-time
+title: "Flavours comes first"
+slug: flavours-comes-first
 category: "[PLACEHOLDER: Kieran to write]"
 year: "[PLACEHOLDER: Kieran to write]"
-order: 5
+order: 4
 type: strategy
-tile: /images/projects/pie-face-pie-time/tile.jpg
-hero: /images/projects/pie-face-pie-time/hero.jpg
+tile: /images/projects/flavours-comes-first/tile.jpg
+hero: /images/projects/flavours-comes-first/hero.jpg
 alt: "[PLACEHOLDER: Kieran to write]"
 summary: "[PLACEHOLDER: Kieran to write]"
 images: []
