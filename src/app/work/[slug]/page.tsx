@@ -16,7 +16,7 @@ export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const project = getProject((await params).slug);
-  return project ? { title: project.title, description: project.summary } : {};
+  return project ? { title: project.title, ...(project.summary && { description: project.summary }) } : {};
 }
 
 // Body image: shown whole at its own proportions, with a hairline so the edge is visible on white.
@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: Params) {
 
   return (
     <article>
-      <PageHeader title={project.title} meta={[project.category, project.year]} />
+      <PageHeader title={project.title} meta={[project.category, project.year].filter(Boolean)} />
 
       <Section tone="white">
         <Figure src={project.hero} alt={project.alt} ratio="16 / 9" priority />

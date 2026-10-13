@@ -1,14 +1,14 @@
 ---
 title: "Second Day, Second Breakfast"
 slug: second-day-second-breakfast
-category: "[PLACEHOLDER: Kieran to write]"
-year: "[PLACEHOLDER: Kieran to write]"
+category: ""
+year: ""
 order: 5
 type: strategy
 tile: /images/projects/second-day-second-breakfast/tile.jpg
 hero: /images/projects/second-day-second-breakfast/hero.jpg
-alt: "[PLACEHOLDER: Kieran to write]"
-summary: "[PLACEHOLDER: Kieran to write]"
+alt: ""
+summary: ""
 images: []
 ---
 

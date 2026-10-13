@@ -1,19 +1,19 @@
 ---
 title: "Ode to typography"
 slug: ode-to-typography
-category: "[PLACEHOLDER: Kieran to write]"
-year: "[PLACEHOLDER: Kieran to write]"
+category: ""
+year: ""
 order: 3
 type: strategy
 tile: /images/projects/ode-to-typography/tile.jpg
 hero: /images/projects/ode-to-typography/hero.jpg
-alt: "[PLACEHOLDER: Kieran to write]"
-summary: "[PLACEHOLDER: Kieran to write]"
+alt: ""
+summary: ""
 images:
   - src: /images/projects/ode-to-typography/metrolite.jpg
-    alt: "[PLACEHOLDER: Kieran to write]"
+    alt: ""
   - src: /images/projects/ode-to-typography/billboard.jpg
-    alt: "[PLACEHOLDER: Kieran to write]"
+    alt: ""
 ---
 
 A personal project in response to a Monotype brief.

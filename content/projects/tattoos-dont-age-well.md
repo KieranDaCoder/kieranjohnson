@@ -7,13 +7,13 @@ order: 2
 type: creative
 tile: /images/projects/tattoos-dont-age-well/tile.jpg
 hero: /images/projects/tattoos-dont-age-well/hero.jpg
-alt: "[PLACEHOLDER: Kieran to write]"
-summary: "[PLACEHOLDER: Kieran to write]"
+alt: ""
+summary: ""
 images:
   - src: /images/projects/tattoos-dont-age-well/execution-2.png
-    alt: "[PLACEHOLDER: Kieran to write]"
+    alt: ""
   - src: /images/projects/tattoos-dont-age-well/execution-3.png
-    alt: "[PLACEHOLDER: Kieran to write]"
+    alt: ""
 ---
 
 ## Challenge

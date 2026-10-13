@@ -80,15 +80,19 @@ export function getProjects(): Project[] {
       return {
         title: String(data.title),
         slug: String(data.slug ?? f.replace(/\.md$/, "")),
-        category: String(data.category),
-        year: String(data.year),
+        category: data.category ? String(data.category) : "",
+        year: data.year ? String(data.year) : "",
         order: Number(data.order ?? 0),
         type: data.type === "creative" ? "creative" : "strategy",
         tile: String(data.tile),
         hero: String(data.hero ?? data.tile),
-        alt: String(data.alt ?? ""),
+        // Empty alt falls back to the project title so images are never unlabelled.
+        alt: String(data.alt || data.title),
         summary: String(data.summary ?? ""),
-        images: Array.isArray(data.images) ? data.images : [],
+        images: (Array.isArray(data.images) ? data.images : []).map((i: ProjectImage) => ({
+          ...i,
+          alt: i.alt || String(data.title),
+        })),
         intro: paragraphs(content.split(/^##\s+/m)[0]),
         sections: parseSections(content),
       } satisfies Project;
