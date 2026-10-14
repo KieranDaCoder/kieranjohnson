@@ -615,7 +615,18 @@ body {
 }
 @media (min-width: 768px) {
   .about-portrait {
-    width: clamp(240px, calc(100svh - 380px), 480px);
-    height: clamp(240px, calc(100svh - 380px), 480px);
+    width: clamp(240px, min(calc(100svh - 380px), 34vw), 480px);
+    height: clamp(240px, min(calc(100svh - 380px), 34vw), 480px);
+  }
+  /* Home About copy is longer than the portrait column, so on laptop-height
+     windows the text, spacing and gap give a little to keep the section on one
+     screen. Large screens keep the original sizes. */
+  .about-grid {
+    column-gap: clamp(2rem, 6.5vw, 6rem);
+    padding-top: clamp(1.5rem, 4.5svh, 3.5rem);
+  }
+  .about-copy {
+    font-size: clamp(1.0625rem, min(1.65vw, 2.6svh), 1.5rem);
+    margin-top: clamp(1.5rem, 3.5svh, 3rem);
   }
 }

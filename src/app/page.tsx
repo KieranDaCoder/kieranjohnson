@@ -67,12 +67,12 @@ export default function Home() {
           <RevealTitle as="h2" className="t-h2">About me</RevealTitle>
         </HeadingRow>
         <div className="screen-fill">
-        <div className="grid gap-12 pt-10 md:grid-cols-[1fr_auto] md:gap-24 md:pt-14">
+        <div className="about-grid grid gap-12 pt-10 md:grid-cols-[1fr_auto] md:gap-24 md:pt-14">
           <div>
             <p className="t-statement font-semibold italic" data-reveal>
               {home.quote}
             </p>
-            <div className="t-body mt-10 space-y-4 md:mt-12" data-reveal>
+            <div className="t-body about-copy mt-10 space-y-4 md:mt-12" data-reveal>
               {home.coreInfo.split(/\n\s*\n/).map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
