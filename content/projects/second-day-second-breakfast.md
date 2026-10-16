@@ -16,6 +16,8 @@ images: []
 
 Breakfast, lunch and dinner are all booming for Pie Face, but between 3 and 5.30pm almost no one is buying food. The Mini Pie needs a reason to be eaten in that gap.
 
+![](/images/projects/second-day-second-breakfast/poster-combo.jpg)
+
 ## Insight
 
 For many people, 3pm is when work or study ends and the day they actually want begins. That day needs fuel, and the meal that starts a day is breakfast.
@@ -27,8 +29,6 @@ Your second day starts at 3pm, and the Mini Pie is the perfect breakfast for it.
 ## Solution
 
 The Second Day Deal, a Mini Classic Mince Pie and a drink from 3 to 5.30pm, sold under the line “Your second day starts at 3pm”.
-
-![](/images/projects/second-day-second-breakfast/poster-combo.jpg)
 
 ![](/images/projects/second-day-second-breakfast/billboard-alarm.jpg)
 ![](/images/projects/second-day-second-breakfast/billboard-now.jpg)

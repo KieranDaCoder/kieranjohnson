@@ -107,7 +107,7 @@ export default async function ProjectPage({ params }: Params) {
                         ) : (
                           <div
                             key={j}
-                            className={block.length > 1 ? "grid gap-4 md:gap-6 md:[grid-template-columns:repeat(var(--n),minmax(0,1fr))]" : undefined}
+                            className={block.length > 1 ? "grid gap-4 md:relative md:left-1/2 md:w-[min(92vw,72rem)] md:-translate-x-1/2 md:gap-6 md:[grid-template-columns:repeat(var(--n),minmax(0,1fr))]" : undefined}
                             style={{ "--n": block.length } as React.CSSProperties}
                           >
                             {block.map((img) => (
