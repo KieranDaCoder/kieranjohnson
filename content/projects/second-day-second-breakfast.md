@@ -27,3 +27,10 @@ Your second day starts at 3pm, and the Mini Pie is the perfect breakfast for it.
 ## Solution
 
 The Second Day Deal, a Mini Classic Mince Pie and a drink from 3 to 5.30pm, sold under the line “Your second day starts at 3pm”.
+
+![](/images/projects/second-day-second-breakfast/poster-combo.jpg)
+
+![](/images/projects/second-day-second-breakfast/billboard-alarm.jpg)
+![](/images/projects/second-day-second-breakfast/billboard-now.jpg)
+
+The third execution is a digital billboard with two changing faces. The idea reframes 3pm as breakfast time, so a clock is a clear visual cue that supports the message. One face sits dormant while the promo window is closed, and once it becomes active the rooster sounds and the billboard changes to announce that the second day has started.

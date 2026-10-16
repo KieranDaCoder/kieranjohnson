@@ -101,9 +101,21 @@ export default async function ProjectPage({ params }: Params) {
                   <section>
                     <h2 className="t-label">{section.heading}</h2>
                     <div className="t-body mt-6 space-y-6">
-                      {section.body.map((p, j) => (
-                        <p key={j}>{p}</p>
-                      ))}
+                      {section.body.map((block, j) =>
+                        typeof block === "string" ? (
+                          <p key={j}>{block}</p>
+                        ) : (
+                          <div
+                            key={j}
+                            className={block.length > 1 ? "grid gap-4 md:gap-6 md:[grid-template-columns:repeat(var(--n),minmax(0,1fr))]" : undefined}
+                            style={{ "--n": block.length } as React.CSSProperties}
+                          >
+                            {block.map((img) => (
+                              <Plate key={img.src} src={img.src} alt={img.alt} width={img.width} height={img.height} />
+                            ))}
+                          </div>
+                        ),
+                      )}
                     </div>
                   </section>
                   {image && i < project.sections.length - 1 && (

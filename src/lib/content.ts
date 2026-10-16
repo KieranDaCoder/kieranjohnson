@@ -77,16 +77,36 @@ export type Project = {
   intro: string[];
   // Body split on "## " headings: Challenge / Insight / Solution (strategy)
   // or Insight / Big idea / Execution (creative).
-  sections: { heading: string; body: string[] }[];
+  // A body block is a paragraph, or a row of images from consecutive `![alt](src)` lines.
+  sections: { heading: string; body: (string | ProjectImage[])[] }[];
 };
 
-function parseSections(body: string) {
+const IMAGE_LINE = /^!\[([^\]]*)\]\((\S+?)\)$/;
+
+function blocks(text: string, title: string): (string | ProjectImage[])[] {
+  return text
+    .split(/\n\s*\n/)
+    .map((chunk) => chunk.trim())
+    .filter(Boolean)
+    .map((chunk) => {
+      const lines = chunk.split("\n").map((l) => l.trim());
+      if (lines.every((l) => IMAGE_LINE.test(l))) {
+        return lines.map((l) => {
+          const [, alt, src] = l.match(IMAGE_LINE)!;
+          return { src, alt: alt || title, ...imageSize(src) };
+        });
+      }
+      return paragraphs(chunk)[0];
+    });
+}
+
+function parseSections(body: string, title: string) {
   return body
     .split(/^##\s+/m)
     .slice(1)
     .map((chunk) => {
       const [heading, ...rest] = chunk.split("\n");
-      return { heading: heading.trim(), body: paragraphs(rest.join("\n")) };
+      return { heading: heading.trim(), body: blocks(rest.join("\n"), title) };
     });
 }
 
@@ -120,7 +140,7 @@ export function getProjects(): Project[] {
           ...imageSize(i.src),
         })),
         intro: paragraphs(content.split(/^##\s+/m)[0]),
-        sections: parseSections(content),
+        sections: parseSections(content, String(data.title)),
       } satisfies Project;
     })
     .sort((a, b) => a.order - b.order);
